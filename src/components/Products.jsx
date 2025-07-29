@@ -1,6 +1,9 @@
-import products from "../data/products";
+import { Link } from "react-router-dom"
+import products from "../data/products"
+import { useCart } from '../context/CartContext'
 
-export default function Products({ addToCart }) {
+export default function Products() {
+  const { addToCart } = useCart() // Usa el contexto
   return (
     <section id="products" className="py-20 px-8 bg-gray-50">
       <h2 className="text-3xl font-semibold text-center mb-12">PC y Notebooks</h2>

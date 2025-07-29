@@ -1,41 +1,25 @@
-import { useState } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Products from "./components/Products";
-import Services from "./components/Services";
-import Cart from "./components/Cart";
-import Footer from "./components/Footer";
-import "./index.css";
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import ProductDetail from './components/ProductDetail'
+import ServicesPage from './components/ServicesPage'
+import ContactPage from './components/ContactPage'
+import Feedback from './components/Feedback'
+import StockPanel from './components/StockPanel'
+import Cart from './components/Cart'
+import { CartProvider } from './context/CartContext' // Nuevo contexto
 
 export default function App() {
-  const [cartItems, setCartItems] = useState([]);
-
-  const addToCart = (product) => {
-    setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      return [...prev, { ...product, quantity: 1 }];
-    });
-  };
-
-  const removeFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  };
-
   return (
-    <div className="bg-white text-gray-900 font-sans">
-      <Navbar cartItems={cartItems} />
-      <Hero />
-      <Products addToCart={addToCart} />
-      <Services />
-      <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
-      <Footer />
-    </div>
-  );
+    <CartProvider> {/* Envuelve todo con el proveedor */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/stock" element={<StockPanel />} />
+        <Route path="/cart" element={<Cart />} /> {/* Ahora usa el contexto */}
+      </Routes>
+    </CartProvider>
+  )
 }
