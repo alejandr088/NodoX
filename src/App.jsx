@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { CartProvider } from './context/CartContext'
 import Home from './pages/Home'
 import ProductDetail from './components/ProductDetail'
 import ServicesPage from './components/ServicesPage'
@@ -6,11 +7,10 @@ import ContactPage from './components/ContactPage'
 import Feedback from './components/Feedback'
 import StockPanel from './components/StockPanel'
 import Cart from './components/Cart'
-import { CartProvider } from './context/CartContext' // Nuevo contexto
 
 export default function App() {
   return (
-    <CartProvider> {/* Envuelve todo con el proveedor */}
+    <CartProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetail />} />
@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/stock" element={<StockPanel />} />
-        <Route path="/cart" element={<Cart />} /> {/* Ahora usa el contexto */}
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </CartProvider>
   )
