@@ -1,10 +1,14 @@
 export default function TeamMember({ name, role, bio, image }) {
   return (
-    <div className="card p-4 text-center hover:shadow-lg transition-shadow">
+    <div
+      className="card p-4 text-center hover:shadow-xl transition duration-300 transform hover:-translate-y-2 hover:scale-105"
+      tabIndex="0"
+      aria-label={`${name}, ${role}`}
+    >
       <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-2 border-red-100 dark:border-gray-700">
-        <img 
-          src={image} 
-          alt={name}
+        <img
+          src={image}
+          alt={`Foto de ${name}`}
           className="w-full h-full object-cover"
         />
       </div>

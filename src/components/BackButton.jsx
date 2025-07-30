@@ -6,10 +6,11 @@ export default function BackButton({ className }) {
   return (
     <button
       onClick={() => navigate(-1)}
-      className={`flex items-center gap-2 transition-colors mb-6 ${className || 'text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400'}`}
+      className={`flex items-center gap-2 transition-colors mb-6 focus-visible:ring-2 focus-visible:ring-red-500 focus:outline-none ${className || 'text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400'}`}
+      aria-label="Volver a la página anterior"
     >
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="..." />
       </svg>
       Volver atrás
     </button>

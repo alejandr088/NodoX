@@ -1,30 +1,52 @@
 import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import BackButton from './BackButton'
+import Breadcrumbs from './Breadcrumbs'
 import products from '../data/products'
 
 export default function ProductDetail() {
   const { id } = useParams()
   const product = products.find(p => p.id === parseInt(id))
 
-  if (!product) return <div className="min-h-screen pt-24 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
-    <BackButton className="mb-8 text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400" />
-    <p>Producto no encontrado</p>
-  </div>
+  if (!product) return (
+    <div className="min-h-screen pt-24 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
+      <BackButton className="mb-8 text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400" />
+      <p>Producto no encontrado</p>
+    </div>
+  )
+
+  // Breadcrumbs: Inicio > Productos > Nombre del Producto
+  const breadcrumbs = [
+    { name: "Productos", link: "/products" },
+    { name: product.name }
+  ]
 
   return (
     <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden bg-gray-50 dark:bg-gray-900">
-      {/* Fondo con gradiente o color para consistencia */}
+      <Helmet>
+        <title>{product.name} | NodoX</title>
+        <meta name="description" content={product.description} />
+        <meta property="og:title" content={`${product.name} | NodoX`} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:type" content="product" />
+        <meta property="og:image" content={product.image} />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
+
       <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-white dark:from-gray-800 dark:to-gray-900 z-0"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <BackButton className="mb-8 text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400" />
+        <BackButton className="mb-6 text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400" />
+        <Breadcrumbs paths={breadcrumbs} />
 
         <section className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="rounded-xl overflow-hidden shadow-md">
-              <img 
-                src={product.image} 
-                alt={product.name} 
+              <img
+                src={product.image}
+                alt={product.name}
                 className="w-full h-auto object-cover"
               />
             </div>

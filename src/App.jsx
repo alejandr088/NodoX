@@ -8,6 +8,7 @@ import Feedback from './components/Feedback'
 import StockPanel from './components/StockPanel'
 import Cart from './components/Cart'
 import AboutUsPage from './components/AboutUsPage'
+import NotFound from './components/NotFound' // Importa la página 404
 import './index.css'
 
 export default function App() {
@@ -23,6 +24,9 @@ export default function App() {
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/stock" element={<StockPanel />} />
         <Route path="/cart" element={<Cart />} />
+
+        {/* Ruta catch-all para 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </CartProvider>
   )

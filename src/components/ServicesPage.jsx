@@ -1,5 +1,7 @@
 import BackButton from './BackButton'
+import Breadcrumbs from './Breadcrumbs'
 import services from '../data/services'
+import { Helmet } from 'react-helmet'
 
 export default function ServicesPage() {
   const serviceCategories = [
@@ -29,13 +31,28 @@ export default function ServicesPage() {
     }
   ]
 
+  const breadcrumbs = [
+    { name: "Servicios" }
+  ]
+
   return (
     <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden bg-white dark:bg-gray-900">
+      <Helmet>
+        <title>Servicios | NodoX</title>
+        <meta name="description" content="Servicios técnicos profesionales en reparaciones, software y hardware en NodoX." />
+        <meta property="og:title" content="Servicios | NodoX" />
+        <meta property="og:description" content="Servicios técnicos profesionales en reparaciones, software y hardware en NodoX." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-white dark:from-gray-800 dark:to-gray-900 z-0"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <BackButton className="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400" />
-        
+        <BackButton className="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 mb-6" />
+        <Breadcrumbs paths={breadcrumbs} />
+
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Nuestros <span className="text-red-500">Servicios</span>
