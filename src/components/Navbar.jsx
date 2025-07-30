@@ -6,7 +6,14 @@ export default function Navbar() {
   const { cartItems } = useCart()
   const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
-  const [darkMode, setDarkMode] = useState(false)
+  
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedMode = localStorage.getItem('darkMode')
+      return savedMode !== null ? JSON.parse(savedMode) : window.matchMedia('(prefers-color-scheme: dark)').matches
+    }
+    return false
+  })
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -15,18 +22,15 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
-  }, [])
-
-  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode))
     document.documentElement.classList.toggle('dark', darkMode)
   }, [darkMode])
 
   const navLinks = [
     { path: '/', name: 'Inicio' },
     { path: '/services', name: 'Servicios' },
-    { path: '/contact', name: 'Contacto' },
-    { path: '/feedback', name: 'Clientes' }
+    { path: '/about', name: 'Sobre Nosotros' },
+    { path: '/contact', name: 'Contacto' }
   ]
 
   return (

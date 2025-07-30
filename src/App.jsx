@@ -7,14 +7,18 @@ import ContactPage from './components/ContactPage'
 import Feedback from './components/Feedback'
 import StockPanel from './components/StockPanel'
 import Cart from './components/Cart'
+import AboutUsPage from './components/AboutUsPage'
+import './index.css'
 
 export default function App() {
   return (
     <CartProvider>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/about" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/stock" element={<StockPanel />} />
