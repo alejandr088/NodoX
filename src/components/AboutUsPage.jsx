@@ -1,41 +1,41 @@
-import TeamMember from './TeamMember'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import TeamMember from './TeamMember'
 import { Helmet } from 'react-helmet'
 
 export default function AboutUsPage() {
   const teamMembers = [
     {
-      name: "Lucas Fernández",
-      role: "Fundador & CEO",
-      bio: "Especialista en hardware con más de 10 años de experiencia en el rubro.",
-      image: "/team/lucas.jpg"
+      name: "Alejandro Rivello",
+      role: "Programación, Marketing, Soporte, Armados, Product Manager",
+      bio: "Responsable de programación, marketing, soporte y armado de sistemas en NodoX.",
+      image: "/team/alejandro.jpg"
     },
     {
-      name: "Martina Rodríguez",
-      role: "Directora de Servicios Técnicos",
-      bio: "Ingeniera en computación con especialización en recuperación de datos.",
-      image: "/team/martina.jpg"
+      name: "Pablo Gonzalez",
+      role: "Diseño Web, Diseño Gráfico",
+      bio: "Especialista en diseño web y gráfico para proyectos NodoX.",
+      image: "/team/pablo.jpg"
     },
     {
-      name: "Diego Pereira",
-      role: "Jefe de Ventas",
-      bio: "Experto en comercio electrónico y atención al cliente premium.",
-      image: "/team/diego.jpg"
+      name: "Nahuel Muñoz",
+      role: "E-Commerce, Crypto, Electricista",
+      bio: "Experto en comercio electrónico, cripto y electricidad aplicada.",
+      image: "/team/nahuel.jpg"
     },
     {
-      name: "Valentina Gómez",
-      role: "Responsable de Calidad",
-      bio: "Certificadora de equipos recertificados y control de estándares.",
-      image: "/team/valentina.jpg"
+      name: "Guillermo Quevedo",
+      role: "Programación, Soporte, Marketing",
+      bio: "Encargado de áreas de programación, soporte y marketing para NodoX.",
+      image: "/team/guillermo.jpg"
     },
     {
-      name: "Federico Martínez",
-      role: "Desarrollador de Negocios",
-      bio: "Encargado de alianzas estratégicas y expansión comercial.",
-      image: "/team/federico.jpg"
+      name: "Esteban Fresno",
+      role: "Soporte, Hardware, Presupuestos, Atención al Cliente, Community Manager",
+      bio: "Especialista en soporte, hardware, presupuestos y atención al cliente.",
+      image: "/team/esteban.jpg"
     }
-  ];
+  ]
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 font-sans relative">
@@ -51,7 +51,6 @@ export default function AboutUsPage() {
 
       <Navbar />
       <main className="max-w-6xl mx-auto pt-24 pb-20 px-6">
-
         {/* Encabezado */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -181,30 +180,6 @@ export default function AboutUsPage() {
                 image={member.image}
               />
             ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="card p-8 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-            ¿Listo para experimentar el servicio NodoX?
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            Descubre por qué cientos de clientes confían en nosotros para sus necesidades tecnológicas
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="btn-primary inline-flex items-center justify-center"
-            >
-              Contáctanos
-            </a>
-            <a
-              href="/services"
-              className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 px-6 py-3 rounded-lg font-medium shadow hover:shadow-md transition"
-            >
-              Nuestros servicios
-            </a>
           </div>
         </section>
       </main>

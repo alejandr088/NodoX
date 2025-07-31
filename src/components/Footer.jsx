@@ -55,10 +55,10 @@ export default function Footer() {
           <h4 className="font-semibold mb-4 text-white">Políticas</h4>
           <ul>
             <li className="mb-2">
-              <a href="/privacy" className="hover:text-red-500 transition">Política de Privacidad</a>
+              <a href="/privacy-policy" className="hover:text-red-500 transition">Política de Privacidad</a>
             </li>
             <li className="mb-2">
-              <a href="/terms" className="hover:text-red-500 transition">Términos y Condiciones</a>
+              <a href="/terms-conditions" className="hover:text-red-500 transition">Términos y Condiciones</a>
             </li>
             <li className="mb-2">
               <a href="/shipping" className="hover:text-red-500 transition">Envíos</a>

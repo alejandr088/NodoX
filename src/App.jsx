@@ -11,6 +11,8 @@ import AboutUsPage from './components/AboutUsPage'
 import NotFound from './components/NotFound' // Importa la página 404
 import PCBuilderPage from './pages/PCBuilderPage'
 import BusinessSales from './pages/BusinessSales'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsAndConditions from './pages/TermsAndConditions'
 import './index.css'
 
 export default function App() {
@@ -29,6 +31,8 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/not-found" element={<NotFound />} />
         <Route path="/business-sales" element={<BusinessSales />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-conditions" element={<TermsAndConditions />} />
       </Routes>
     </CartProvider>
   )
