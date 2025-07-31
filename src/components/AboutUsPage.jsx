@@ -1,5 +1,6 @@
 import BackButton from './BackButton'
 import TeamMember from './TeamMember' // Nuevo componente para integrantes
+import { Helmet } from 'react-helmet'
 
 export default function AboutUsPage() {
   const teamMembers = [
@@ -37,6 +38,16 @@ export default function AboutUsPage() {
 
   return (
     <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden bg-gray-50 dark:bg-gray-900">
+      <Helmet>
+        <title>Sobre Nosotros | NodoX</title>
+        <meta name="description" content="Conoce más sobre NodoX, nuestro equipo y nuestra misión en tecnología y servicios técnicos." />
+        <meta property="og:title" content="Sobre Nosotros | NodoX" />
+        <meta property="og:description" content="Conoce más sobre NodoX, nuestro equipo y nuestra misión en tecnología y servicios técnicos." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       {/* Video de fondo (opcional) */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 z-0"></div>
 
@@ -79,6 +90,7 @@ export default function AboutUsPage() {
                 src="/team/group-photo.jpg" 
                 alt="Equipo NodoX" 
                 className="rounded-xl shadow-2xl w-full h-auto object-cover"
+                loading="lazy"
               />
             </div>
           </div>
@@ -88,7 +100,7 @@ export default function AboutUsPage() {
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           <div className="card p-8 bg-gradient-to-br from-red-500 to-red-600 text-white">
             <div className="bg-white/10 p-2 rounded-full w-12 h-12 flex items-center justify-center mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
@@ -98,19 +110,19 @@ export default function AboutUsPage() {
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Excelencia técnica certificada</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Transparencia en cada proceso</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Soporte post-venta permanente</span>
@@ -120,7 +132,7 @@ export default function AboutUsPage() {
 
           <div className="card p-8 bg-gray-900 text-white dark:bg-gray-800">
             <div className="bg-white/10 p-2 rounded-full w-12 h-12 flex items-center justify-center mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
@@ -131,19 +143,19 @@ export default function AboutUsPage() {
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Expandirnos a 3 nuevas ciudades para 2027</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Certificación ISO 9001 para 2026</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Programa de formación para jóvenes técnicos</span>

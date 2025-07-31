@@ -9,6 +9,7 @@ import StockPanel from './components/StockPanel'
 import Cart from './components/Cart'
 import AboutUsPage from './components/AboutUsPage'
 import NotFound from './components/NotFound' // Importa la página 404
+import PCBuilderPage from './pages/PCBuilderPage'
 import './index.css'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/pc-builder" element={<PCBuilderPage />} />
         <Route path="/stock" element={<StockPanel />} />
         <Route path="/cart" element={<Cart />} />
 

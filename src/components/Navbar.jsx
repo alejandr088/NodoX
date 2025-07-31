@@ -27,11 +27,13 @@ export default function Navbar() {
   }, [darkMode])
 
   const navLinks = [
-    { path: '/', name: 'Inicio' },
-    { path: '/services', name: 'Servicios' },
-    { path: '/about', name: 'Sobre Nosotros' },
-    { path: '/contact', name: 'Contacto' }
-  ]
+  { path: '/', name: 'Inicio' },
+  { path: '/services', name: 'Servicios' },
+  { path: '/pc-builder', name: 'Armador PC' },
+  { path: '/about', name: 'Sobre Nosotros' },
+  { path: '/contact', name: 'Contacto' }
+]
+
 
   return (
     <nav
