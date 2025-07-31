@@ -30,6 +30,7 @@ export default function Navbar() {
   { path: '/', name: 'Inicio' },
   { path: '/services', name: 'Servicios' },
   { path: '/pc-builder', name: 'Armador PC' },
+  { path: '/business-sales', name: 'Zona Empresas' },
   { path: '/about', name: 'Sobre Nosotros' },
   { path: '/contact', name: 'Contacto' }
 ]

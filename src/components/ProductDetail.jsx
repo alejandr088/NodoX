@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import BackButton from './BackButton'
 import Breadcrumbs from './Breadcrumbs'
 import products from '../data/products'
 
@@ -10,7 +9,6 @@ export default function ProductDetail() {
 
   if (!product) return (
     <div className="min-h-screen pt-24 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
-      <BackButton className="mb-8 text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400" />
       <p>Producto no encontrado</p>
     </div>
   )
@@ -38,7 +36,6 @@ export default function ProductDetail() {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-white dark:from-gray-800 dark:to-gray-900 z-0"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <BackButton className="mb-6 text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400" />
         <Breadcrumbs paths={breadcrumbs} />
 
         <section className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">

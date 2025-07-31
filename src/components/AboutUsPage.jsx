@@ -1,5 +1,6 @@
-import BackButton from './BackButton'
-import TeamMember from './TeamMember' // Nuevo componente para integrantes
+import TeamMember from './TeamMember'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import { Helmet } from 'react-helmet'
 
 export default function AboutUsPage() {
@@ -37,7 +38,7 @@ export default function AboutUsPage() {
   ];
 
   return (
-    <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden bg-gray-50 dark:bg-gray-900">
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 font-sans relative">
       <Helmet>
         <title>Sobre Nosotros | NodoX</title>
         <meta name="description" content="Conoce más sobre NodoX, nuestro equipo y nuestra misión en tecnología y servicios técnicos." />
@@ -48,12 +49,9 @@ export default function AboutUsPage() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      {/* Video de fondo (opcional) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 z-0"></div>
+      <Navbar />
+      <main className="max-w-6xl mx-auto pt-24 pb-20 px-6">
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <BackButton />
-        
         {/* Encabezado */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -67,7 +65,7 @@ export default function AboutUsPage() {
         </div>
 
         {/* Nuestra Historia */}
-        <div className="card mb-16 p-8">
+        <div className="card mb-16 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2">
               <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
@@ -79,16 +77,16 @@ export default function AboutUsPage() {
               <p className="text-gray-600 dark:text-gray-400 mb-6">
                 Lo que comenzó como un pequeño taller de reparaciones hoy es un referente en Montevideo, gracias a nuestro enfoque en <strong>calidad, transparencia y atención personalizada</strong>.
               </p>
-              <div className="bg-red-50 dark:bg-gray-800 p-4 rounded-lg border-l-4 border-red-500">
+              <div className="bg-red-50 dark:bg-gray-700 p-4 rounded-lg border-l-4 border-red-500">
                 <p className="italic text-gray-700 dark:text-gray-300">
                   "Creemos que la tecnología debe ser accesible, confiable y acompañada por personas que realmente se preocupen por sus clientes."
                 </p>
               </div>
             </div>
             <div className="md:w-1/2">
-              <img 
-                src="/team/group-photo.jpg" 
-                alt="Equipo NodoX" 
+              <img
+                src="/team/group-photo.jpg"
+                alt="Equipo NodoX"
                 className="rounded-xl shadow-2xl w-full h-auto object-cover"
                 loading="lazy"
               />
@@ -98,9 +96,9 @@ export default function AboutUsPage() {
 
         {/* Misión y Visión */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="card p-8 bg-gradient-to-br from-red-500 to-red-600 text-white">
+          <div className="card p-8 bg-gradient-to-br from-red-500 to-red-600 text-white rounded-lg shadow-md">
             <div className="bg-white/10 p-2 rounded-full w-12 h-12 flex items-center justify-center mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
@@ -110,19 +108,19 @@ export default function AboutUsPage() {
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Excelencia técnica certificada</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Transparencia en cada proceso</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-5 h-5 text-red-200 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Soporte post-venta permanente</span>
@@ -130,9 +128,9 @@ export default function AboutUsPage() {
             </ul>
           </div>
 
-          <div className="card p-8 bg-gray-900 text-white dark:bg-gray-800">
+          <div className="card p-8 bg-gray-900 text-white dark:bg-gray-800 rounded-lg shadow-md">
             <div className="bg-white/10 p-2 rounded-full w-12 h-12 flex items-center justify-center mb-6">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
@@ -143,19 +141,19 @@ export default function AboutUsPage() {
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Expandirnos a 3 nuevas ciudades para 2027</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Certificación ISO 9001 para 2026</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Programa de formación para jóvenes técnicos</span>
@@ -165,17 +163,17 @@ export default function AboutUsPage() {
         </div>
 
         {/* Nuestro Equipo */}
-        <div className="text-center mb-12">
+        <section className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
             Conoce al <span className="text-red-500">Equipo</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
             Los profesionales que hacen posible nuestra excelencia
           </p>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {teamMembers.map((member, index) => (
-              <TeamMember 
+              <TeamMember
                 key={index}
                 name={member.name}
                 role={member.role}
@@ -184,10 +182,10 @@ export default function AboutUsPage() {
               />
             ))}
           </div>
-        </div>
+        </section>
 
         {/* CTA */}
-        <div className="card p-8 bg-gray-100 dark:bg-gray-800 text-center">
+        <section className="card p-8 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-md">
           <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             ¿Listo para experimentar el servicio NodoX?
           </h3>
@@ -195,21 +193,22 @@ export default function AboutUsPage() {
             Descubre por qué cientos de clientes confían en nosotros para sus necesidades tecnológicas
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/contact" 
+            <a
+              href="/contact"
               className="btn-primary inline-flex items-center justify-center"
             >
               Contáctanos
             </a>
-            <a 
-              href="/services" 
+            <a
+              href="/services"
               className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 px-6 py-3 rounded-lg font-medium shadow hover:shadow-md transition"
             >
               Nuestros servicios
             </a>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
+      <Footer />
     </div>
   )
 }

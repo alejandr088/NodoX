@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
-import BackButton from './BackButton'
 
 export default function Cart() {
   const { cartItems, removeFromCart } = useCart()
@@ -9,7 +8,6 @@ export default function Cart() {
   return (
     <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto">
-        <BackButton />
         
         <h1 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
           Tu Carrito

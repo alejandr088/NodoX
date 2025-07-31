@@ -10,6 +10,7 @@ import Cart from './components/Cart'
 import AboutUsPage from './components/AboutUsPage'
 import NotFound from './components/NotFound' // Importa la página 404
 import PCBuilderPage from './pages/PCBuilderPage'
+import BusinessSales from './pages/BusinessSales'
 import './index.css'
 
 export default function App() {
@@ -26,9 +27,8 @@ export default function App() {
         <Route path="/pc-builder" element={<PCBuilderPage />} />
         <Route path="/stock" element={<StockPanel />} />
         <Route path="/cart" element={<Cart />} />
-
-        {/* Ruta catch-all para 404 */}
-        <Route path="*" element={<NotFound />} />
+        <Route path="/not-found" element={<NotFound />} />
+        <Route path="/business-sales" element={<BusinessSales />} />
       </Routes>
     </CartProvider>
   )

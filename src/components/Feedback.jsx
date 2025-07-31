@@ -1,4 +1,3 @@
-import BackButton from './BackButton'
 
 export default function Feedback() {
   const testimonials = [
@@ -28,7 +27,6 @@ export default function Feedback() {
   return (
     <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto">
-        <BackButton />
         
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent mb-4">
