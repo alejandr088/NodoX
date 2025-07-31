@@ -58,7 +58,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Teléfonos</h3>
                   <p className="text-gray-600 dark:text-gray-400">+598 1234 5678</p>
-                  <p className="text-gray-600 dark:text-gray-400">+598 9876 5432 (WhatsApp)</p>
+                  <p className="text-gray-600 dark:text-gray-400">099 268 545 (WhatsApp)</p>
                 </div>
               </div>
 
@@ -119,6 +119,10 @@ export default function ContactPage() {
                 <li className="flex justify-between">
                   <span>Sábados:</span>
                   <span>10:00 - 14:00</span>
+                </li>
+                <li className="flex justify-between bg-gray-100 dark:bg-gray-700/50 p-2 rounded-lg">
+                  <span>Domingo:</span>
+                  <span>Cerrado</span>
                 </li>
               </ul>
             </div>
