@@ -1,9 +1,39 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import services from '../data/services' // Ajusta la ruta según tu estructura
+import services from '../data/services'
 import { Helmet } from 'react-helmet'
 
 export default function ServicesPage() {
+  // Definimos los beneficios para cada tipo de servicio basado en palabras clave
+  const getServiceBenefits = (service) => {
+    if (service.title.includes('Reparación') || service.description.includes('hardware')) {
+      return [
+        "Diagnóstico gratuito",
+        "Repuestos originales",
+        "Servicio express disponible"
+      ];
+    }
+    if (service.title.includes('Recuperación') || service.description.includes('datos')) {
+      return [
+        "Confidencialidad garantizada",
+        "Soporte post-recuperación"
+      ];
+    }
+    if (service.title.includes('Soporte técnico') || service.description.includes('asistencia')) {
+      return [
+        "Respuesta en menos de 2 horas",
+        "Técnicos certificados",
+        "Seguimiento post-solución"
+      ];
+    }
+    // Beneficios por defecto para otros servicios
+    return [
+      "Garantía de satisfacción",
+      "Profesionales certificados",
+      "Soporte continuo"
+    ];
+  };
+
   const serviceCategories = [
     {
       name: "Reparaciones",
@@ -31,12 +61,7 @@ export default function ServicesPage() {
     }
   ]
 
-  const breadcrumbs = [
-    { name: "Servicios" }
-  ]
-
   return (
-    
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 font-sans relative">
       <Helmet>
         <title>Servicios | NodoX</title>
@@ -78,42 +103,41 @@ export default function ServicesPage() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map(service => (
-            <div
-              key={service.id}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700"
-            >
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{service.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">{service.description}</p>
+          {services.map(service => {
+            const benefits = getServiceBenefits(service);
+            return (
+              <div
+                key={service.id}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700"
+              >
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">{service.description}</p>
 
-              <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-2 flex items-center">
-                  <svg className="w-5 h-5 text-red-500 mr-2" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Beneficios
-                </h4>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start text-gray-700 dark:text-gray-300">
-                    <svg className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
+                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-2 flex items-center">
+                    <svg className="w-5 h-5 text-red-500 mr-2" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>Garantía de 30 días</span>
-                  </li>
-                  <li className="flex items-start text-gray-700 dark:text-gray-300">
-                    <svg className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Técnicos certificados</span>
-                  </li>
-                </ul>
+                    Beneficios
+                  </h4>
+                  <ul className="space-y-2 text-sm">
+                    {benefits.map((benefit, index) => (
+                      <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
+                        <svg className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <button className="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                  Solicitar servicio
+                </button>
               </div>
-              
-              <button className="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                Solicitar servicio
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </main>
       <Footer />

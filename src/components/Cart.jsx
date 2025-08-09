@@ -8,7 +8,31 @@ export default function Cart() {
   return (
     <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto">
-        
+        {/* Barra de navegación (breadcrumb) */}
+        <nav className="mb-8" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2 text-sm">
+            <li>
+              <Link to="/" className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition">
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <span className="text-gray-400 dark:text-gray-500">/</span>
+            </li>
+            <li>
+              <Link to="/products" className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition">
+                Productos
+              </Link>
+            </li>
+            <li>
+              <span className="text-gray-400 dark:text-gray-500">/</span>
+            </li>
+            <li className="text-red-500 font-medium" aria-current="page">
+              Carrito
+            </li>
+          </ol>
+        </nav>
+
         <h1 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
           Tu Carrito
         </h1>
@@ -21,7 +45,7 @@ export default function Cart() {
             <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-2">Tu carrito está vacío</h3>
             <p className="text-gray-500 dark:text-gray-400 mb-6">Agrega algunos productos para comenzar</p>
             <Link
-              to="/"
+              to="/products"
               className="btn-primary inline-flex items-center"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,9 +61,9 @@ export default function Cart() {
                 <li key={item.id} className="p-4 sm:p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <img 
-                        src={item.image} 
-                        alt={item.name} 
+                      <img
+                        src={item.image}
+                        alt={item.name}
                         className="w-16 h-16 object-cover rounded-lg"
                       />
                       <div>
@@ -47,7 +71,7 @@ export default function Cart() {
                         <p className="text-gray-500 dark:text-gray-400 text-sm">{item.description}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-4">
                       <div className="text-right">
                         <p className="font-semibold text-red-500">${(item.price * item.quantity).toFixed(2)}</p>
@@ -66,7 +90,7 @@ export default function Cart() {
                 </li>
               ))}
             </ul>
-            
+
             <div className="p-6 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
               <div className="flex justify-between items-center mb-4">
                 <span className="font-bold text-lg">Subtotal:</span>
@@ -80,7 +104,7 @@ export default function Cart() {
                 <span>Total:</span>
                 <span className="text-red-500">${total.toFixed(2)}</span>
               </div>
-              
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <Link
                   to="/"
@@ -88,11 +112,7 @@ export default function Cart() {
                 >
                   Seguir comprando
                 </Link>
-                <button
-                  className="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
-                >
-                  Finalizar compra
-                </button>
+                <WhatsappOrderButton />
               </div>
             </div>
           </div>

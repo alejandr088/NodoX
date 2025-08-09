@@ -24,7 +24,7 @@ export default function Footer() {
           </p>
           <p className="text-gray-400">
             <strong>Teléfono:</strong> +54 9 11 1234 5678<br />
-            <strong>Email:</strong> contacto@nodox.com
+            <strong>Email:</strong> nodoxsolutions@gmail.com
           </p>
         </div>
 
@@ -44,9 +44,9 @@ export default function Footer() {
             <li className="mb-2">
               <a href="/contact" className="hover:text-red-500 transition">Contacto</a>
             </li>
-            <li className="mb-2">
+            {/* <li className="mb-2">
               <a href="/faq" className="hover:text-red-500 transition">Preguntas Frecuentes</a>
-            </li>
+            </li> */}
           </ul>
         </div>
 
@@ -61,17 +61,17 @@ export default function Footer() {
               <a href="/terms-conditions" className="hover:text-red-500 transition">Términos y Condiciones</a>
             </li>
             <li className="mb-2">
-              <a href="/shipping" className="hover:text-red-500 transition">Envíos</a>
+              {/* <a href="/shipping" className="hover:text-red-500 transition">Envíos</a>*/}
             </li>
-            <li className="mb-2">
+            {/* <li className="mb-2">
               <a href="/returns" className="hover:text-red-500 transition">Devoluciones</a>
-            </li>
+            </li> */}
           </ul>
         </div>
 
         {/* Suscripción y redes sociales */}
         <div>
-          <h4 className="font-semibold mb-4 text-white">Suscríbete</h4>
+          {/* <h4 className="font-semibold mb-4 text-white">Suscríbete</h4>
           <p className="mb-4 text-gray-400">Recibe novedades y ofertas exclusivas.</p>
           <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
             <input
@@ -89,11 +89,11 @@ export default function Footer() {
             >
               Suscribirse
             </button>
-          </form>
+          </form>*/}
 
           <div className="mt-8 flex space-x-4">
             <a
-              href="https://facebook.com/nodox"
+              href="https://facebook.com/nodoxsolutions"
               aria-label="Facebook NodoX"
               className="hover:text-red-500 transition"
               target="_blank"

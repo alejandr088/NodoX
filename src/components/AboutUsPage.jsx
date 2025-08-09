@@ -11,24 +11,18 @@ export default function AboutUsPage() {
       bio: "Responsable de programación, marketing, soporte y armado de sistemas en NodoX.",
       image: "/team/alejandro.jpg"
     },
-    {
-      name: "Pablo Gonzalez",
-      role: "Diseño Web, Diseño Gráfico",
-      bio: "Especialista en diseño web y gráfico para proyectos NodoX.",
-      image: "/team/pablo.jpg"
-    },
-    {
-      name: "Nahuel Muñoz",
-      role: "E-Commerce, Crypto, Electricista",
-      bio: "Experto en comercio electrónico, cripto y electricidad aplicada.",
-      image: "/team/nahuel.jpg"
-    },
-    {
-      name: "Guillermo Quevedo",
-      role: "Programación, Soporte, Marketing",
-      bio: "Encargado de áreas de programación, soporte y marketing para NodoX.",
-      image: "/team/guillermo.jpg"
-    },
+    // {
+    //   name: "Pablo Gonzalez",
+    //   role: "Diseño Web, Diseño Gráfico",
+    //   bio: "Especialista en diseño web y gráfico para proyectos NodoX.",
+    //   image: "/team/pablo.jpg"
+    // },
+    // {
+    //   name: "Guillermo Quevedo",
+    //   role: "Programación, Soporte, Marketing",
+    //   bio: "Encargado de áreas de programación, soporte y marketing para NodoX.",
+    //   image: "/team/guillermo.jpg"
+    // },
     {
       name: "Esteban Fresno",
       role: "Soporte, Hardware, Presupuestos, Atención al Cliente, Community Manager",
@@ -71,10 +65,10 @@ export default function AboutUsPage() {
                 Nuestra <span className="text-red-500">Historia</span>
               </h2>
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                En 2025, cinco amigos apasionados por la tecnología nos unimos con un objetivo común: crear <strong className="text-red-500">NodoX</strong>, una empresa que combine conocimiento técnico con un servicio humano y cercano.
+                En 2025, dos amigos apasionados por la tecnología nos unimos con un objetivo común: crear <strong className="text-red-500">NodoX</strong>, una empresa que combine conocimiento técnico con un servicio humano y cercano.
               </p>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Lo que comenzó como un pequeño taller de reparaciones hoy es un referente en Montevideo, gracias a nuestro enfoque en <strong>calidad, transparencia y atención personalizada</strong>.
+                Lo que comenzó como un pequeño taller de reparaciones hoy busca ser un referente en Montevideo, gracias a nuestro enfoque en <strong>calidad, transparencia y atención personalizada</strong>.
               </p>
               <div className="bg-red-50 dark:bg-gray-700 p-4 rounded-lg border-l-4 border-red-500">
                 <p className="italic text-gray-700 dark:text-gray-300">
@@ -82,14 +76,14 @@ export default function AboutUsPage() {
                 </p>
               </div>
             </div>
-            <div className="md:w-1/2">
+            {/* <div className="md:w-1/2">
               <img
                 src="/team/group-photo.jpg"
                 alt="Equipo NodoX"
                 className="rounded-xl shadow-2xl w-full h-auto object-cover"
                 loading="lazy"
               />
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -143,25 +137,25 @@ export default function AboutUsPage() {
                 <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Expandirnos a 3 nuevas ciudades para 2027</span>
+                <span>Expandirnos a 3 nuevas sucursales para 2027</span>
               </li>
-              <li className="flex items-start">
+              {/* <li className="flex items-start">
                 <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Certificación ISO 9001 para 2026</span>
-              </li>
+              </li> */}
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Programa de formación para jóvenes técnicos</span>
+                <span>Crecer en el mercado nacional</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Nuestro Equipo */}
+        {/* Nuestro Equipo
         <section className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
             Conoce al <span className="text-red-500">Equipo</span>
@@ -181,7 +175,7 @@ export default function AboutUsPage() {
               />
             ))}
           </div>
-        </section>
+        </section> */}
       </main>
       <Footer />
     </div>

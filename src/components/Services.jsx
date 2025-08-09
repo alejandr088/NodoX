@@ -5,16 +5,16 @@ export default function Services() {
   return (
     <section id="services" className="py-20 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        {/* <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Nuestros <span className="text-red-500">Servicios</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Soluciones técnicas profesionales para todas tus necesidades
           </p>
-        </div>
+        </div> */}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service) => (
             <div 
               key={service.id} 
@@ -70,9 +70,9 @@ export default function Services() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Link 
             to="/services" 
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-500 hover:bg-red-600 transition-colors"
@@ -82,7 +82,7 @@ export default function Services() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   )

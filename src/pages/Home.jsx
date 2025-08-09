@@ -5,6 +5,7 @@ import Services from '../components/Services'
 import Footer from '../components/Footer'
 import WhatsappButton from '../components/WhatsappButton'  // Importar componente
 import { Helmet } from 'react-helmet'
+import ProductsCarousel from '../components/ProductCarousel'
 
 export default function Home() {
   return (
@@ -21,11 +22,11 @@ export default function Home() {
 
       <Navbar />
       <Hero />
-      <Products />
+      <ProductsCarousel />
       <Services />
       <Footer />
       
-      <WhatsappButton /> {/* Aquí agregas el botón */}
+      <WhatsappButton />
     </div>
   )
 }

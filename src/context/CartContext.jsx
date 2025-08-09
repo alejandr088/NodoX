@@ -21,6 +21,9 @@ export function CartProvider({ children }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems))
   }, [cartItems])
 
+  // Calcular el número total de items (sumando las cantidades)
+  const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
+
   const addToCart = (product) => {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.id === product.id)
@@ -46,7 +49,12 @@ export function CartProvider({ children }) {
   }
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ 
+      cartItems, 
+      addToCart, 
+      removeFromCart,
+      itemCount // Añadimos el contador al contexto
+    }}>
       {children}
     </CartContext.Provider>
   )
