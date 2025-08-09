@@ -1,24 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
-    fs: {
-      strict: false
-    }
-  },
   publicDir: 'public',
-  
-  // Configuración esencial para despliegue
-  base: '/', // Para Netlify (usa './' si tienes problemas con assets)
-  
+  base: '/',
   build: {
     outDir: 'dist',
     copyPublicDir: true,
     emptyOutDir: true,
-    sourcemap: false, // Desactiva para producción
+    sourcemap: false,
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name]-[hash][extname]',
@@ -27,9 +18,8 @@ export default defineConfig({
       }
     }
   },
-
-  // Opcional: Preconfiguración para Netlify Functions
   server: {
+    fs: { strict: false },
     proxy: {
       '/api': {
         target: 'http://localhost:8888/.netlify/functions',

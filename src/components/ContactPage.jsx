@@ -57,8 +57,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Teléfonos</h3>
-                  <p className="text-gray-600 dark:text-gray-400">+598 1234 5678</p>
-                  <p className="text-gray-600 dark:text-gray-400">099 268 545 (WhatsApp)</p>
+                  <p className="text-gray-600 dark:text-gray-400">+59899268545 (Stock)</p>
+                  <p className="text-gray-600 dark:text-gray-400">+59891741147 (WhatsApp)</p>
                 </div>
               </div>
 

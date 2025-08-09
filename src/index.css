@@ -1,76 +1,65 @@
-/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base resets */
 @layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  html {
+  scroll-behavior: smooth;
+}
   body {
-    @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300;
   }
 
-  body,
-  #root {
-    min-height: 100vh;
-  }
-
-  /* Clase para el fondo fijo (usar en App.jsx como <div className="app-background">) */
+  /* Fondo global fijo y sutil para todas las páginas */
   .app-background {
     background-image: url('/circuit.jpg');
     background-size: cover;
     background-position: center;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -100;
-    opacity: 0.08; /* baja opacidad para que no interfiera con lectura */
+    inset: 0;
+    z-index: -50;
+    opacity: 0.06;
     pointer-events: none;
     filter: none;
   }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    @apply w-2;
+  /* Utilities */
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700;
   }
 
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-200 dark:bg-gray-800;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-red-500 rounded-full hover:bg-red-600;
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-500 to-brand-600 text-white px-5 py-2.5 rounded-lg shadow hover:from-brand-600 hover:to-brand-700 transition;
   }
 }
 
+/* Components */
 @layer components {
-  .btn-primary {
-    @apply bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:-translate-y-1;
+  .hero-cta {
+    @apply px-6 py-3 rounded-full font-semibold shadow-lg;
   }
 
-  .card {
-    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-200 dark:border-gray-700;
+  .floating {
+    @apply animate-float;
   }
 
-  .input-field {
-    @apply w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition;
-  }
-
+  /* Swiper bullets styling */
   .swiper-pagination-bullet {
-    @apply bg-gray-400 opacity-100;
+    @apply bg-gray-300 opacity-100;
   }
-
   .swiper-pagination-bullet-active {
-    @apply bg-red-500;
+    @apply bg-brand-500;
   }
 
-  .swiper-button-next,
-  .swiper-button-prev {
-    @apply text-red-500 hover:text-red-600 transition-colors;
+  /* Smooth image hover */
+  .img-zoom {
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
   }
-
-  .swiper-slide {
-    @apply transition-transform duration-300;
+  .img-zoom:hover {
+    transform: scale(1.06);
   }
 }

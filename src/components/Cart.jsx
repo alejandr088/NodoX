@@ -1,6 +1,6 @@
 // src/components/Cart.jsx
 import { Link } from 'react-router-dom'
-import { useCart } from '../context/CartContext'
+import { useCart } from '../contexts/CartContext'
 import WhatsappOrderButton from './WhatsappOrderButton'
 
 export default function Cart() {

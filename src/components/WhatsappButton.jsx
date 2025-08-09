@@ -1,5 +1,5 @@
 export default function WhatsappButton() {
-  const phone = "+59812345678" // Reemplaza con tu número real con código de país
+  const phone = "+59891741147" // Reemplaza con tu número real con código de país
   const message = encodeURIComponent("Hola, quiero hacer una consulta con NodoX.")
   const url = `https://wa.me/${phone.replace(/\D/g, "")}?text=${message}`
 

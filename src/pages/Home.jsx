@@ -1,11 +1,10 @@
 import Navbar from '../components/Navbar'
-import Hero from '../components/Hero'
-import Products from '../components/Products'
+import HeroApple from '../components/HeroApple'  // El Hero con video
+import ProductsCarousel from '../components/ProductCarousel'
 import Services from '../components/Services'
 import Footer from '../components/Footer'
-import WhatsappButton from '../components/WhatsappButton'  // Importar componente
+import WhatsappButton from '../components/WhatsappButton'
 import { Helmet } from 'react-helmet'
-import ProductsCarousel from '../components/ProductCarousel'
 
 export default function Home() {
   return (
@@ -21,7 +20,7 @@ export default function Home() {
       </Helmet>
 
       <Navbar />
-      <Hero />
+      <HeroApple />
       <ProductsCarousel />
       <Services />
       <Footer />

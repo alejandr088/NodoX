@@ -1,8 +1,8 @@
-import { useCart } from '../context/CartContext'
+import { useCart } from '../contexts/CartContext'
 
 export default function WhatsappOrderButton() {
   const { cartItems } = useCart()
-  const phone = "+5989174147"
+  const phone = "+59891741147"
 
   const generateOrderMessage = () => {
     const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)

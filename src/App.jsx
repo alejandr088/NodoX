@@ -1,7 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { CartProvider } from './context/CartContext'
 import Home from './pages/Home'
-import { ThemeProvider } from './context/ThemeContext'
 import ProductDetail from './components/ProductDetail'
 import ProductsPage from './pages/ProductsPage'
 import ServicesPage from './components/ServicesPage'
@@ -15,62 +13,40 @@ import PCBuilderPage from './pages/PCBuilderPage'
 import BusinessSales from './pages/BusinessSales'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
-import circuitBg from '../public/circuit.jpg';
+import { ThemeProvider } from "./contexts/ThemeContext";
+import ThemeToggle from "./components/ThemeToggle";
+import "./index.css";
 import './index.css'
 
 export default function App() {
   return (
     <ThemeProvider>
-      <CartProvider>
-        {/* 1. Div para el fondo fijo */}
-        <div className="app-background"></div>
-        <div
-          className="app-background"
-          style={{
-            backgroundImage: `url(${circuitBg})`,
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: -1,
-            opacity: 0.5
-          }}
-        ></div>
+      {/* Fondo global (sutil) */}
+      <div className="app-background" />
 
-        {/* 2. Contenedor principal con transparencia */}
-        <div className="min-h-screen bg-white/80 dark:bg-gray-900/90">
-          <Routes>
-            {/* Páginas principales */}
-            <Route path="/" element={<Home />} />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/90 transition-colors">
+        {/* Botón de cambio de tema fijo arriba a la derecha */}
+        <header className="flex justify-end p-4">
+          <ThemeToggle />
+        </header>
 
-            {/* Productos */}
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-
-            {/* Servicios */}
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/pc-builder" element={<PCBuilderPage />} />
-
-            {/* Información */}
-            <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-
-            {/* Comercio */}
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/business-sales" element={<BusinessSales />} />
-
-            {/* Legales */}
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-conditions" element={<TermsAndConditions />} />
-
-            {/* Sistema */}
-            <Route path="/stock" element={<StockPanel />} />
-            <Route path="/feedback" element={<Feedback />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </CartProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/pc-builder" element={<PCBuilderPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/business-sales" element={<BusinessSales />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsAndConditions />} />
+          <Route path="/stock" element={<StockPanel />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </ThemeProvider>
   )
 }
