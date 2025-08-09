@@ -1,3 +1,4 @@
+/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,20 +14,21 @@
     min-height: 100vh;
   }
 
-  app-background {
-  background-image: url('/public/circuit.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: -100 !important;
-  opacity: 1 !important; /* Fuerza opacidad total */
-  filter: none !important;
-}
-
+  /* Clase para el fondo fijo (usar en App.jsx como <div className="app-background">) */
+  .app-background {
+    background-image: url('/circuit.jpg');
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -100;
+    opacity: 0.08; /* baja opacidad para que no interfiera con lectura */
+    pointer-events: none;
+    filter: none;
+  }
 
   /* Scrollbar */
   ::-webkit-scrollbar {

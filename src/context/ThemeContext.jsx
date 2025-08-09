@@ -1,26 +1,16 @@
-// ThemeContext.jsx
+// src/context/ThemeContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('system'); // Cambiado a 'system' por defecto
+  const [theme, setTheme] = useState('system'); // 'light' | 'dark' | 'system'
 
-  useEffect(() => {
-    // Solo se ejecuta en el cliente
-    const savedTheme = localStorage.getItem('theme');
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches 
-      ? 'dark' 
-      : 'light';
-    
-    setTheme(savedTheme || 'system');
-    applyTheme(savedTheme || 'system');
-  }, []);
-
+  // Aplica el tema resuelto en el DOM
   const applyTheme = (themeToApply) => {
     const root = document.documentElement;
-    const resolved = themeToApply === 'system' 
-      ? window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    const resolved = themeToApply === 'system'
+      ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
       : themeToApply;
 
     if (resolved === 'dark') {
@@ -30,21 +20,45 @@ export function ThemeProvider({ children }) {
     }
   };
 
+  // Init: leer localStorage o sistema
   useEffect(() => {
-    applyTheme(theme);
-    if (theme !== 'system') {
-      localStorage.setItem('theme', theme);
+    if (typeof window === 'undefined') return;
+    const saved = localStorage.getItem('theme')
+    if (saved === 'light' || saved === 'dark') {
+      setTheme(saved)
+      applyTheme(saved)
     } else {
-      localStorage.removeItem('theme');
+      setTheme('system')
+      applyTheme('system')
     }
-  }, [theme]);
 
+    // Escuchar cambios en preferencia del sistema y actualizar si está en 'system'
+    const mm = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')
+    const handler = () => { if (localStorage.getItem('theme') === null) applyTheme('system') }
+    if (mm && mm.addEventListener) mm.addEventListener('change', handler)
+    else if (mm && mm.addListener) mm.addListener(handler)
+    return () => {
+      if (mm && mm.removeEventListener) mm.removeEventListener('change', handler)
+      else if (mm && mm.removeListener) mm.removeListener(handler)
+    }
+  }, [])
+
+  // Guardar cuando cambia explicitamente (no guardamos 'system')
+  useEffect(() => {
+    if (theme === 'system') {
+      localStorage.removeItem('theme')
+    } else {
+      localStorage.setItem('theme', theme)
+    }
+    applyTheme(theme)
+  }, [theme])
+
+  // Toggle simplificado: solo light <-> dark
   const toggleTheme = () => {
     setTheme(prev => {
-      if (prev === 'light') return 'dark';
-      if (prev === 'dark') return 'system';
-      return 'light';
-    });
+      if (prev === 'dark') return 'light'
+      return 'dark'
+    })
   };
 
   return (

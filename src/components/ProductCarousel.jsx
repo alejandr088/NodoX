@@ -1,3 +1,4 @@
+// src/components/ProductCarousel.jsx
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
@@ -6,8 +7,11 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-coverflow'
+import { useCart } from '../context/CartContext'
 
 export default function ProductCarousel() {
+  const { addToCart } = useCart()
+
   return (
     <section id="products" className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,7 +33,7 @@ export default function ProductCarousel() {
           coverflowEffect={{
             rotate: 20,
             stretch: 0,
-            depth: 100,
+            depth: 120,
             modifier: 1,
             slideShadows: true,
           }}
@@ -52,9 +56,10 @@ export default function ProductCarousel() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <button className="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg transition-colors">
+                    {/* Ver detalles como Link para llevar a /product/:id */}
+                    <Link to={`/product/${product.id}`} className="w-full text-center bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg transition-colors">
                       Ver Detalles
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="p-6">
@@ -65,7 +70,12 @@ export default function ProductCarousel() {
                     <span className="text-xl font-bold text-red-500">
                       ${product.price}
                     </span>
-                    <button className="bg-gray-900 text-white p-2 rounded-full hover:bg-red-500 transition-colors">
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="bg-gray-900 text-white p-2 rounded-full hover:bg-red-500 transition-colors"
+                      aria-label={`Agregar ${product.name} al carrito`}
+                      title={`Agregar ${product.name}`}
+                    >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
                       </svg>
