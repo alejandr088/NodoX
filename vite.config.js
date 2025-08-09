@@ -4,12 +4,19 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    fs: {
+      strict: false
+    }
+  },
+  publicDir: 'public',
   
   // Configuración esencial para despliegue
   base: '/', // Para Netlify (usa './' si tienes problemas con assets)
   
   build: {
     outDir: 'dist',
+    copyPublicDir: true,
     emptyOutDir: true,
     sourcemap: false, // Desactiva para producción
     rollupOptions: {
