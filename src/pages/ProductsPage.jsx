@@ -2,16 +2,17 @@ import { Link } from 'react-router-dom'
 import productsData from '../data/products'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useCart } from '../contexts/CartContext' // Asegúrate de que la ruta sea correcta
 
 export default function ProductsPage() {
+  const { addToCart } = useCart()
+
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen flex flex-col">
       <Navbar />
       
-      {/* Añadí pt-24 para compensar la altura del navbar fijo */}
       <main className="flex-grow pt-24 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="py-12">
-          {/* Contenedor del título con margen inferior */}
           <div className="mb-12 text-center">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
               Catálogo Completo
@@ -21,10 +22,9 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          {/* Grid de productos con margen superior */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {productsData.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} addToCart={addToCart} />
             ))}
           </div>
         </div>
@@ -35,24 +35,32 @@ export default function ProductsPage() {
   )
 }
 
-function ProductCard({ product }) {
+function ProductCard({ product, addToCart }) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-      <div className="relative h-60 overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col group">
+      <Link 
+        to={`/product/${product.id}`} 
+        className="relative h-60 overflow-hidden block"
+      >
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
         />
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+          <span className="w-full text-center bg-red-500 text-white py-2 rounded-lg">
+            Ver Detalles
+          </span>
+        </div>
+      </Link>
       
       <div className="p-6 flex-grow flex flex-col">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
           {product.name}
         </h3>
         
-        <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+        <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow line-clamp-3">
           {product.description}
         </p>
         
@@ -72,8 +80,15 @@ function ProductCard({ product }) {
           <span className="text-xl font-bold text-red-500">
             ${product.price.toLocaleString()}
           </span>
-          <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors">
-            Agregar al carrito
+          <button 
+            onClick={() => addToCart(product)}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center"
+            aria-label={`Agregar ${product.name} al carrito`}
+          >
+            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Agregar
           </button>
         </div>
       </div>

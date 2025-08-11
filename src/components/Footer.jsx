@@ -7,7 +7,6 @@ export default function Footer() {
 
   const handleSubscribe = (e) => {
     e.preventDefault()
-    // Aquí podrías integrar con API o servicio externo
     alert(`Gracias por suscribirte con el email: ${email}`)
     setEmail('')
   }
@@ -16,14 +15,13 @@ export default function Footer() {
     <footer className="bg-gray-900 text-gray-300 dark:bg-gray-800 dark:text-gray-400 py-12 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
 
-        {/* Sección de contacto y descripción */}
         <div>
           <h3 className="text-xl font-semibold mb-4 text-white">NodoX</h3>
           <p className="text-gray-400 leading-relaxed mb-6">
             Proveemos soluciones tecnológicas confiables, con soporte profesional y garantía.
           </p>
           <p className="text-gray-400">
-            <strong>Teléfono:</strong> +54 9 11 1234 5678<br />
+            <strong>Teléfono:</strong> 091 741 147<br />
             <strong>Email:</strong> nodoxsolutions@gmail.com
           </p>
         </div>
@@ -68,29 +66,7 @@ export default function Footer() {
             </li> */}
           </ul>
         </div>
-
-        {/* Suscripción y redes sociales */}
         <div>
-          {/* <h4 className="font-semibold mb-4 text-white">Suscríbete</h4>
-          <p className="mb-4 text-gray-400">Recibe novedades y ofertas exclusivas.</p>
-          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              required
-              placeholder="Tu email"
-              className="rounded-md p-3 w-full text-gray-900"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              aria-label="Email para suscripción"
-            />
-            <button
-              type="submit"
-              className="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-md font-semibold transition"
-            >
-              Suscribirse
-            </button>
-          </form>*/}
-
           <div className="mt-8 flex space-x-4">
             <a
               href="https://facebook.com/nodoxsolutions"

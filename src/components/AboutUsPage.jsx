@@ -1,6 +1,5 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import TeamMember from './TeamMember'
 import { Helmet } from 'react-helmet'
 
 export default function AboutUsPage() {
@@ -11,18 +10,6 @@ export default function AboutUsPage() {
       bio: "Responsable de programación, marketing, soporte y armado de sistemas en NodoX.",
       image: "/team/alejandro.jpg"
     },
-    // {
-    //   name: "Pablo Gonzalez",
-    //   role: "Diseño Web, Diseño Gráfico",
-    //   bio: "Especialista en diseño web y gráfico para proyectos NodoX.",
-    //   image: "/team/pablo.jpg"
-    // },
-    // {
-    //   name: "Guillermo Quevedo",
-    //   role: "Programación, Soporte, Marketing",
-    //   bio: "Encargado de áreas de programación, soporte y marketing para NodoX.",
-    //   image: "/team/guillermo.jpg"
-    // },
     {
       name: "Esteban Fresno",
       role: "Soporte, Hardware, Presupuestos, Atención al Cliente, Community Manager",
@@ -76,14 +63,8 @@ export default function AboutUsPage() {
                 </p>
               </div>
             </div>
-            {/* <div className="md:w-1/2">
-              <img
-                src="/team/group-photo.jpg"
-                alt="Equipo NodoX"
-                className="rounded-xl shadow-2xl w-full h-auto object-cover"
-                loading="lazy"
-              />
-            </div> */}
+            {
+            }
           </div>
         </div>
 
@@ -139,12 +120,8 @@ export default function AboutUsPage() {
                 </svg>
                 <span>Expandirnos a 3 nuevas sucursales para 2027</span>
               </li>
-              {/* <li className="flex items-start">
-                <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Certificación ISO 9001 para 2026</span>
-              </li> */}
+              {
+              }
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -155,27 +132,8 @@ export default function AboutUsPage() {
           </div>
         </div>
 
-        {/* Nuestro Equipo
-        <section className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-            Conoce al <span className="text-red-500">Equipo</span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-            Los profesionales que hacen posible nuestra excelencia
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {teamMembers.map((member, index) => (
-              <TeamMember
-                key={index}
-                name={member.name}
-                role={member.role}
-                bio={member.bio}
-                image={member.image}
-              />
-            ))}
-          </div>
-        </section> */}
+        {
+        }
       </main>
       <Footer />
     </div>

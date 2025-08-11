@@ -51,13 +51,13 @@ export default function ProductDetail() {
               <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{product.name}</h1>
               <p className="text-red-600 text-2xl font-semibold mb-6">${product.price}</p>
               <div className="prose max-w-none text-gray-700 dark:text-gray-300">
-                <h3 className="text-xl font-semibold mb-2">Especificaciones:</h3>
+                <h3 className="text-xl font-semibold mb-2 dark:text-gray-300">Especificaciones:</h3>
                 <ul className="list-disc pl-5 mb-6">
                   {product.description.split(',').map((spec, i) => (
                     <li key={i} className="mb-1">{spec.trim()}</li>
                   ))}
                 </ul>
-                <h3 className="text-xl font-semibold mb-2">Disponibilidad:</h3>
+                <h3 className="text-xl dark:text-gray-300 font-semibold mb-2">Disponibilidad:</h3>
                 <p className="text-green-600 font-medium">En stock</p>
               </div>
             </div>

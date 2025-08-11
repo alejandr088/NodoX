@@ -57,8 +57,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Teléfonos</h3>
-                  <p className="text-gray-600 dark:text-gray-400">+59899268545 (Stock)</p>
-                  <p className="text-gray-600 dark:text-gray-400">+59891741147 (WhatsApp)</p>
+                  <p className="text-gray-600 dark:text-gray-400">099268545 (Stock)</p>
+                  <p className="text-gray-600 dark:text-gray-400">091741147 (WhatsApp)</p>
                 </div>
               </div>
 
@@ -69,9 +69,8 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Correos Electrónicos</h3>
-                  <p className="text-gray-600 dark:text-gray-400">contacto@nodox.com</p>
-                  <p className="text-gray-600 dark:text-gray-400">soporte@nodox.com</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Correo Electrónico</h3>
+                  <p className="text-gray-600 dark:text-gray-400">nodoxsolutions@gmail.com</p>
                 </div>
               </div>
             </div>

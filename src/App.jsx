@@ -16,7 +16,6 @@ import TermsAndConditions from './pages/TermsAndConditions'
 import { ThemeProvider } from "./contexts/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
 import "./index.css";
-import './index.css'
 
 export default function App() {
   return (

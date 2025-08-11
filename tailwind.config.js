@@ -18,7 +18,7 @@ export default {
           600: "#0056e6",
           700: "#0040b4", // el que te está dando error
           800: "#002b82",
-          900: "#001651",
+          900: "#aa0c0cff",
         }
       },
       fontFamily: {
