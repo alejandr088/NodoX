@@ -1,4 +1,3 @@
-// src/components/Cart.jsx
 import { Link } from 'react-router-dom'
 import { useCart } from '../contexts/CartContext'
 import WhatsappOrderButton from './WhatsappOrderButton'

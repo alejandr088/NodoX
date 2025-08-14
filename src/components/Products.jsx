@@ -1,16 +1,14 @@
 import { useState, useMemo } from "react"
 import { Link } from "react-router-dom"
 import products from "../data/products"
-import { useCart } from "../context/CartContext"
+import { useCart } from "../contexts/CartContext"
 
 export default function Products() {
   const { addToCart } = useCart()
 
-  // Estado para búsqueda y filtro
   const [searchTerm, setSearchTerm] = useState("")
   const [priceFilter, setPriceFilter] = useState("all") // opciones: all, low, mid, high
 
-  // Filtrado y búsqueda combinados
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase())

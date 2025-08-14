@@ -14,19 +14,23 @@ export default {
           200: "#b8d9ff",
           300: "#90c2ff",
           400: "#5a9cff",
-          500: "#2476ff",
-          600: "#0056e6",
-          700: "#0040b4", // el que te está dando error
-          800: "#002b82",
-          900: "#aa0c0cff",
+          500: "#aa0c0c", // rojo marca (ajustado)
+          600: "#880a0a",
+          700: "#660707",
+          800: "#440404",
+          900: "#330303",
         }
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial']
+        sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
+      },
+      boxShadow: {
+        glass: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
       },
       animation: {
         'fade-in': 'fadeIn 0.35s ease-in-out',
         'float': 'float 3s ease-in-out infinite',
+        'particles-move': 'particlesMove 20s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -36,6 +40,10 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-8px)' },
+        },
+        particlesMove: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
       },
     },

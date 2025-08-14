@@ -1,13 +1,14 @@
 import Navbar from '../components/Navbar'
-import HeroApple from '../components/HeroApple'  // El Hero con video
+import HeroApple from '../components/HeroApple'
 import ProductsCarousel from '../components/ProductCarousel'
 import Footer from '../components/Footer'
 import WhatsappButton from '../components/WhatsappButton'
 import { Helmet } from 'react-helmet'
+import ParticlesBackground from '../components/ParticlesBackground'
 
 export default function Home() {
   return (
-    <div className="bg-white text-gray-900 font-sans dark:bg-gray-900 dark:text-gray-100 relative">
+    <div className="relative bg-transparent text-gray-900 font-sans dark:bg-transparent dark:text-gray-100 min-h-screen overflow-x-hidden">
       <Helmet>
         <title>Inicio | NodoX</title>
         <meta name="description" content="NodoX - Tecnología de calidad con garantía y soporte especializado." />
@@ -19,6 +20,7 @@ export default function Home() {
       </Helmet>
 
       <Navbar />
+      <ParticlesBackground style={{ position: "fixed", zIndex: 5, top: 0, left: 0, width: "100vw", height: "100vh" }} />
       <HeroApple />
       <ProductsCarousel />
       <Footer />

@@ -15,16 +15,16 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
 import { ThemeProvider } from "./contexts/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
+import ParticlesBackground from './components/ParticlesBackground';
 import "./index.css";
 
 export default function App() {
   return (
     <ThemeProvider>
-      {/* Fondo global (sutil) */}
       <div className="app-background" />
+      <ParticlesBackground />
 
       <div className="min-h-screen bg-white/70 dark:bg-gray-900/90 transition-colors">
-        {/* Botón de cambio de tema fijo arriba a la derecha */}
         <header className="flex justify-end p-4">
           <ThemeToggle />
         </header>
