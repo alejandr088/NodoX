@@ -74,7 +74,7 @@ export default function PrivacyPolicy() {
         <section className="">
           <h2 className="text-2xl font-semibold mb-4">6. Contacto</h2>
           <p className="mb-4 text-gray-700 dark:text-gray-300">
-            Para dudas o solicitudes relacionadas con esta política de privacidad, puedes contactarnos a través del correo <a href="mailto:contacto@qodex.com" className="text-red-500 hover:underline">contacto@qodex.com</a> o por teléfono al <a href="tel:+59812345678" className="text-red-500 hover:underline">+598 1234 5678</a>.
+            Para dudas o solicitudes relacionadas con esta política de privacidad, puedes contactarnos a través del correo <a href="mailto:nodoxsolutions@gmail.com" className="text-red-500 hover:underline">nodoxsolutions@gmail.com</a> o por teléfono al <a href="tel:091741147" className="text-red-500 hover:underline">091741147</a>.
           </p>
         </section>
       </main>
