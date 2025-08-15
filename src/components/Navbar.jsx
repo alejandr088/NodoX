@@ -19,11 +19,15 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 dark:bg-gray-900/30 backdrop-blur-lg border-b border-white/20 dark:border-gray-700">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 dark:bg-almostBlack/30 backdrop-blur-lg border-b border-white/20 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
-          <Link to="/" className="text-4xl md:text-3xl font-extrabold text-brand-500 tracking-tight">
-            NodoX
+          <Link to="/" class="bg-red-700 dark:bg-transparent text-4xl md:text-3xl font-extrabold text-brand-500 tracking-tight">
+            <img
+              src="nodoxwht.png"
+              alt="NodoX"
+              class="h-10 w-auto"
+            />
           </Link>
 
           <button
@@ -86,7 +90,7 @@ export default function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden bg-white/20 dark:bg-gray-900/30 backdrop-blur-md border-t border-white/20 dark:border-gray-700 px-4 pb-4 rounded-b-lg">
+          <div className="md:hidden bg-white/20 dark:bg-almostBlack/30 backdrop-blur-md border-t border-white/20 dark:border-gray-700 px-4 pb-4 rounded-b-lg">
             {navLinks.map(link => (
               <Link
                 key={link.path}

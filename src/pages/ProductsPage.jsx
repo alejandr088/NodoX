@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import productsData from '../data/products'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { useCart } from '../contexts/CartContext' // Asegúrate de que la ruta sea correcta
+import { useCart } from '../contexts/CartContext'
 
 export default function ProductsPage() {
   const { addToCart } = useCart()

@@ -19,7 +19,8 @@ export default {
           700: "#660707",
           800: "#440404",
           900: "#330303",
-        }
+        },
+        almostBlack: '#0d0d0d',
       },
       fontFamily: {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
