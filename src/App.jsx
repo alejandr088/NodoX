@@ -14,6 +14,7 @@ import BusinessSales from './pages/BusinessSales'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
 import ThemeToggle from "./components/ThemeToggle";
+import WhatsappButton from './components/WhatsappButton'
 import "./index.css";
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/feedback" element={<Feedback />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <WhatsappButton />
     </div></>
   )
 }

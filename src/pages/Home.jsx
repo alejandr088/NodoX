@@ -2,7 +2,6 @@ import Navbar from '../components/Navbar'
 import HeroApple from '../components/HeroApple'
 import ProductsCarousel from '../components/ProductCarousel'
 import Footer from '../components/Footer'
-import WhatsappButton from '../components/WhatsappButton'
 import { Helmet } from 'react-helmet'
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
       <ProductsCarousel />
       <Footer />
       
-      <WhatsappButton />
     </div>
   )
 }
