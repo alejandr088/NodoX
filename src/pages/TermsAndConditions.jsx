@@ -1,5 +1,4 @@
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import { Helmet } from 'react-helmet'
 
 export default function TermsAndConditions() {
@@ -81,12 +80,11 @@ export default function TermsAndConditions() {
         <section className="">
           <h2 className="text-2xl font-semibold mb-4">6. Contacto</h2>
           <p className="mb-4 text-gray-700 dark:text-gray-300">
-            Para consultas sobre estos términos, garantía, o servicios, te invitamos a contactarnos a través de <a href="mailto:contacto@qodex.com" className="text-red-500 hover:underline">contacto@qodex.com</a> o al teléfono <a href="tel:+59812345678" className="text-red-500 hover:underline">+598 1234 5678</a>.
+            Para consultas sobre estos términos, garantía, o servicios, te invitamos a contactarnos a través de <a href="mailto:nodoxsolutions@gmail.com" className="text-red-500 hover:underline">nodoxsolutions@gmail.com</a> o al teléfono <a href="tel:091741147" className="text-red-500 hover:underline">091741147</a>.
           </p>
         </section>
       </main>
 
-      <Footer />
     </div>
   )
 }

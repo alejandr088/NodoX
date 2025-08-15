@@ -1,5 +1,4 @@
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import { Helmet } from 'react-helmet'
 
 export default function AboutUsPage() {
@@ -135,7 +134,6 @@ export default function AboutUsPage() {
         {
         }
       </main>
-      <Footer />
     </div>
   )
 }

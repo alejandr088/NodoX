@@ -1,5 +1,4 @@
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import services from '../data/services'
 import { Helmet } from 'react-helmet'
 
@@ -140,7 +139,6 @@ export default function ServicesPage() {
           })}
         </div>
       </main>
-      <Footer />
     </div>
   )
 }

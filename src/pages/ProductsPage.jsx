@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import productsData from '../data/products'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import { useCart } from '../contexts/CartContext'
 import { useMemo } from 'react'
 
@@ -56,7 +55,6 @@ export default function ProductsPage() {
         </div>
       </main>
 
-      <Footer />
     </div>
   )
 }
