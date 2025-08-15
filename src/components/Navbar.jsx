@@ -17,14 +17,6 @@ export default function Navbar() {
   const toggleMobileSection = (key) =>
     setOpenMobile((s) => ({ ...s, [key]: !s[key] }));
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    const q = searchTerm.trim();
-    navigate(q ? `/products?search=${encodeURIComponent(q)}` : '/products');
-    setSearchTerm('');
-    setIsMenuOpen(false);
-  };
-
   const navLinks = [
     { path: '/', name: 'Inicio' },
     {
@@ -34,33 +26,41 @@ export default function Navbar() {
         {
           name: 'Notebooks',
           subMenu: [
-            { name: 'AMD', path: '#' },
-            { name: 'Intel', path: '#' },
+            { name: 'AMD' },
+            { name: 'Intel' },
           ],
         },
         {
           name: 'PC',
           subMenu: [
-            { name: 'AMD', path: '#' },
-            { name: 'Intel', path: '#' },
+            { name: 'AMD' },
+            { name: 'Intel' },
           ],
         },
         {
           name: 'Repuestos',
           subMenu: [
-            { name: 'Baterías', path: '#' },
-            { name: 'Cargadores', path: '#' },
-            { name: 'Pantallas', path: '#' },
+            { name: 'Baterías' },
+            { name: 'Cargadores' },
+            { name: 'Pantallas' },
           ],
         },
-        { name: 'Herramientas', path: '#' },
-        { name: 'Periféricos', path: '#' },
-        { name: 'Redes', path: '#' },
+        { name: 'Herramientas' },
+        { name: 'Periféricos' },
+        { name: 'Redes' },
       ],
     },
     { path: '/services', name: 'Servicios' },
     { path: '/contact', name: 'Contacto' },
   ];
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim() !== '') {
+      navigate(`/products?search=${encodeURIComponent(searchTerm.trim())}`);
+      setSearchTerm('');
+    }
+  };
 
   return (
     <>
@@ -86,6 +86,7 @@ export default function Navbar() {
             </div>
           </button>
 
+          {/* Desktop Links + Search */}
           <div className="hidden md:flex items-center gap-4">
             {navLinks.map((link, i) => {
               if (!link.subMenu) {
@@ -149,22 +150,33 @@ export default function Navbar() {
                                   </svg>
                                 </>
                               ) : (
-                                <Link to={sub.path} className="w-full">
+                                <button
+                                  onClick={() => {
+                                    navigate(`/products?search=${encodeURIComponent(sub.name)}`);
+                                    setHoverTop(null);
+                                    setHoverSub(null);
+                                  }}
+                                  className="w-full text-left"
+                                >
                                   {sub.name}
-                                </Link>
+                                </button>
                               )}
                             </div>
 
                             {hasChildren && hoverSub === key && (
                               <div className="absolute top-0 left-full ml-2 bg-white dark:bg-gray-800 shadow-xl rounded-xl py-2 w-56 z-50">
                                 {sub.subMenu.map((deep, k) => (
-                                  <Link
+                                  <button
                                     key={`${key}-${k}`}
-                                    to={deep.path}
-                                    className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700/60"
+                                    onClick={() => {
+                                      navigate(`/products?search=${encodeURIComponent(deep.name)}`);
+                                      setHoverTop(null);
+                                      setHoverSub(null);
+                                    }}
+                                    className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700/60 w-full text-left"
                                   >
                                     {deep.name}
-                                  </Link>
+                                  </button>
                                 ))}
                               </div>
                             )}
@@ -176,36 +188,27 @@ export default function Navbar() {
                 </div>
               );
             })}
-          </div>
 
-          {/* Derecha: Buscador + Tema + Carrito */}
-          <div className="flex items-center gap-3">
-            {/* Buscador (desktop) */}
-            <form
-              onSubmit={handleSearchSubmit}
-              className="hidden md:flex items-center rounded-full border border-white/20 dark:border-gray-700 bg-white/30 dark:bg-gray-800/30 backdrop-blur-md px-3 py-1 focus-within:ring-2 focus-within:ring-brand-600"
-            >
+            {/* Search box */}
+            <form onSubmit={handleSearch} className="ml-4 flex items-center">
               <input
                 type="text"
-                inputMode="search"
-                placeholder="Buscar productos…"
-                aria-label="Buscar"
+                placeholder="Buscar..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="bg-transparent outline-none placeholder-gray-600 dark:placeholder-gray-400 text-sm text-gray-900 dark:text-gray-100 w-44 lg:w-64"
+                className="px-3 py-1 rounded-l-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500"
               />
               <button
                 type="submit"
-                aria-label="Buscar"
-                className="ml-2 p-1 rounded-full hover:bg-white/40 dark:hover:bg-gray-700/40 transition"
-                title="Buscar"
+                className="px-3 py-1 bg-red-500 text-white rounded-r-lg hover:bg-red-600 transition"
               >
-                <svg className="w-5 h-5 text-gray-900 dark:text-gray-100" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35M10 18a8 8 0 110-16 8 8 0 010 16z" />
-                </svg>
+                Buscar
               </button>
             </form>
+          </div>
 
+          <div className="flex items-center gap-3">
+            {/* Theme button */}
             <button
               onClick={toggleTheme}
               aria-label="Cambiar tema"
@@ -223,6 +226,7 @@ export default function Navbar() {
               )}
             </button>
 
+            {/* Cart button */}
             <Link to="/cart" className="relative p-2 rounded-full bg-white/30 dark:bg-gray-800/30 backdrop-blur-md hover:bg-white/40 dark:hover:bg-gray-700/40 transition">
               <svg className="w-6 h-6 text-gray-900 dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 7M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -236,8 +240,26 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-white/20 dark:bg-[#0d0d0d]/30 backdrop-blur-md border-t border-white/20 dark:border-gray-700 px-4 pb-4 rounded-b-lg">
+            {/* Search box mobile */}
+            <form onSubmit={handleSearch} className="mb-4 flex items-center">
+              <input
+                type="text"
+                placeholder="Buscar..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="flex-1 px-3 py-1 rounded-l-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500"
+              />
+              <button
+                type="submit"
+                className="px-3 py-1 bg-red-500 text-white rounded-r-lg hover:bg-red-600 transition"
+              >
+                Buscar
+              </button>
+            </form>
+
             {navLinks.map((link, i) => (
               <div key={i} className="border-b border-white/10 dark:border-gray-800 last:border-0 py-2">
                 <div className="flex items-center justify-between">
@@ -286,24 +308,30 @@ export default function Navbar() {
                             {openMobile[`${link.name}-${sub.name}`] && (
                               <div className="ml-4">
                                 {sub.subMenu.map((deep, k) => (
-                                  <Link
+                                  <button
                                     key={k}
-                                    to={deep.path}
-                                    className="block px-3 py-1 text-sm text-gray-300 hover:bg-white/10 rounded"
+                                    onClick={() => {
+                                      navigate(`/products?search=${encodeURIComponent(deep.name)}`);
+                                      setIsMenuOpen(false);
+                                    }}
+                                    className="block px-3 py-1 text-sm text-gray-300 hover:bg-white/10 rounded w-full text-left"
                                   >
                                     {deep.name}
-                                  </Link>
+                                  </button>
                                 ))}
                               </div>
                             )}
                           </>
                         ) : (
-                          <Link
-                            to={sub.path}
-                            className="block px-3 py-1 text-sm text-gray-300 hover:bg-white/10 rounded"
+                          <button
+                            onClick={() => {
+                              navigate(`/products?search=${encodeURIComponent(sub.name)}`);
+                              setIsMenuOpen(false);
+                            }}
+                            className="block px-3 py-1 text-sm text-gray-300 hover:bg-white/10 rounded w-full text-left"
                           >
                             {sub.name}
-                          </Link>
+                          </button>
                         )}
                       </div>
                     ))}

@@ -1,49 +1,54 @@
-import { Link, useLocation } from 'react-router-dom';
-import productsData from '../data/products';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { useCart } from '../contexts/CartContext';
+import { Link, useLocation } from 'react-router-dom'
+import productsData from '../data/products'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import { useCart } from '../contexts/CartContext'
+import { useMemo } from 'react'
 
 export default function ProductsPage() {
-  const { addToCart } = useCart();
-  const location = useLocation();
+  const { addToCart } = useCart()
+  const location = useLocation()
 
-  // Leer ?search= de la URL (case-insensitive)
-  const params = new URLSearchParams(location.search);
-  const searchTerm = (params.get('search') || '').trim().toLowerCase();
+  // Extraer query string ?search=...
+  const searchParams = new URLSearchParams(location.search)
+  const searchQuery = searchParams.get('search')?.toLowerCase() || ''
 
-  const filteredProducts = productsData.filter((p) =>
-    p.name.toLowerCase().includes(searchTerm)
-  );
+  // Filtrar productos según searchQuery
+  const filteredProducts = useMemo(() => {
+    if (!searchQuery) return productsData
+    return productsData.filter(product => {
+      // Filtra si el nombre o specs contienen el término buscado
+      return (
+        product.name.toLowerCase().includes(searchQuery) ||
+        product.specs.some(spec => spec.toLowerCase().includes(searchQuery))
+      )
+    })
+  }, [searchQuery])
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen flex flex-col">
       <Navbar />
-
+      
       <main className="flex-grow pt-24 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="py-12">
           <div className="mb-12 text-center">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
               Catálogo Completo
             </h1>
-            {searchTerm ? (
-              <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-                Resultados para: <span className="font-semibold">{params.get('search')}</span>
-              </p>
-            ) : (
-              <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-                Todos nuestros productos disponibles
+            {searchQuery && (
+              <p className="mt-2 text-lg text-gray-600 dark:text-gray-300">
+                Resultados para: <span className="font-semibold">{searchQuery}</span>
               </p>
             )}
           </div>
 
           {filteredProducts.length === 0 ? (
             <p className="text-center text-gray-600 dark:text-gray-300">
-              No se encontraron productos.
+              No se encontraron productos para "{searchQuery}".
             </p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {filteredProducts.map((product) => (
+              {filteredProducts.map(product => (
                 <ProductCard key={product.id} product={product} addToCart={addToCart} />
               ))}
             </div>
@@ -53,16 +58,13 @@ export default function ProductsPage() {
 
       <Footer />
     </div>
-  );
+  )
 }
 
 function ProductCard({ product, addToCart }) {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col group">
-      <Link
-        to={`/product/${product.id}`}
-        className="relative h-60 overflow-hidden block"
-      >
+      <Link to={`/product/${product.id}`} className="relative h-60 overflow-hidden block">
         <img
           src={product.image}
           alt={product.name}
@@ -75,16 +77,14 @@ function ProductCard({ product, addToCart }) {
           </span>
         </div>
       </Link>
-
+      
       <div className="p-6 flex-grow flex flex-col">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
           {product.name}
         </h3>
-
         <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow line-clamp-3">
           {product.description}
         </p>
-
         <div className="space-y-2 mb-4">
           <h4 className="font-semibold text-gray-900 dark:text-white">Especificaciones:</h4>
           <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
@@ -96,12 +96,11 @@ function ProductCard({ product, addToCart }) {
             ))}
           </ul>
         </div>
-
         <div className="flex justify-between items-center mt-auto">
           <span className="text-xl font-bold text-red-500">
             ${product.price.toLocaleString()}
           </span>
-          <button
+          <button 
             onClick={() => addToCart(product)}
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center"
             aria-label={`Agregar ${product.name} al carrito`}
@@ -114,5 +113,5 @@ function ProductCard({ product, addToCart }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
