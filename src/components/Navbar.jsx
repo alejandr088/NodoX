@@ -22,11 +22,13 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 dark:bg-almostBlack/30 backdrop-blur-lg border-b border-white/20 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
-          <img
-  src={theme === 'dark' ? 'nodoxwht.png' : 'nodoxred.png'}
-  alt="NodoX"
-  class="h-10 w-auto"
-/>
+          <Link to="/" class="dark:bg-transparent text-4xl md:text-3xl font-extrabold text-brand-500 tracking-tight">
+            <img
+              src={theme === 'dark' ? 'nodoxwht.png' : 'nodoxred.png'}
+              alt="NodoX"
+              class="h-10 w-auto"
+            />
+          </Link>
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
