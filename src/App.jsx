@@ -13,7 +13,7 @@ import PCBuilderPage from './pages/PCBuilderPage'
 import BusinessSales from './pages/BusinessSales'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
-import ThemeToggle from "./components/ThemeToggle";
+// import ThemeToggle from "./components/ThemeToggle";
 import Footer from './components/Footer'
 import WhatsappButton from './components/WhatsappButton'
 import "./index.css";
@@ -22,7 +22,7 @@ export default function App() {
   return (
       <><div className="app-background" /><div className="min-h-screen bg-white/70 dark:bg-almostBlack/90 transition-colors">
       <header className="flex justify-end p-4">
-        <ThemeToggle />
+        {/* <ThemeToggle /> */}
       </header>
 
       <Routes>
