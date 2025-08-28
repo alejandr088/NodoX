@@ -61,7 +61,7 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 font-sans relative">
+    <div className="relative bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 font-sans overflow-hidden">
       <Helmet>
         <title>Servicios | NodoX</title>
         <meta name="description" content="Servicios técnicos profesionales en reparaciones, software y hardware en NodoX." />
@@ -72,73 +72,88 @@ export default function ServicesPage() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      <Navbar />
-      <main className="max-w-6xl mx-auto pt-24 pb-20 px-6">
+      {/* Video de fondo */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover brightness-75 opacity-60 z-0"
+        src="/contact-bg.mp4"
+      />
 
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-            Nuestros <span className="text-red-500">Servicios</span>
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Soluciones técnicas profesionales para todas tus necesidades tecnológicas
-          </p>
-        </div>
+      {/* Overlay para mejorar contraste */}
+      <div className="absolute inset-0 bg-black/30 dark:bg-black/50 z-0"></div>
 
-        <div className="grid gap-8 md:grid-cols-3 mb-12">
-          {serviceCategories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700"
-            >
-              <div className="bg-red-100 dark:bg-red-900/20 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                {category.icon}
-              </div>
-              <h3 className="text-xl font-bold text-center text-gray-900 dark:text-white mb-2">{category.name}</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-center">
-                Servicios especializados en {category.name.toLowerCase()}
-              </p>
-            </div>
-          ))}
-        </div>
+      {/* Contenido */}
+      <div className="relative z-10">
+        <Navbar />
+        <main className="max-w-6xl mx-auto pt-24 pb-20 px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+              Nuestros <span className="text-red-500">Servicios</span>
+            </h1>
+            <p className="text-xl text-gray-100 dark:text-gray-300 max-w-3xl mx-auto">
+              Soluciones técnicas profesionales para todas tus necesidades tecnológicas
+            </p>
+          </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map(service => {
-            const benefits = getServiceBenefits(service);
-            return (
+          <div className="grid gap-8 md:grid-cols-3 mb-12">
+            {serviceCategories.map((category, index) => (
               <div
-                key={service.id}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700"
+                key={index}
+                className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200/50 dark:border-gray-700/50"
               >
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{service.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{service.description}</p>
-
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-2 flex items-center">
-                    <svg className="w-5 h-5 text-red-500 mr-2" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Beneficios
-                  </h4>
-                  <ul className="space-y-2 text-sm">
-                    {benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
-                        <svg className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="bg-red-100 dark:bg-red-900/20 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                  {category.icon}
                 </div>
-                
-                <button className="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                  Solicitar servicio
-                </button>
+                <h3 className="text-xl font-bold text-center text-gray-900 dark:text-white mb-2">{category.name}</h3>
+                <p className="text-gray-700 dark:text-gray-400 text-center">
+                  Servicios especializados en {category.name.toLowerCase()}
+                </p>
               </div>
-            );
-          })}
-        </div>
-      </main>
+            ))}
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {services.map(service => {
+              const benefits = getServiceBenefits(service);
+              return (
+                <div
+                  key={service.id}
+                  className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200/50 dark:border-gray-700/50"
+                >
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{service.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">{service.description}</p>
+
+                  <div className="bg-gray-100/80 dark:bg-gray-700/80 p-4 rounded-lg">
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-2 flex items-center">
+                      <svg className="w-5 h-5 text-red-500 mr-2" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Beneficios
+                    </h4>
+                    <ul className="space-y-2 text-sm">
+                      {benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-start text-gray-800 dark:text-gray-300">
+                          <svg className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <button className="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                    Solicitar servicio
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </main>
+      </div>
     </div>
   )
 }

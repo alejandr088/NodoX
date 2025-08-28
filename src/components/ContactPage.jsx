@@ -13,7 +13,7 @@ export default function ContactPage() {
         <meta property="og:url" content={window.location.href} />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
-
+      
       <Navbar />
       <main className="max-w-4xl mx-auto pt-24 pb-20 px-6">
         
