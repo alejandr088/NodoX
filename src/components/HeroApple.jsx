@@ -17,7 +17,7 @@ export default function HeroApple() {
         loop
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover brightness-75 opacity-70 z-0"
-        src="/hero-video.mp4"
+        src="/2795171-uhd_3840_2160_25fps.mp4"
       />
 
       {/* Overlay negro semitransparente */}
