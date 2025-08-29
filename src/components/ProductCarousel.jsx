@@ -13,13 +13,24 @@ export default function ProductCarousel() {
   const { addToCart } = useCart()
 
   return (
-    <section id="products" className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-almostBlack">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="products"
+      className="relative py-16"
+      style={{
+        backgroundImage: 'url("/circuit.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      {/* Overlay para mejorar legibilidad */}
+      <div className="absolute inset-0 bg-black/70 dark:bg-black/60 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl font-bold text-white mb-4">
             Nuestros <span className="text-red-500">Productos</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-white max-w-3xl mx-auto">
             Descubre lo último en tecnología con nuestras mejores ofertas
           </p>
         </div>
@@ -56,7 +67,6 @@ export default function ProductCarousel() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    {/* Ver detalles como Link para llevar a /product/:id */}
                     <Link to={`/product/${product.id}`} className="w-full text-center bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg transition-colors">
                       Ver Detalles
                     </Link>

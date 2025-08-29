@@ -25,13 +25,23 @@ export default function ProductsPage() {
   }, [searchQuery])
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen flex flex-col">
+    <div 
+      className="relative min-h-screen flex flex-col"
+      style={{
+        backgroundImage: "url('/product1.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay para mejorar legibilidad */}
+      <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
+
       <Navbar />
-      
-      <main className="flex-grow pt-24 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+
+      <main className="relative z-10 flex-grow pt-24 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="py-12">
           <div className="mb-12 text-center">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-4xl font-bold text-white">
               Catálogo Completo
             </h1>
             {searchQuery && (
@@ -54,7 +64,6 @@ export default function ProductsPage() {
           )}
         </div>
       </main>
-
     </div>
   )
 }

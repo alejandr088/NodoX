@@ -72,25 +72,21 @@ export default function ServicesPage() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      {/* Video de fondo */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover brightness-75 opacity-60 z-0"
-        src="/contact-bg.mp4"
+      {/* Imagen de fondo (cambia según tema) */}
+      <div 
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-fixed z-0 transition-all duration-700
+                   bg-[url('/services-light.jpg')] dark:bg-[url('/services-dark.jpg')]"
       />
 
       {/* Overlay para mejorar contraste */}
-      <div className="absolute inset-0 bg-black/30 dark:bg-black/50 z-0"></div>
+      <div className="absolute inset-0 bg-black/20 dark:bg-black/50 z-0"></div>
 
       {/* Contenido */}
       <div className="relative z-10">
         <Navbar />
         <main className="max-w-6xl mx-auto pt-24 pb-20 px-6">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
               Nuestros <span className="text-red-500">Servicios</span>
             </h1>
             <p className="text-xl text-gray-100 dark:text-gray-300 max-w-3xl mx-auto">
