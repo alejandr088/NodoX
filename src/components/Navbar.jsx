@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useTheme } from '../contexts/ThemeContext';
@@ -13,6 +13,10 @@ export default function Navbar() {
   const [hoverSub, setHoverSub] = useState(null);
   const [openMobile, setOpenMobile] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
+  
+  // Referencias para los timeouts
+  const topMenuTimeoutRef = useRef(null);
+  const subMenuTimeoutRef = useRef(null);
 
   const toggleMobileSection = (key) =>
     setOpenMobile((s) => ({ ...s, [key]: !s[key] }));
@@ -62,6 +66,50 @@ export default function Navbar() {
     }
   };
 
+  // Función para manejar el cierre con retraso
+  const handleTopMenuLeave = (i) => {
+    if (hoverTop === i) {
+      // Limpiar timeout existente
+      if (topMenuTimeoutRef.current) {
+        clearTimeout(topMenuTimeoutRef.current);
+      }
+      
+      // Establecer nuevo timeout para cerrar después de 300ms
+      topMenuTimeoutRef.current = setTimeout(() => {
+        setHoverTop(null);
+        setHoverSub(null);
+      }, 300);
+    }
+  };
+
+  // Función para cancelar el cierre si el cursor entra al menú
+  const cancelTopMenuClose = () => {
+    if (topMenuTimeoutRef.current) {
+      clearTimeout(topMenuTimeoutRef.current);
+      topMenuTimeoutRef.current = null;
+    }
+  };
+
+  // Función similar para submenús
+  const handleSubMenuLeave = (key) => {
+    if (hoverSub === key) {
+      if (subMenuTimeoutRef.current) {
+        clearTimeout(subMenuTimeoutRef.current);
+      }
+      
+      subMenuTimeoutRef.current = setTimeout(() => {
+        setHoverSub(null);
+      }, 300);
+    }
+  };
+
+  const cancelSubMenuClose = () => {
+    if (subMenuTimeoutRef.current) {
+      clearTimeout(subMenuTimeoutRef.current);
+      subMenuTimeoutRef.current = null;
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 dark:bg-[#0d0d0d]/30 backdrop-blur-lg border-b border-white/20 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
@@ -108,8 +156,11 @@ export default function Navbar() {
               <div
                 key={link.name}
                 className="relative"
-                onMouseEnter={() => setHoverTop(i)}
-                onMouseLeave={() => { if (hoverTop === i) { setHoverTop(null); setHoverSub(null); } }}
+                onMouseEnter={() => {
+                  cancelTopMenuClose();
+                  setHoverTop(i);
+                }}
+                onMouseLeave={() => handleTopMenuLeave(i)}
               >
                 <Link
                   to={link.path}
@@ -126,7 +177,11 @@ export default function Navbar() {
                 </Link>
 
                 {hoverTop === i && (
-                  <div className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 shadow-xl rounded-xl py-2 w-64 z-50">
+                  <div 
+                    className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 shadow-xl rounded-xl py-2 w-64 z-50"
+                    onMouseEnter={cancelTopMenuClose}
+                    onMouseLeave={() => handleTopMenuLeave(i)}
+                  >
                     {link.subMenu.map((sub, j) => {
                       const hasChildren = Array.isArray(sub.subMenu);
                       const key = `${i}-${j}`;
@@ -134,8 +189,11 @@ export default function Navbar() {
                         <div
                           key={key}
                           className="relative"
-                          onMouseEnter={() => setHoverSub(key)}
-                          onMouseLeave={() => { if (hoverSub === key) setHoverSub(null); }}
+                          onMouseEnter={() => {
+                            cancelSubMenuClose();
+                            setHoverSub(key);
+                          }}
+                          onMouseLeave={() => handleSubMenuLeave(key)}
                         >
                           <div
                             className={`px-4 py-2 text-sm font-semibold cursor-${hasChildren ? 'default' : 'pointer'} 
@@ -163,7 +221,11 @@ export default function Navbar() {
                           </div>
 
                           {hasChildren && hoverSub === key && (
-                            <div className="absolute top-0 left-full ml-2 bg-white dark:bg-gray-800 shadow-xl rounded-xl py-2 w-56 z-50">
+                            <div 
+                              className="absolute top-0 left-full ml-2 bg-white dark:bg-gray-800 shadow-xl rounded-xl py-2 w-56 z-50"
+                              onMouseEnter={cancelSubMenuClose}
+                              onMouseLeave={() => handleSubMenuLeave(key)}
+                            >
                               {sub.subMenu.map((deep, k) => (
                                 <button
                                   key={`${key}-${k}`}

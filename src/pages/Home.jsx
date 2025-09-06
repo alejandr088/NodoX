@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="relative bg-transparent text-gray-900 font-sans dark:bg-transparent dark:text-gray-100 min-h-screen overflow-x-hidden">
       <Helmet>
-        <title>Inicio | NodoX</title>
+        <title>NodoX | Tu PC a un Clic</title>
         <meta name="description" content="NodoX - Tecnología de calidad con garantía y soporte especializado." />
         <meta property="og:title" content="Inicio | NodoX" />
         <meta property="og:description" content="NodoX - Tecnología de calidad con garantía y soporte especializado." />

@@ -12,11 +12,12 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 text-gray-300 dark:bg-almostBlack dark:text-gray-400 py-12 px-6">
+
+    <footer className="bg-white text-gray-300 dark:bg-almostBlack dark:text-gray-400 py-12 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
 
         <div>
-          <h3 className="text-xl font-semibold mb-4 text-white">NodoX</h3>
+          <h3 className="text-xl font-semibold mb-4 text-black dark:text-white">NodoX</h3>
           <p className="text-gray-400 leading-relaxed mb-6">
             Proveemos soluciones tecnológicas confiables, con soporte profesional y garantía.
           </p>
@@ -28,7 +29,7 @@ export default function Footer() {
 
         {/* Enlaces útiles */}
         <div>
-          <h4 className="font-semibold mb-4 text-white">Enlaces</h4>
+          <h4 className="font-semibold mb-4 text-black dark:text-white">Enlaces</h4>
           <ul>
             <li className="mb-2">
               <a href="/" className="hover:text-red-500 transition">Inicio</a>
@@ -50,7 +51,7 @@ export default function Footer() {
 
         {/* Políticas */}
         <div>
-          <h4 className="font-semibold mb-4 text-white">Políticas</h4>
+          <h4 className="font-semibold mb-4 text-black dark:text-white">Políticas</h4>
           <ul>
             <li className="mb-2">
               <a href="/privacy-policy" className="hover:text-red-500 transition">Política de Privacidad</a>

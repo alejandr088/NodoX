@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import Breadcrumbs from './Breadcrumbs'
 import products from '../data/products'
+import { getCurrencySymbol } from '../components/currencyFormatter';
 
 export default function ProductDetail() {
   const { id } = useParams()
@@ -20,7 +21,18 @@ export default function ProductDetail() {
   ]
 
   return (
-    <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden bg-gray-50 dark:bg-gray-900">
+    <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden">
+      {/* Imagen de fondo con efecto parallax */}
+      <div 
+        className="parallax-bg fixed top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/circuit.jpg")',
+        }}
+      />
+
+      {/* Overlay para mejorar legibilidad */}
+      <div className="absolute inset-0 bg-white/80 dark:bg-black/25 pointer-events-none"></div>
+
       <Helmet>
         <title>{product.name} | NodoX</title>
         <meta name="description" content={product.description} />
@@ -32,13 +44,10 @@ export default function ProductDetail() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-white dark:from-gray-800 dark:to-gray-900 z-0"></div>
-
       <div className="relative z-10 max-w-6xl mx-auto">
         <Breadcrumbs paths={breadcrumbs} />
 
-        <section className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+        <section className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm p-8 rounded-xl shadow-lg">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="rounded-xl overflow-hidden shadow-md">
               <img
@@ -49,7 +58,9 @@ export default function ProductDetail() {
             </div>
             <div>
               <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{product.name}</h1>
-              <p className="text-red-600 text-2xl font-semibold mb-6">${product.price}</p>
+              <p className="text-red-600 dark:text-red-500 text-2xl font-semibold mb-6">
+                {getCurrencySymbol(product.currency)}{product.price}
+              </p>
               <div className="prose max-w-none text-gray-700 dark:text-gray-300">
                 <h3 className="text-xl font-semibold mb-2 dark:text-gray-300">Especificaciones:</h3>
                 <ul className="list-disc pl-5 mb-6">
@@ -58,12 +69,32 @@ export default function ProductDetail() {
                   ))}
                 </ul>
                 <h3 className="text-xl dark:text-gray-300 font-semibold mb-2">Disponibilidad:</h3>
-                <p className="text-green-600 font-medium">En stock</p>
+                <p className="text-green-600 dark:text-green-500 font-medium">En stock</p>
               </div>
             </div>
           </div>
         </section>
       </div>
+
+      {/* Estilos para el efecto parallax */}
+      <style jsx>{`
+        .parallax-bg {
+          background-attachment: fixed;
+          background-size: cover;
+          background-position: center;
+          will-change: transform;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          min-height: 100vh;
+          z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+          .parallax-bg {
+            background-attachment: scroll;
+          }
+        }
+      `}</style>
     </div>
   )
 }

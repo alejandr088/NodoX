@@ -5,10 +5,26 @@ export default function HeroApple() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    setIsDark(
-      window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-    );
+    // Detectar el tema actual del documento
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    setIsDark(isDarkMode);
+    
+    // Observar cambios en el tema
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          const isNowDark = document.documentElement.classList.contains('dark');
+          setIsDark(isNowDark);
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -19,14 +35,14 @@ export default function HeroApple() {
         muted
         loop
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover brightness-75 opacity-70 z-0"
+        className="absolute top-0 left-0 w-full h-full object-cover brightness-75 opacity-90 z-0"
         src="/2795171-uhd_3840_2160_25fps.mp4"
       />
 
       {/* Overlay semitransparente */}
       <div
-        className={`absolute inset-0 ${
-          isDark ? "bg-black/40" : "bg-black/30"
+        className={`absolute inset-3 ${
+          isDark ? "bg-black/20" : "bg-black/20"
         } z-10 pointer-events-none`}
       />
 
@@ -56,24 +72,24 @@ export default function HeroApple() {
 
       {/* Gradiente extendido + curva separadora */}
       <div
-        className={`absolute bottom-0 left-0 w-full h-64 z-20 pointer-events-none ${
+        className={`absolute bottom-0 left-0 w-full h-48 z-20 pointer-events-none ${
           isDark
-            ? "bg-gradient-to-b from-transparent to-neutral-900"
-            : "bg-gradient-to-b from-transparent to-gray-50"
+            ? "bg-gradient-to-b from-transparent to-[#0d0d0d]"
+            : "bg-gradient-to-b from-transparent to-white"
         }`}
       />
 
-      {/* Curva decorativa SVG para transición más orgánica */}
+            {/* Curva decorativa SVG para transición más orgánica */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-30">
         <svg
-          className="relative block w-full h-16"
+          className="relative block w-full h-12"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
         >
           <path
             d="M321.39 56.2C175.73 77.77 58.51 95.66 0 104.34V120h1200V0c-72.65 32.56-187.34 53.56-308.61 56.2-174.34 3.79-261.18-28.63-570-0z"
-            className={isDark ? "fill-neutral-900" : "fill-gray-50"}
+            fill={isDark ? "#000000" : "#686666ff"}
           />
         </svg>
       </div>

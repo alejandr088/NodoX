@@ -3,6 +3,8 @@ import productsData from '../data/products'
 import Navbar from '../components/Navbar'
 import { useCart } from '../contexts/CartContext'
 import { useMemo } from 'react'
+import { getCurrencySymbol } from '../components/currencyFormatter'
+import { Helmet } from 'react-helmet'
 
 export default function ProductsPage() {
   const { addToCart } = useCart()
@@ -25,16 +27,27 @@ export default function ProductsPage() {
   }, [searchQuery])
 
   return (
-    <div 
-      className="relative min-h-screen flex flex-col"
-      style={{
-        backgroundImage: "url('/product1.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* Imagen de fondo con efecto parallax */}
+      <div 
+        className="parallax-bg fixed top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/product1.jpg')",
+        }}
+      />
+
+      <Helmet>
+        <title>Productos | NodoX</title>
+        <meta name="description" content="Explora nuestro catálogo completo de productos tecnológicos. Encuentra laptops, PCs, componentes y más en NodoX." />
+        <meta property="og:title" content="Productos | NodoX" />
+        <meta property="og:description" content="Explora nuestro catálogo completo de productos tecnológicos en NodoX." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       {/* Overlay para mejorar legibilidad */}
-      <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
+      <div className="absolute inset-0 bg-black/25 dark:bg-black/0 pointer-events-none" />
 
       <Navbar />
 
@@ -45,14 +58,14 @@ export default function ProductsPage() {
               Catálogo Completo
             </h1>
             {searchQuery && (
-              <p className="mt-2 text-lg text-gray-600 dark:text-gray-300">
+              <p className="mt-2 text-lg text-gray-200">
                 Resultados para: <span className="font-semibold">{searchQuery}</span>
               </p>
             )}
           </div>
 
           {filteredProducts.length === 0 ? (
-            <p className="text-center text-gray-600 dark:text-gray-300">
+            <p className="text-center text-gray-200">
               No se encontraron productos para "{searchQuery}".
             </p>
           ) : (
@@ -64,6 +77,26 @@ export default function ProductsPage() {
           )}
         </div>
       </main>
+
+      {/* Estilos para el efecto parallax */}
+      <style jsx>{`
+        .parallax-bg {
+          background-attachment: fixed;
+          background-size: cover;
+          background-position: center;
+          will-change: transform;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          min-height: 100vh;
+          z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+          .parallax-bg {
+            background-attachment: scroll;
+          }
+        }
+      `}</style>
     </div>
   )
 }
@@ -84,7 +117,7 @@ function ProductCard({ product, addToCart }) {
           </span>
         </div>
       </Link>
-      
+
       <div className="p-6 flex-grow flex flex-col">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
           {product.name}
@@ -105,9 +138,9 @@ function ProductCard({ product, addToCart }) {
         </div>
         <div className="flex justify-between items-center mt-auto">
           <span className="text-xl font-bold text-red-500">
-            ${product.price.toLocaleString()}
+            {getCurrencySymbol(product.currency)}{product.price.toLocaleString()}
           </span>
-          <button 
+          <button
             onClick={() => addToCart(product)}
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center"
             aria-label={`Agregar ${product.name} al carrito`}
