@@ -1,3 +1,4 @@
+// products.js
 export default [
   {
     id: 1,
@@ -5,14 +6,356 @@ export default [
     description: "Apple M1, 8GB RAM, 256GB SSD, Pantalla Retina 2K 13.3\", MacOS Sequoia",
     price: 790,
     currency: "USD",
-    image: "/macbookm1.jpg",
+    stock: 1,
+    category: "Notebook",
+    image: "/imagen1.jpg",
     specs: [
       "Procesador: M1",
       "RAM: 8GB",
       "Almacenamiento: 256GB SSD",
-      "Pantalla: Retina 13.3 IPS \"2560 x 1600 a 227 PPP",
-      "Sistema operativo: MacOS Sequoia",
+      "Pantalla: Retina 13.3 IPS 2560x1600",
+      "Sistema operativo: MacOS Sequoia"
     ]
   },
-  
-]
+  {
+    id: 2,
+    name: "Antena Mercusys AC650 MU6H Dual channel",
+    description: "Adaptador WiFi Dual Channel",
+    price: 0,
+    currency: "USD",
+    stock: 3,
+    category: "Conectividad Internet",
+    image: "/imagen2.jpg",
+    specs: ["WiFi AC650", "Dual Channel", "USB"]
+  },
+  {
+    id: 3,
+    name: "TP LINK UE330 3-Port Hub + Gigabit Ethernet",
+    description: "Hub USB 3.0 con adaptador Ethernet Gigabit",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Conectividad Internet",
+    image: "/imagen3.jpg",
+    specs: ["3 puertos USB 3.0", "Gigabit Ethernet"]
+  },
+  {
+    id: 4,
+    name: "Lexar 256SSD 2.5 NQ100",
+    description: "SSD 2.5 pulgadas Lexar NQ100 256GB",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Almacenamiento/SSD 2.5",
+    image: "/imagen4.jpg",
+    specs: ["Capacidad: 256GB", "Formato: 2.5\"", "Interfaz: SATA"]
+  },
+  {
+    id: 5,
+    name: "Lexar 512SSD 2.5",
+    description: "SSD 2.5 pulgadas Lexar 512GB",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Almacenamiento/SSD 2.5",
+    image: "/imagen5.jpg",
+    specs: ["Capacidad: 512GB", "Formato: 2.5\"", "Interfaz: SATA"]
+  },
+  {
+    id: 6,
+    name: "Netac SA500 128GB",
+    description: "SSD Netac SA500 128GB 2.5 pulgadas",
+    price: 0,
+    currency: "USD",
+    stock: 4,
+    category: "Almacenamiento/SSD 2.5",
+    image: "/imagen6.jpg",
+    specs: ["Capacidad: 128GB", "Formato: 2.5\"", "Interfaz: SATA"]
+  },
+  {
+    id: 7,
+    name: "Lexar NM610 PRO 512GB",
+    description: "SSD Lexar NM610 PRO 512GB NVMe",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Almacenamiento/M.2 NVME",
+    image: "/imagen7.jpg",
+    specs: ["Capacidad: 512GB", "Formato: M.2", "Interfaz: NVMe"]
+  },
+  {
+    id: 8,
+    name: "Lexar NM620 256GB",
+    description: "SSD Lexar NM620 256GB NVMe",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Almacenamiento/M.2 NVME",
+    image: "/imagen8.jpg",
+    specs: ["Capacidad: 256GB", "Formato: M.2", "Interfaz: NVMe"]
+  },
+  {
+    id: 9,
+    name: "Monitor Dell Recert 20\" CAT A+",
+    description: "Monitor recertificado Dell 20 pulgadas categoría A+",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Monitor",
+    image: "/imagen9.jpg",
+    specs: ["Pantalla: 20\"", "Condición: Recertificado CAT A+"]
+  },
+  {
+    id: 10,
+    name: "Impresora HP Verde y Blanca",
+    description: "Impresora HP (requiere cambio de cartuchos)",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Impresora",
+    image: "/imagen10.jpg",
+    specs: ["Color: Verde y Blanco", "Estado: requiere cartuchos"]
+  },
+  {
+    id: 11,
+    name: "Gabinete Shot Gaming SUP-8013",
+    description: "Gabinete gamer Shot Gaming SUP-8013",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Gabinete",
+    image: "/imagen11.jpg",
+    specs: ["Formato: ATX", "Diseño Gamer"]
+  },
+  {
+    id: 12,
+    name: "Kit 4 en 1 xLizzard XZZ--CO-02",
+    description: "Kit periféricos xLizzard 4 en 1",
+    price: 0,
+    currency: "USD",
+    stock: 3,
+    category: "Teclado/Mouse/Auriculares",
+    image: "/imagen12.jpg",
+    specs: ["Incluye: teclado, mouse, auriculares y alfombrilla"]
+  },
+  {
+    id: 13,
+    name: "Combo Genius Smart KM-8200",
+    description: "Combo Mouse + Teclado Genius Smart KM-8200",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Teclado/Mouse Inalámbrico",
+    image: "/imagen13.jpg",
+    specs: ["Mouse inalámbrico", "Teclado inalámbrico"]
+  },
+  {
+    id: 14,
+    name: "Combo xLizzard 2 en 1 XZZ-CO-01",
+    description: "Combo teclado + mouse USB xLizzard",
+    price: 0,
+    currency: "USD",
+    stock: 2,
+    category: "Teclado/Mouse USB",
+    image: "/imagen14.jpg",
+    specs: ["Conexión USB", "Incluye teclado y mouse"]
+  },
+  {
+    id: 15,
+    name: "Placa A520M DS3H V2 (nueva)",
+    description: "Motherboard Gigabyte A520M DS3H V2",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Motherboard",
+    image: "/imagen15.jpg",
+    specs: ["Chipset: A520M", "Condición: Nueva"]
+  },
+  {
+    id: 16,
+    name: "Placa Gigabyte A620MH AM5 (usada)",
+    description: "Motherboard Gigabyte A620MH AM5 usada",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Motherboard",
+    image: "/imagen16.jpg",
+    specs: ["Chipset: A620MH", "Socket: AM5", "Condición: Usada"]
+  },
+  {
+    id: 17,
+    name: "Placa ASUS Z97-C",
+    description: "Motherboard ASUS Z97-C",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Motherboard",
+    image: "/imagen17.jpg",
+    specs: ["Chipset: Z97", "Marca: ASUS"]
+  },
+  {
+    id: 18,
+    name: "Notebook Lenovo Ideapad 330S-15ikb (reacond.)",
+    description: "Notebook Lenovo reacondicionada I5 8va Gen, 12GB RAM, 256GB SSD",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Notebook (Reacondicionado)",
+    image: "/imagen18.jpg",
+    specs: ["Procesador: Intel I5 8va Gen", "RAM: 12GB", "Almacenamiento: 256GB SSD"]
+  },
+  {
+    id: 19,
+    name: "Mouse USB Genéricos",
+    description: "Mouse USB estándar",
+    price: 0,
+    currency: "USD",
+    stock: 3,
+    category: "Mouse",
+    image: "/imagen19.jpg",
+    specs: ["Conexión USB", "Diseño básico"]
+  },
+  {
+    id: 20,
+    name: "Fan Deepcool XFAN 80mm",
+    description: "Ventilador Deepcool 80mm XFAN 80",
+    price: 0,
+    currency: "USD",
+    stock: 8,
+    category: "Fancooler",
+    image: "/imagen20.jpg",
+    specs: ["Tamaño: 80mm", "Marca: Deepcool"]
+  },
+  {
+    id: 21,
+    name: "Cable MicroUSB CB-01 Inkax 1m",
+    description: "Cable MicroUSB Inkax CB-01 de 1 metro",
+    price: 0,
+    currency: "USD",
+    stock: 7,
+    category: "Accesorios/Cable",
+    image: "/imagen21.jpg",
+    specs: ["Tipo: MicroUSB", "Largo: 1 metro"]
+  },
+  {
+    id: 22,
+    name: "Pendrive Kingston 128GB USB 3.2 Exodia",
+    description: "Pendrive Kingston Datatraveler Exodia 128GB",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Almacenamiento/Pendrive",
+    image: "/imagen22.jpg",
+    specs: ["Capacidad: 128GB", "USB 3.2"]
+  },
+  {
+    id: 23,
+    name: "Cable HDMI Full HD Xtreme 1.5m con malla",
+    description: "Cable HDMI Full HD 1.5m con recubrimiento de malla negra",
+    price: 0,
+    currency: "USD",
+    stock: 2,
+    category: "Accesorios/Cable",
+    image: "/imagen23.jpg",
+    specs: ["Largo: 1.5m", "Full HD", "Malla protectora"]
+  },
+  {
+    id: 24,
+    name: "Cable HDMI Full HD 1.5m",
+    description: "Cable HDMI estándar Full HD 1.5m",
+    price: 0,
+    currency: "USD",
+    stock: 5,
+    category: "Accesorios/Cable",
+    image: "/imagen24.jpg",
+    specs: ["Largo: 1.5m", "Full HD"]
+  },
+  {
+    id: 25,
+    name: "Cable HDMI 2k/4k 5m",
+    description: "Cable HDMI compatible 2k/4k de 5 metros",
+    price: 0,
+    currency: "USD",
+    stock: 2,
+    category: "Accesorios/Cable",
+    image: "/imagen25.jpg",
+    specs: ["Resolución: 2k/4k", "Largo: 5m"]
+  },
+  {
+    id: 26,
+    name: "Cable HDMI 4K UltraHD Unitek C11079BK 60hz",
+    description: "Cable HDMI Unitek 4K UltraHD 60hz modelo C11079BK en caja",
+    price: 0,
+    currency: "USD",
+    stock: 2,
+    category: "Accesorios/Cable",
+    image: "/imagen26.jpg",
+    specs: ["Resolución: 4K UltraHD", "Frecuencia: 60hz", "Modelo: C11079BK"]
+  },
+  {
+    id: 27,
+    name: "Cable DisplayPort 1.5m",
+    description: "Cable DisplayPort de 1.5 metros",
+    price: 0,
+    currency: "USD",
+    stock: 2,
+    category: "Accesorios/Cable",
+    image: "/imagen27.jpg",
+    specs: ["Tipo: DisplayPort", "Largo: 1.5m"]
+  },
+  {
+    id: 28,
+    name: "Cable adaptador HDMI a DisplayPort 1.5m",
+    description: "Adaptador de HDMI a DisplayPort de 1.5 metros",
+    price: 0,
+    currency: "USD",
+    stock: 3,
+    category: "Accesorios/Cable",
+    image: "/imagen28.jpg",
+    specs: ["Tipo: HDMI a DisplayPort", "Largo: 1.5m"]
+  },
+  {
+    id: 29,
+    name: "Intel I3-9100F",
+    description: "Procesador Intel Core i3-9100F 4 núcleos / 4 hilos 3.6GHz Turbo 4.2GHz",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Procesadores",
+    image: "/imagen29.jpg",
+    specs: ["Núcleos: 4", "Hilos: 4", "Frecuencia base: 3.6GHz", "Turbo: 4.2GHz"]
+  },
+  {
+    id: 30,
+    name: "Intel I5-2320",
+    description: "Procesador Intel Core i5-2320 4 núcleos / 4 hilos 3.0GHz Turbo 3.3GHz",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Procesadores",
+    image: "/imagen30.jpg",
+    specs: ["Núcleos: 4", "Hilos: 4", "Frecuencia base: 3.0GHz", "Turbo: 3.3GHz"]
+  },
+  {
+    id: 31,
+    name: "Intel I7-6700",
+    description: "Procesador Intel Core i7-6700 4 núcleos / 8 hilos 3.4GHz Turbo 4.0GHz",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Procesadores",
+    image: "/imagen31.jpg",
+    specs: ["Núcleos: 4", "Hilos: 8", "Frecuencia base: 3.4GHz", "Turbo: 4.0GHz"]
+  },
+  {
+    id: 32,
+    name: "Intel I7-8700",
+    description: "Procesador Intel Core i7-8700 6 núcleos / 12 hilos 3.2GHz Turbo 4.6GHz",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Procesadores",
+    image: "/imagen32.jpg",
+    specs: ["Núcleos: 6", "Hilos: 12", "Frecuencia base: 3.2GHz", "Turbo: 4.6GHz"]
+  }
+];
