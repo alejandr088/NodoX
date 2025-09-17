@@ -25,7 +25,7 @@ export default [
     currency: "USD",
     stock: 3,
     category: "Conectividad Internet",
-    image: "/imagen2.jpg",
+    image: "/mu6h.png",
     specs: ["WiFi AC650", "Dual Channel", "USB"]
   },
   {
@@ -36,7 +36,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Conectividad Internet",
-    image: "/imagen3.jpg",
+    image: "/extusb.jpg",
     specs: ["3 puertos USB 3.0", "Gigabit Ethernet"]
   },
   {
@@ -47,7 +47,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Almacenamiento/SSD 2.5",
-    image: "/imagen4.jpg",
+    image: "/ssdlexar.jpg",
     specs: ["Capacidad: 256GB", "Formato: 2.5\"", "Interfaz: SATA"]
   },
   {
@@ -58,7 +58,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Almacenamiento/SSD 2.5",
-    image: "/imagen5.jpg",
+    image: "/ssdlexar.jpg",
     specs: ["Capacidad: 512GB", "Formato: 2.5\"", "Interfaz: SATA"]
   },
   {
@@ -69,7 +69,7 @@ export default [
     currency: "USD",
     stock: 4,
     category: "Almacenamiento/SSD 2.5",
-    image: "/imagen6.jpg",
+    image: "/ssdnetac.jpg",
     specs: ["Capacidad: 128GB", "Formato: 2.5\"", "Interfaz: SATA"]
   },
   {
@@ -355,7 +355,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Procesadores",
-    image: "/imagen32.jpg",
+    image: "/i7.png",
     specs: ["Núcleos: 6", "Hilos: 12", "Frecuencia base: 3.2GHz", "Turbo: 4.6GHz"]
   }
 ];
