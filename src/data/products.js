@@ -80,7 +80,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Almacenamiento/M.2 NVME",
-    image: "/imagen7.jpg",
+    image: "/nm610pro.png",
     specs: ["Capacidad: 512GB", "Formato: M.2", "Interfaz: NVMe"]
   },
   {
@@ -91,7 +91,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Almacenamiento/M.2 NVME",
-    image: "/imagen8.jpg",
+    image: "/nm620.png",
     specs: ["Capacidad: 256GB", "Formato: M.2", "Interfaz: NVMe"]
   },
   {
@@ -135,7 +135,7 @@ export default [
     currency: "USD",
     stock: 3,
     category: "Teclado/Mouse/Auriculares",
-    image: "/imagen12.jpg",
+    image: "/combo-4in1.png",
     specs: ["Incluye: teclado, mouse, auriculares y alfombrilla"]
   },
   {
@@ -146,7 +146,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Teclado/Mouse Inalámbrico",
-    image: "/imagen13.jpg",
+    image: "/combo-genius.png",
     specs: ["Mouse inalámbrico", "Teclado inalámbrico"]
   },
   {
@@ -157,7 +157,7 @@ export default [
     currency: "USD",
     stock: 2,
     category: "Teclado/Mouse USB",
-    image: "/imagen14.jpg",
+    image: "/combo-2in1.png",
     specs: ["Conexión USB", "Incluye teclado y mouse"]
   },
   {
@@ -168,7 +168,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Motherboard",
-    image: "/imagen15.jpg",
+    image: "/a520m.png",
     specs: ["Chipset: A520M", "Condición: Nueva"]
   },
   {
@@ -179,7 +179,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Motherboard",
-    image: "/imagen16.jpg",
+    image: "/a620mh.png",
     specs: ["Chipset: A620MH", "Socket: AM5", "Condición: Usada"]
   },
   {
@@ -190,7 +190,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Motherboard",
-    image: "/imagen17.jpg",
+    image: "/z97c.png",
     specs: ["Chipset: Z97", "Marca: ASUS"]
   },
   {
@@ -201,7 +201,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Notebook (Reacondicionado)",
-    image: "/imagen18.jpg",
+    image: "/nb-ideapad.png",
     specs: ["Procesador: Intel I5 8va Gen", "RAM: 12GB", "Almacenamiento: 256GB SSD"]
   },
   {
@@ -212,7 +212,7 @@ export default [
     currency: "USD",
     stock: 3,
     category: "Mouse",
-    image: "/imagen19.jpg",
+    image: "/imagen.png",
     specs: ["Conexión USB", "Diseño básico"]
   },
   {
@@ -223,7 +223,7 @@ export default [
     currency: "USD",
     stock: 8,
     category: "Fancooler",
-    image: "/imagen20.jpg",
+    image: "/fan.png",
     specs: ["Tamaño: 80mm", "Marca: Deepcool"]
   },
   {
@@ -245,7 +245,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Almacenamiento/Pendrive",
-    image: "/imagen22.jpg",
+    image: "/usb.png",
     specs: ["Capacidad: 128GB", "USB 3.2"]
   },
   {
@@ -322,7 +322,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Procesadores",
-    image: "/imagen29.jpg",
+    image: "/i3.png",
     specs: ["Núcleos: 4", "Hilos: 4", "Frecuencia base: 3.6GHz", "Turbo: 4.2GHz"]
   },
   {
@@ -333,7 +333,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Procesadores",
-    image: "/imagen30.jpg",
+    image: "/i5.png",
     specs: ["Núcleos: 4", "Hilos: 4", "Frecuencia base: 3.0GHz", "Turbo: 3.3GHz"]
   },
   {
@@ -344,7 +344,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Procesadores",
-    image: "/imagen31.jpg",
+    image: "/i7.png",
     specs: ["Núcleos: 4", "Hilos: 8", "Frecuencia base: 3.4GHz", "Turbo: 4.0GHz"]
   },
   {
