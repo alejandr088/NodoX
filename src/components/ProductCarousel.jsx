@@ -1,50 +1,52 @@
 // src/components/ProductCarousel.jsx
-import { Link } from 'react-router-dom'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
-import productsData from '../data/products'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-coverflow'
-import { useCart } from '../contexts/CartContext'
-import { getCurrencySymbol } from '../components/currencyFormatter';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectCoverflow,
+} from "swiper/modules";
+import productsData from "../data/products";
+import { fetchProducts } from "../data/productsClient";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
+import { useCart } from "../contexts/CartContext";
+import { getCurrencySymbol } from "../components/currencyFormatter";
 
 export default function ProductCarousel() {
-  const { addToCart } = useCart()
+  const { addToCart } = useCart();
+  const [products, setProducts] = React.useState(productsData || []);
+
+  React.useEffect(() => {
+    let mounted = true;
+    fetchProducts().then((data) => {
+      if (mounted && data && data.length) setProducts(data);
+    });
+    return () => (mounted = false);
+  }, []);
 
   return (
-    <section
-      id="products"
-      className="relative py-16 overflow-hidden"
-    >
-      {/* Imagen de fondo con efecto parallax */}
-      <div 
-        className="parallax-bg fixed top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url("/circuit.jpg")',
-        }}
-      />
-
-      {/* Overlay para mejorar legibilidad - Ajustado para ambos temas */}
-      <div className="absolute inset-0 bg-black/40 dark:bg-black/25 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="products" className="relative py-16">
+      <div className="site-container relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white dark:text-white mb-4">
-            Nuestros <span className="text-red-500">Productos</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+            Nuestros <span className="text-brand-500">Productos</span>
           </h2>
-          <p className="text-xl text-white dark:text-gray-200 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Descubre lo último en tecnología con nuestras mejores ofertas
           </p>
         </div>
 
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
-          effect={'coverflow'}
+          effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={'auto'}
+          slidesPerView={"auto"}
           coverflowEffect={{
             rotate: 20,
             stretch: 0,
@@ -56,49 +58,70 @@ export default function ProductCarousel() {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          pagination={{ 
+          pagination={{
             clickable: true,
-            bulletClass: 'swiper-pagination-bullet',
-            bulletActiveClass: 'swiper-pagination-bullet-active bg-red-500'
+            bulletClass: "swiper-pagination-bullet",
+            bulletActiveClass: "swiper-pagination-bullet-active bg-red-500",
           }}
           navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
           }}
           loop={true}
           className="mySwiper pb-12"
         >
-          {productsData.map((product) => (
+          {products.map((product) => (
             <SwiperSlide key={product.id} className="max-w-xs bg-transparent">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 mx-2">
-                <div className="relative h-60 overflow-hidden group">
+              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 mx-2 border border-gray-200 dark:border-gray-800">
+                <div className="relative h-72 overflow-hidden group">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-400 bg-gray-50 dark:bg-slate-800"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/product1.jpg";
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <Link to={`/product/${product.id}`} className="w-full text-center bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg transition-colors">
+                  <div className="absolute inset-0 flex items-end p-4">
+                    <Link
+                      to={`/product/${product.id}`}
+                      aria-label={`Ver detalles de ${product.name}`}
+                      className="w-full text-center btn-primary"
+                    >
                       Ver Detalles
                     </Link>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-1">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-1">
                     {product.name}
                   </h3>
                   <div className="flex justify-between items-center">
-                    <span className="text-xl font-bold text-red-500">
-                      {getCurrencySymbol(product.currency)}{product.price}
+                    <span className="text-lg font-bold text-gray-900 dark:text-white">
+                      {getCurrencySymbol(product.currency)}
+                      {product.price}
                     </span>
                     <button
                       onClick={() => addToCart(product)}
-                      className="bg-gray-900 dark:bg-gray-700 text-white p-2 rounded-full hover:bg-red-500 transition-colors"
+                      className="btn-primary p-2 rounded-md"
                       aria-label={`Agregar ${product.name} al carrito`}
                       title={`Agregar ${product.name}`}
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M12 4v16m8-8H4"
+                        />
                       </svg>
                     </button>
                   </div>
@@ -109,8 +132,8 @@ export default function ProductCarousel() {
         </Swiper>
 
         {/* Navegación personalizada para mejor contraste */}
-        <div className="swiper-button-next text-white dark:text-white after:text-2xl"></div>
-        <div className="swiper-button-prev text-white dark:text-white after:text-2xl"></div>
+        <div className="swiper-button-next text-gray-900 dark:text-gray-100 after:text-2xl"></div>
+        <div className="swiper-button-prev text-gray-900 dark:text-gray-100 after:text-2xl"></div>
 
         <div className="text-center mt-8">
           <Link
@@ -118,15 +141,25 @@ export default function ProductCarousel() {
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-500 hover:bg-red-600 transition-colors"
           >
             Ver todos los productos
-            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            <svg
+              className="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
             </svg>
           </Link>
         </div>
       </div>
 
       {/* Estilos para el efecto parallax */}
-      <style jsx>{`
+      <style>{`
         .parallax-bg {
           background-attachment: fixed;
           background-size: cover;
@@ -139,21 +172,20 @@ export default function ProductCarousel() {
         }
         
         .swiper-pagination-bullet {
-          background: white;
-          opacity: 0.6;
+          background: #cbd5e1;
+          opacity: 0.8;
         }
         .swiper-pagination-bullet-active {
           opacity: 1;
-          background: #ef4444;
+          background: #aa0c0c;
         }
         .swiper-button-next,
         .swiper-button-prev {
-          color: white;
-          text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+          color: #111827;
         }
         .swiper-button-next:hover,
         .swiper-button-prev:hover {
-          color: #ef4444;
+          color: #aa0c0c;
         }
         @media (max-width: 768px) {
           .swiper-button-next,
@@ -166,5 +198,5 @@ export default function ProductCarousel() {
         }
       `}</style>
     </section>
-  )
+  );
 }

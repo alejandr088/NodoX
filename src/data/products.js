@@ -3,7 +3,8 @@ export default [
   {
     id: 1,
     name: "*USADA* MacBook Air M1",
-    description: "Apple M1, 8GB RAM, 256GB SSD, Pantalla Retina 2K 13.3\", MacOS Sequoia",
+    description:
+      'Apple M1, 8GB RAM, 256GB SSD, Pantalla Retina 2K 13.3", MacOS Sequoia',
     price: 790,
     currency: "USD",
     stock: 1,
@@ -14,8 +15,8 @@ export default [
       "RAM: 8GB",
       "Almacenamiento: 256GB SSD",
       "Pantalla: Retina 13.3 IPS 2560x1600",
-      "Sistema operativo: MacOS Sequoia"
-    ]
+      "Sistema operativo: MacOS Sequoia",
+    ],
   },
   {
     id: 2,
@@ -26,7 +27,7 @@ export default [
     stock: 3,
     category: "Conectividad Internet",
     image: "/mu6h.png",
-    specs: ["WiFi AC650", "Dual Channel", "USB"]
+    specs: ["WiFi AC650", "Dual Channel", "USB"],
   },
   {
     id: 3,
@@ -37,7 +38,7 @@ export default [
     stock: 1,
     category: "Conectividad Internet",
     image: "/extusb.jpg",
-    specs: ["3 puertos USB 3.0", "Gigabit Ethernet"]
+    specs: ["3 puertos USB 3.0", "Gigabit Ethernet"],
   },
   {
     id: 4,
@@ -48,7 +49,7 @@ export default [
     stock: 1,
     category: "Almacenamiento/SSD 2.5",
     image: "/ssdlexar.jpg",
-    specs: ["Capacidad: 256GB", "Formato: 2.5\"", "Interfaz: SATA"]
+    specs: ["Capacidad: 256GB", 'Formato: 2.5"', "Interfaz: SATA"],
   },
   {
     id: 5,
@@ -59,7 +60,7 @@ export default [
     stock: 1,
     category: "Almacenamiento/SSD 2.5",
     image: "/ssdlexar.jpg",
-    specs: ["Capacidad: 512GB", "Formato: 2.5\"", "Interfaz: SATA"]
+    specs: ["Capacidad: 512GB", 'Formato: 2.5"', "Interfaz: SATA"],
   },
   {
     id: 6,
@@ -70,7 +71,7 @@ export default [
     stock: 4,
     category: "Almacenamiento/SSD 2.5",
     image: "/ssdnetac.jpg",
-    specs: ["Capacidad: 128GB", "Formato: 2.5\"", "Interfaz: SATA"]
+    specs: ["Capacidad: 128GB", 'Formato: 2.5"', "Interfaz: SATA"],
   },
   {
     id: 7,
@@ -81,7 +82,7 @@ export default [
     stock: 1,
     category: "Almacenamiento/M.2 NVME",
     image: "/nm610pro.png",
-    specs: ["Capacidad: 512GB", "Formato: M.2", "Interfaz: NVMe"]
+    specs: ["Capacidad: 512GB", "Formato: M.2", "Interfaz: NVMe"],
   },
   {
     id: 8,
@@ -92,18 +93,18 @@ export default [
     stock: 1,
     category: "Almacenamiento/M.2 NVME",
     image: "/nm620.png",
-    specs: ["Capacidad: 256GB", "Formato: M.2", "Interfaz: NVMe"]
+    specs: ["Capacidad: 256GB", "Formato: M.2", "Interfaz: NVMe"],
   },
   {
     id: 9,
-    name: "Monitor Dell Recert 20\" CAT A+",
+    name: 'Monitor Dell Recert 20" CAT A+',
     description: "Monitor recertificado Dell 20 pulgadas categoría A+",
     price: 35,
     currency: "USD",
     stock: 1,
     category: "Monitor",
     image: "/imagen9.jpg",
-    specs: ["Pantalla: 20\"", "Condición: Recertificado CAT A+"]
+    specs: ['Pantalla: 20"', "Condición: Recertificado CAT A+"],
   },
   // {
   //   id: 10,
@@ -124,8 +125,8 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Gabinete",
-    image: "/imagen11.jpg",
-    specs: ["Formato: ATX", "Diseño Gamer"]
+    image: "/product1.jpg",
+    specs: ["Formato: ATX", "Diseño Gamer"],
   },
   {
     id: 12,
@@ -136,7 +137,7 @@ export default [
     stock: 3,
     category: "Teclado/Mouse/Auriculares",
     image: "/combo-4in1.png",
-    specs: ["Incluye: teclado, mouse, auriculares y alfombrilla"]
+    specs: ["Incluye: teclado, mouse, auriculares y alfombrilla"],
   },
   {
     id: 13,
@@ -147,7 +148,7 @@ export default [
     stock: 1,
     category: "Teclado/Mouse Inalámbrico",
     image: "/combo-genius.png",
-    specs: ["Mouse inalámbrico", "Teclado inalámbrico"]
+    specs: ["Mouse inalámbrico", "Teclado inalámbrico"],
   },
   {
     id: 14,
@@ -158,7 +159,7 @@ export default [
     stock: 2,
     category: "Teclado/Mouse USB",
     image: "/combo-2in1.png",
-    specs: ["Conexión USB", "Incluye teclado y mouse"]
+    specs: ["Conexión USB", "Incluye teclado y mouse"],
   },
   {
     id: 15,
@@ -169,7 +170,7 @@ export default [
     stock: 1,
     category: "Motherboard",
     image: "/a520m.png",
-    specs: ["Chipset: A520M", "Condición: Nueva"]
+    specs: ["Chipset: A520M", "Condición: Nueva"],
   },
   {
     id: 16,
@@ -180,7 +181,7 @@ export default [
     stock: 1,
     category: "Motherboard",
     image: "/a620mh.png",
-    specs: ["Chipset: A620MH", "Socket: AM5", "Condición: Usada"]
+    specs: ["Chipset: A620MH", "Socket: AM5", "Condición: Usada"],
   },
   {
     id: 17,
@@ -191,18 +192,23 @@ export default [
     stock: 1,
     category: "Motherboard",
     image: "/z97c.png",
-    specs: ["Chipset: Z97", "Marca: ASUS"]
+    specs: ["Chipset: Z97", "Marca: ASUS"],
   },
   {
     id: 18,
     name: "Notebook Lenovo Ideapad 330S-15ikb (reacond.)",
-    description: "Notebook Lenovo reacondicionada I5 8va Gen, 12GB RAM, 256GB SSD",
+    description:
+      "Notebook Lenovo reacondicionada I5 8va Gen, 12GB RAM, 256GB SSD",
     price: 240,
     currency: "USD",
     stock: 1,
     category: "Notebook (Reacondicionado)",
     image: "/nb-ideapad.png",
-    specs: ["Procesador: Intel I5 8va Gen", "RAM: 12GB", "Almacenamiento: 256GB SSD"]
+    specs: [
+      "Procesador: Intel I5 8va Gen",
+      "RAM: 12GB",
+      "Almacenamiento: 256GB SSD",
+    ],
   },
   {
     id: 19,
@@ -212,8 +218,8 @@ export default [
     currency: "USD",
     stock: 3,
     category: "Mouse",
-    image: "/imagen.png",
-    specs: ["Conexión USB", "Diseño básico"]
+    image: "/usb.png",
+    specs: ["Conexión USB", "Diseño básico"],
   },
   {
     id: 20,
@@ -224,7 +230,7 @@ export default [
     stock: 8,
     category: "Fancooler",
     image: "/fan.png",
-    specs: ["Tamaño: 80mm", "Marca: Deepcool"]
+    specs: ["Tamaño: 80mm", "Marca: Deepcool"],
   },
   {
     id: 21,
@@ -234,8 +240,8 @@ export default [
     currency: "USD",
     stock: 7,
     category: "Accesorios/Cable",
-    image: "/imagen21.jpg",
-    specs: ["Tipo: MicroUSB", "Largo: 1 metro"]
+    image: "/product1.jpg",
+    specs: ["Tipo: MicroUSB", "Largo: 1 metro"],
   },
   {
     id: 22,
@@ -246,7 +252,7 @@ export default [
     stock: 1,
     category: "Almacenamiento/Pendrive",
     image: "/usb.png",
-    specs: ["Capacidad: 128GB", "USB 3.2"]
+    specs: ["Capacidad: 128GB", "USB 3.2"],
   },
   {
     id: 23,
@@ -256,8 +262,8 @@ export default [
     currency: "USD",
     stock: 2,
     category: "Accesorios/Cable",
-    image: "/imagen23.jpg",
-    specs: ["Largo: 1.5m", "Full HD", "Malla protectora"]
+    image: "/product1.jpg",
+    specs: ["Largo: 1.5m", "Full HD", "Malla protectora"],
   },
   {
     id: 24,
@@ -267,8 +273,8 @@ export default [
     currency: "USD",
     stock: 5,
     category: "Accesorios/Cable",
-    image: "/imagen24.jpg",
-    specs: ["Largo: 1.5m", "Full HD"]
+    image: "/product1.jpg",
+    specs: ["Largo: 1.5m", "Full HD"],
   },
   {
     id: 25,
@@ -278,8 +284,8 @@ export default [
     currency: "USD",
     stock: 2,
     category: "Accesorios/Cable",
-    image: "/imagen25.jpg",
-    specs: ["Resolución: 2k/4k", "Largo: 5m"]
+    image: "/product1.jpg",
+    specs: ["Resolución: 2k/4k", "Largo: 5m"],
   },
   {
     id: 26,
@@ -289,8 +295,8 @@ export default [
     currency: "USD",
     stock: 2,
     category: "Accesorios/Cable",
-    image: "/imagen26.jpg",
-    specs: ["Resolución: 4K UltraHD", "Frecuencia: 60hz", "Modelo: C11079BK"]
+    image: "/product1.jpg",
+    specs: ["Resolución: 4K UltraHD", "Frecuencia: 60hz", "Modelo: C11079BK"],
   },
   {
     id: 27,
@@ -300,8 +306,8 @@ export default [
     currency: "USD",
     stock: 2,
     category: "Accesorios/Cable",
-    image: "/imagen27.jpg",
-    specs: ["Tipo: DisplayPort", "Largo: 1.5m"]
+    image: "/product1.jpg",
+    specs: ["Tipo: DisplayPort", "Largo: 1.5m"],
   },
   {
     id: 28,
@@ -311,51 +317,75 @@ export default [
     currency: "USD",
     stock: 3,
     category: "Accesorios/Cable",
-    image: "/imagen28.jpg",
-    specs: ["Tipo: HDMI a DisplayPort", "Largo: 1.5m"]
+    image: "/product1.jpg",
+    specs: ["Tipo: HDMI a DisplayPort", "Largo: 1.5m"],
   },
   {
     id: 29,
     name: "Intel I3-9100F",
-    description: "Procesador Intel Core i3-9100F 4 núcleos / 4 hilos 3.6GHz Turbo 4.2GHz",
+    description:
+      "Procesador Intel Core i3-9100F 4 núcleos / 4 hilos 3.6GHz Turbo 4.2GHz",
     price: 80,
     currency: "USD",
     stock: 1,
     category: "Procesadores",
     image: "/i3.png",
-    specs: ["Núcleos: 4", "Hilos: 4", "Frecuencia base: 3.6GHz", "Turbo: 4.2GHz"]
+    specs: [
+      "Núcleos: 4",
+      "Hilos: 4",
+      "Frecuencia base: 3.6GHz",
+      "Turbo: 4.2GHz",
+    ],
   },
   {
     id: 30,
     name: "Intel I5-2320",
-    description: "Procesador Intel Core i5-2320 4 núcleos / 4 hilos 3.0GHz Turbo 3.3GHz",
+    description:
+      "Procesador Intel Core i5-2320 4 núcleos / 4 hilos 3.0GHz Turbo 3.3GHz",
     price: 35,
     currency: "USD",
     stock: 1,
     category: "Procesadores",
     image: "/i5.png",
-    specs: ["Núcleos: 4", "Hilos: 4", "Frecuencia base: 3.0GHz", "Turbo: 3.3GHz"]
+    specs: [
+      "Núcleos: 4",
+      "Hilos: 4",
+      "Frecuencia base: 3.0GHz",
+      "Turbo: 3.3GHz",
+    ],
   },
   {
     id: 31,
     name: "Intel I7-6700",
-    description: "Procesador Intel Core i7-6700 4 núcleos / 8 hilos 3.4GHz Turbo 4.0GHz",
+    description:
+      "Procesador Intel Core i7-6700 4 núcleos / 8 hilos 3.4GHz Turbo 4.0GHz",
     price: 110,
     currency: "USD",
     stock: 1,
     category: "Procesadores",
     image: "/i7.png",
-    specs: ["Núcleos: 4", "Hilos: 8", "Frecuencia base: 3.4GHz", "Turbo: 4.0GHz"]
+    specs: [
+      "Núcleos: 4",
+      "Hilos: 8",
+      "Frecuencia base: 3.4GHz",
+      "Turbo: 4.0GHz",
+    ],
   },
   {
     id: 32,
     name: "Intel I7-8700",
-    description: "Procesador Intel Core i7-8700 6 núcleos / 12 hilos 3.2GHz Turbo 4.6GHz",
+    description:
+      "Procesador Intel Core i7-8700 6 núcleos / 12 hilos 3.2GHz Turbo 4.6GHz",
     price: 159,
     currency: "USD",
     stock: 1,
     category: "Procesadores",
     image: "/i7.png",
-    specs: ["Núcleos: 6", "Hilos: 12", "Frecuencia base: 3.2GHz", "Turbo: 4.6GHz"]
-  }
+    specs: [
+      "Núcleos: 6",
+      "Hilos: 12",
+      "Frecuencia base: 3.2GHz",
+      "Turbo: 4.6GHz",
+    ],
+  },
 ];

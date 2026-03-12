@@ -4,7 +4,9 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const getSystemTheme = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
 
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");

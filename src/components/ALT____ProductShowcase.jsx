@@ -1,9 +1,24 @@
 import { Link } from "react-router-dom";
 
 const sampleProducts = [
-  { id: 1, name: "PC Gamer Xtreme", price: 1500, image: "https://via.placeholder.com/300x200" },
-  { id: 2, name: "Laptop Pro 15", price: 1200, image: "https://via.placeholder.com/300x200" },
-  { id: 3, name: "Monitor UltraWide", price: 400, image: "https://via.placeholder.com/300x200" },
+  {
+    id: 1,
+    name: "PC Gamer Xtreme",
+    price: 1500,
+    image: "https://via.placeholder.com/300x200",
+  },
+  {
+    id: 2,
+    name: "Laptop Pro 15",
+    price: 1200,
+    image: "https://via.placeholder.com/300x200",
+  },
+  {
+    id: 3,
+    name: "Monitor UltraWide",
+    price: 400,
+    image: "https://via.placeholder.com/300x200",
+  },
 ];
 
 export default function ProductShowcase() {
@@ -21,6 +36,7 @@ export default function ProductShowcase() {
             <img
               src={product.image}
               alt={product.name}
+              loading="lazy"
               className="w-full h-48 object-cover"
             />
             <div className="p-4">

@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  darkMode: 'class',
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -20,38 +17,46 @@ export default {
           800: "#440404",
           900: "#330303",
         },
-        almostBlack: '#0d0d0d',
+        almostBlack: "#0d0d0d",
       },
       fontFamily: {
-        sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
+        sans: [
+          "Poppins",
+          "ui-sans-serif",
+          "system-ui",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+        ],
       },
       boxShadow: {
-        glass: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+        glass: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
       },
       animation: {
-        'fade-in': 'fadeIn 0.35s ease-in-out',
-        'float': 'float 3s ease-in-out infinite',
-        'particles-move': 'particlesMove 20s linear infinite',
+        "fade-in": "fadeIn 0.35s ease-in-out",
+        float: "float 3s ease-in-out infinite",
+        "particles-move": "particlesMove 20s linear infinite",
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(6px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+          "0%": { opacity: "0", transform: "translateY(6px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
         float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-8px)' },
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
         },
         particlesMove: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-100%)' },
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
         },
       },
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('tailwind-scrollbar')({ nocompatible: true }),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
   ],
-}
+};

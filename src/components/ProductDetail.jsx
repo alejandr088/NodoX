@@ -1,37 +1,46 @@
-import { useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
-import Breadcrumbs from './Breadcrumbs'
-import products from '../data/products'
-import { getCurrencySymbol } from '../components/currencyFormatter';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import Breadcrumbs from "./Breadcrumbs";
+import { fetchProductById } from "../data/productsClient";
+import { getCurrencySymbol } from "../components/currencyFormatter";
 
 export default function ProductDetail() {
-  const { id } = useParams()
-  const product = products.find(p => p.id === parseInt(id))
+  const { id } = useParams();
+  const [product, setProduct] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
 
-  if (!product) return (
-    <div className="min-h-screen pt-24 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
-      <p>Producto no encontrado</p>
-    </div>
-  )
+  React.useEffect(() => {
+    let mounted = true;
+    setLoading(true);
+    fetchProductById(id).then((p) => {
+      if (mounted) setProduct(p);
+    }).finally(() => mounted && setLoading(false));
+    return () => (mounted = false);
+  }, [id]);
+
+  if (loading)
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-28 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
+        <p>Cargando producto...</p>
+      </div>
+    );
+
+  if (!product)
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-28 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
+        <p>Producto no encontrado</p>
+      </div>
+    );
 
   // Breadcrumbs: Inicio > Productos > Nombre del Producto
   const breadcrumbs = [
     { name: "Productos", link: "/products" },
-    { name: product.name }
-  ]
+    { name: product.name },
+  ];
 
   return (
-    <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden">
-      {/* Imagen de fondo con efecto parallax */}
-      <div 
-        className="parallax-bg fixed top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url("/circuit.jpg")',
-        }}
-      />
-
-      {/* Overlay para mejorar legibilidad */}
-      <div className="absolute inset-0 bg-white/80 dark:bg-black/25 pointer-events-none"></div>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-28 pb-20 px-4">
 
       <Helmet>
         <title>{product.name} | NodoX</title>
@@ -44,57 +53,61 @@ export default function ProductDetail() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="site-container max-w-6xl">
         <Breadcrumbs paths={breadcrumbs} />
 
-        <section className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm p-8 rounded-xl shadow-lg">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="rounded-xl overflow-hidden shadow-md">
+        <section className="surface-panel rounded-[2rem] p-6 md:p-10">
+          <div className="grid gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-start">
+            <div className="surface-subtle rounded-[1.5rem] p-6">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-auto object-cover"
+                loading="lazy"
+                decoding="async"
+                className="h-auto max-h-[520px] w-full object-contain"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/product1.jpg";
+                }}
               />
             </div>
             <div>
-              <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{product.name}</h1>
-              <p className="text-red-600 dark:text-red-500 text-2xl font-semibold mb-6">
-                {getCurrencySymbol(product.currency)}{product.price}
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600">
+                Producto destacado
               </p>
-              <div className="prose max-w-none text-gray-700 dark:text-gray-300">
-                <h3 className="text-xl font-semibold mb-2 dark:text-gray-300">Especificaciones:</h3>
-                <ul className="list-disc pl-5 mb-6">
-                  {product.description.split(',').map((spec, i) => (
-                    <li key={i} className="mb-1">{spec.trim()}</li>
+              <h1 className="mb-4 mt-3 text-4xl font-bold tracking-tight text-gray-950 md:text-5xl dark:text-white">
+                {product.name}
+              </h1>
+              <p className="mb-6 text-3xl font-semibold text-gray-950 dark:text-white">
+                {getCurrencySymbol(product.currency)}
+                {product.price}
+              </p>
+              <p className="mb-8 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+                {product.description}
+              </p>
+              <div className="surface-subtle rounded-2xl p-6">
+                <h3 className="mb-3 text-xl font-semibold text-gray-950 dark:text-white">
+                  Especificaciones:
+                </h3>
+                <ul className="mb-8 space-y-3 text-gray-700 dark:text-gray-300">
+                  {product.description.split(",").map((spec, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 rounded-full bg-brand-500" />
+                      <span>{spec.trim()}</span>
+                    </li>
                   ))}
                 </ul>
-                <h3 className="text-xl dark:text-gray-300 font-semibold mb-2">Disponibilidad:</h3>
-                <p className="text-green-600 dark:text-green-500 font-medium">En stock</p>
+                <h3 className="mb-2 text-xl font-semibold text-gray-950 dark:text-white">
+                  Disponibilidad:
+                </h3>
+                <p className="font-medium text-emerald-600">
+                  En stock
+                </p>
               </div>
             </div>
           </div>
         </section>
       </div>
-
-      {/* Estilos para el efecto parallax */}
-      <style jsx>{`
-        .parallax-bg {
-          background-attachment: fixed;
-          background-size: cover;
-          background-position: center;
-          will-change: transform;
-          transform: translateZ(0);
-          backface-visibility: hidden;
-          min-height: 100vh;
-          z-index: -1;
-        }
-        
-        @media (max-width: 768px) {
-          .parallax-bg {
-            background-attachment: scroll;
-          }
-        }
-      `}</style>
     </div>
-  )
+  );
 }

@@ -1,97 +1,80 @@
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function HeroApple() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Detectar el tema actual del documento
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    setIsDark(isDarkMode);
-    
-    // Observar cambios en el tema
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          const isNowDark = document.documentElement.classList.contains('dark');
-          setIsDark(isNowDark);
-        }
-      });
-    });
-    
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-    
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-transparent">
-      {/* Video de fondo */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover brightness-75 opacity-90 z-0"
-        src="/2795171-uhd_3840_2160_25fps.mp4"
-      />
-
-      {/* Overlay semitransparente */}
-      <div
-        className={`absolute inset-3 ${
-          isDark ? "bg-black/20" : "bg-black/20"
-        } z-10 pointer-events-none`}
-      />
-
-      {/* Contenido principal */}
+    <section className="relative overflow-hidden border-b border-gray-200 bg-white pt-28 pb-20 dark:border-gray-800 dark:bg-slate-950">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.08),_transparent_35%),linear-gradient(180deg,_#ffffff_0%,_#f8fafc_100%)] dark:bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.22),_transparent_35%),linear-gradient(180deg,_#020617_0%,_#0b1120_100%)]" />
+      <div className="site-container relative grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center max-w-4xl mx-auto text-white"
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative z-10"
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
-          Tu Computadora Ideal, al Alcance de un Clic
+        <span className="mb-5 inline-flex w-fit items-center rounded-full border border-brand-100 bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-700 dark:border-brand-800 dark:bg-brand-900/20 dark:text-brand-300">
+          Equipos, repuestos y soporte con criterio técnico
+        </span>
+        <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-gray-950 md:text-6xl dark:text-white">
+          Tecnología de calidad, variedad y precios claros.
         </h1>
-        <p className="text-lg md:text-xl mb-8 max-w-xl">
-          Encuentra el equipo perfecto para gaming, oficina o desarrollo. Con
-          componentes seleccionados y asesoramiento personalizado.
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600 md:text-xl dark:text-gray-300">
+          Descubre nuestra selección de laptops, PCs, componentes y periféricos para gaming, oficina y trabajo técnico.
         </p>
-        <motion.a
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          href="/products"
-          className="inline-block bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-400 rounded-lg px-8 py-3 font-semibold shadow-lg transition-colors"
-        >
-          Ver Productos
-        </motion.a>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link to="/products" className="btn-primary px-6 py-3 text-base">
+            Explorar catálogo
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-800 transition hover:border-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-100 dark:hover:bg-slate-800"
+          >
+            Hablar con asesor
+          </Link>
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+            <p className="text-3xl font-bold text-gray-950 dark:text-white">24h</p>
+            <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Respuesta rápida para consultas comerciales y técnicas.</p>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+            <p className="text-3xl font-bold text-gray-950 dark:text-white">+30</p>
+            <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Productos activos mejor ordenados y más fáciles de comparar.</p>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+            <p className="text-3xl font-bold text-gray-950 dark:text-white">1 a 1</p>
+            <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Asesoramiento personalizado antes y después de la compra.</p>
+          </div>
+        </div>
       </motion.div>
 
-      {/* Gradiente extendido + curva separadora */}
-      <div
-        className={`absolute bottom-0 left-0 w-full h-48 z-20 pointer-events-none ${
-          isDark
-            ? "bg-gradient-to-b from-transparent to-[#0d0d0d]"
-            : "bg-gradient-to-b from-transparent to-white"
-        }`}
-      />
-
-            {/* Curva decorativa SVG para transición más orgánica */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-30">
-        <svg
-          className="relative block w-full h-12"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          viewBox="0 0 1200 120"
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+          className="relative"
         >
-          <path
-            d="M321.39 56.2C175.73 77.77 58.51 95.66 0 104.34V120h1200V0c-72.65 32.56-187.34 53.56-308.61 56.2-174.34 3.79-261.18-28.63-570-0z"
-            fill={isDark ? "#000000" : "#686666ff"}
-          />
-        </svg>
+          <div className="rounded-[2rem] border border-gray-200 bg-white p-4 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)] dark:border-gray-800 dark:bg-slate-900">
+            <div className="overflow-hidden rounded-[1.5rem] border border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-slate-800">
+              <img
+                src="/product1.jpg"
+                alt="Equipo destacado NodoX"
+                className="h-[420px] w-full object-contain p-8 md:h-[520px]"
+                loading="eager"
+              />
+            </div>
+            <div className="grid gap-4 border-t border-gray-100 px-2 pt-5 sm:grid-cols-2 dark:border-gray-800">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">Calidad en el Servicio</p>
+                <p className="mt-2 text-base leading-7 text-gray-700 dark:text-gray-300">Priorizamos una atención técnica de primer nivel, brindándote soluciones rápidas y personalizadas.</p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">Confianza Real</p>
+                <p className="mt-2 text-base leading-7 text-gray-700 dark:text-gray-300">Solidez comercial respaldada por las opiniones positivas de nuestros clientes y años en el mercado.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
