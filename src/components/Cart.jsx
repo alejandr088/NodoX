@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import WhatsappOrderButton from "./WhatsappOrderButton";
 import {
@@ -17,7 +17,7 @@ export default function Cart() {
   } = useCart();
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950">
       <main className="site-container flex-grow pt-28 pb-16">
         <div className="mx-auto max-w-5xl">
           <nav className="mb-8" aria-label="Breadcrumb">
@@ -108,7 +108,7 @@ export default function Cart() {
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="h-24 w-24 rounded-2xl border border-gray-100 bg-gray-50 object-contain p-3 dark:border-gray-700 dark:bg-slate-800"
+                          className="h-24 w-24 rounded-2xl border border-gray-100 bg-gray-50 object-contain p-3 dark:border-gray-700 dark:bg-zinc-800"
                           onError={(e) => {
                             e.currentTarget.onerror = null;
                             e.currentTarget.src = "/product1.jpg";
@@ -128,7 +128,7 @@ export default function Cart() {
                         <div className="surface-subtle flex items-center space-x-2 rounded-full p-1">
                           <button
                             onClick={() => decrementQuantity(item.id)}
-                            className="rounded-full px-3 py-2 text-gray-800 transition hover:bg-white dark:text-gray-100 dark:hover:bg-slate-700"
+                            className="rounded-full px-3 py-2 text-gray-800 transition hover:bg-white dark:text-gray-100 dark:hover:bg-zinc-700"
                             aria-label={`Disminuir cantidad de ${item.name}`}
                           >
                             −
@@ -138,7 +138,7 @@ export default function Cart() {
                           </div>
                           <button
                             onClick={() => incrementQuantity(item.id)}
-                            className="rounded-full px-3 py-2 text-gray-800 transition hover:bg-white dark:text-gray-100 dark:hover:bg-slate-700"
+                            className="rounded-full px-3 py-2 text-gray-800 transition hover:bg-white dark:text-gray-100 dark:hover:bg-zinc-700"
                             aria-label={`Aumentar cantidad de ${item.name}`}
                           >
                             +
@@ -210,14 +210,14 @@ export default function Cart() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Link
                     to="/"
-                    className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-6 py-3 text-center font-medium text-gray-800 transition hover:border-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-100 dark:hover:bg-slate-800"
+                    className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-6 py-3 text-center font-medium text-gray-800 transition hover:border-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:bg-zinc-900 dark:text-gray-100 dark:hover:bg-zinc-800"
                   >
                     Seguir comprando
                   </Link>
                   <div className="flex gap-2">
                     <button
                       onClick={clearCart}
-                      className="w-full rounded-md bg-gray-200 px-4 py-3 text-gray-800 transition-colors hover:bg-gray-300 dark:bg-slate-700 dark:text-gray-100 dark:hover:bg-slate-600"
+                      className="w-full rounded-md bg-gray-200 px-4 py-3 text-gray-800 transition-colors hover:bg-gray-300 dark:bg-zinc-700 dark:text-gray-100 dark:hover:bg-zinc-600"
                     >
                       Vaciar carrito
                     </button>

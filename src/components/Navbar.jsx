@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+﻿import { useState, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import { useTheme } from "../contexts/ThemeContext";
@@ -121,7 +121,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav role="navigation" aria-label="Barra de navegación principal" className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm dark:border-gray-800 dark:bg-slate-950">
+    <nav role="navigation" aria-label="Barra de navegación principal" className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm dark:border-gray-800 dark:bg-zinc-950">
       <div className="site-container py-3 flex items-center justify-between">
         <Link to="/" className="text-2xl md:text-2xl font-extrabold text-brand-500 tracking-tight flex items-center">
           <img
@@ -137,7 +137,7 @@ export default function Navbar() {
           aria-label="Abrir menú"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
-          className="md:hidden p-2 rounded-md bg-white hover:bg-gray-50 transition-shadow shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-600 dark:bg-slate-900 dark:hover:bg-slate-800"
+          className="md:hidden p-2 rounded-md bg-white hover:bg-gray-50 transition-shadow shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-600 dark:bg-zinc-900 dark:hover:bg-zinc-800"
         >
           <div className={`nav-hamburger ${isMenuOpen ? "open" : ""}`}>
             <span className="block w-5 h-0.5 bg-current my-0.5" />
@@ -158,7 +158,7 @@ export default function Navbar() {
                     ${
                       location.pathname === link.path
                         ? "bg-brand-600 text-white shadow dark:bg-brand-500 dark:shadow-[0_8px_24px_-12px_rgba(170,12,12,0.85)]"
-                        : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-slate-800"
+                        : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-zinc-800"
                     }`}
                 >
                   {link.name}
@@ -194,7 +194,7 @@ export default function Navbar() {
                     ${
                       location.pathname === link.path
                         ? "bg-brand-600 text-white shadow dark:bg-brand-500 dark:shadow-[0_8px_24px_-12px_rgba(170,12,12,0.85)]"
-                        : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-slate-800"
+                        : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-zinc-800"
                     }`}
                 >
                   {link.name}
@@ -209,7 +209,7 @@ export default function Navbar() {
 
                 {hoverTop === i && (
                   <div
-                    className="absolute top-full left-0 mt-2 bg-white dark:bg-slate-900 shadow-xl rounded-xl py-2 w-64 z-50 border border-gray-200 dark:border-gray-800"
+                    className="absolute top-full left-0 mt-2 bg-white dark:bg-zinc-900 shadow-xl rounded-xl py-2 w-64 z-50 border border-gray-200 dark:border-gray-800"
                     onMouseEnter={cancelTopMenuClose}
                     onMouseLeave={() => handleTopMenuLeave(i)}
                   >
@@ -228,7 +228,7 @@ export default function Navbar() {
                         >
                           <div
                             className={`px-4 py-2 text-sm font-semibold cursor-${hasChildren ? "default" : "pointer"} 
-                              text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center justify-between`}
+                              text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 flex items-center justify-between`}
                           >
                             {hasChildren ? (
                               <>
@@ -264,7 +264,7 @@ export default function Navbar() {
 
                           {hasChildren && hoverSub === key && (
                             <div
-                              className="absolute top-0 left-full ml-2 bg-white dark:bg-slate-900 shadow-xl rounded-xl py-2 w-56 z-50 border border-gray-200 dark:border-gray-800"
+                              className="absolute top-0 left-full ml-2 bg-white dark:bg-zinc-900 shadow-xl rounded-xl py-2 w-56 z-50 border border-gray-200 dark:border-gray-800"
                               onMouseEnter={cancelSubMenuClose}
                               onMouseLeave={() => handleSubMenuLeave(key)}
                             >
@@ -278,7 +278,7 @@ export default function Navbar() {
                                     setHoverTop(null);
                                     setHoverSub(null);
                                   }}
-                                  className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800 w-full text-left focus:outline-none focus:ring-2 focus:ring-red-500"
+                                  className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 w-full text-left focus:outline-none focus:ring-2 focus:ring-red-500"
                                   aria-label={`Buscar ${deep.name}`}
                                 >
                                   {deep.name}
@@ -305,7 +305,7 @@ export default function Navbar() {
               placeholder="Buscar productos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="flex-grow px-3 py-2 rounded-l-md border border-gray-200 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm dark:border-gray-700 dark:bg-slate-800 dark:text-gray-100"
+              className="flex-grow px-3 py-2 rounded-l-md border border-gray-200 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm dark:border-gray-700 dark:bg-zinc-800 dark:text-gray-100"
             />
             <button
               type="submit"
@@ -321,7 +321,7 @@ export default function Navbar() {
           <button
             onClick={toggleTheme}
             aria-label="Cambiar tema"
-            className="p-2 rounded-md bg-white hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-brand-600 dark:bg-slate-900 dark:hover:bg-slate-800 dark:ring-offset-slate-950"
+            className="p-2 rounded-md bg-white hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-brand-600 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:ring-offset-zinc-950"
             title="Cambiar tema"
           >
             {theme === "dark" ? (
@@ -346,7 +346,7 @@ export default function Navbar() {
           <Link
             to="/cart"
             aria-label={`Carrito (${itemCount} productos)`}
-            className="relative p-2 rounded-md bg-white hover:bg-gray-50 transition-shadow shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-600 dark:bg-slate-900 dark:hover:bg-slate-800 dark:ring-offset-slate-950"
+            className="relative p-2 rounded-md bg-white hover:bg-gray-50 transition-shadow shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-600 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:ring-offset-zinc-950"
           >
             <svg
               className="w-6 h-6 text-gray-800 dark:text-gray-100"
@@ -374,7 +374,7 @@ export default function Navbar() {
       {isMenuOpen && (
         <div
           id="mobile-menu"
-          className="md:hidden bg-white border-t border-gray-100 px-4 pb-4 rounded-b-md shadow-sm dark:bg-slate-950 dark:border-gray-800"
+          className="md:hidden bg-white border-t border-gray-100 px-4 pb-4 rounded-b-md shadow-sm dark:bg-zinc-950 dark:border-gray-800"
         >
           {/* Search box mobile */}
           <form
@@ -386,7 +386,7 @@ export default function Navbar() {
               placeholder="Buscar productos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="flex-grow px-3 py-2 rounded-l-md border border-gray-200 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm dark:border-gray-700 dark:bg-slate-800 dark:text-gray-100"
+              className="flex-grow px-3 py-2 rounded-l-md border border-gray-200 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm dark:border-gray-700 dark:bg-zinc-800 dark:text-gray-100"
             />
             <button
               type="submit"
@@ -410,7 +410,7 @@ export default function Navbar() {
                     ${
                       location.pathname === link.path
                         ? "bg-brand-600 text-white shadow"
-                        : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-slate-800"
+                        : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-zinc-800"
                     }`}
                 >
                   {link.name}
@@ -470,7 +470,7 @@ export default function Navbar() {
                                     );
                                     setIsMenuOpen(false);
                                   }}
-                                  className="block px-3 py-1 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded w-full text-left"
+                                  className="block px-3 py-1 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded w-full text-left"
                                 >
                                   {deep.name}
                                 </button>
@@ -490,7 +490,7 @@ export default function Navbar() {
                             }
                             setIsMenuOpen(false);
                           }}
-                          className="block px-3 py-1 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded w-full text-left"
+                          className="block px-3 py-1 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded w-full text-left"
                         >
                           {sub.name}
                         </button>

@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function HeroApple() {
   return (
-    <section className="relative overflow-hidden border-b border-gray-200 bg-white pt-28 pb-20 dark:border-gray-800 dark:bg-slate-950">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.08),_transparent_35%),linear-gradient(180deg,_#ffffff_0%,_#f8fafc_100%)] dark:bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.22),_transparent_35%),linear-gradient(180deg,_#020617_0%,_#0b1120_100%)]" />
+    <section className="relative overflow-hidden border-b border-gray-200 bg-white pt-28 pb-20 dark:border-gray-800 dark:bg-zinc-950">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.08),_transparent_35%),linear-gradient(180deg,_#ffffff_0%,_#f8fafc_100%)] dark:bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.18),_transparent_35%),linear-gradient(180deg,_#09090b_0%,_#18181b_100%)]" />
       <div className="site-container relative grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -27,21 +27,21 @@ export default function HeroApple() {
           </Link>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-800 transition hover:border-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-100 dark:hover:bg-slate-800"
+            className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-800 transition hover:border-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:bg-zinc-900 dark:text-gray-100 dark:hover:bg-zinc-800"
           >
             Hablar con asesor
           </Link>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-zinc-900">
             <p className="text-3xl font-bold text-gray-950 dark:text-white">24h</p>
             <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Respuesta rápida para consultas comerciales y técnicas.</p>
           </div>
-          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-zinc-900">
             <p className="text-3xl font-bold text-gray-950 dark:text-white">+30</p>
             <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Productos activos mejor ordenados y más fáciles de comparar.</p>
           </div>
-          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-slate-900">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-zinc-900">
             <p className="text-3xl font-bold text-gray-950 dark:text-white">1 a 1</p>
             <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Asesoramiento personalizado antes y después de la compra.</p>
           </div>
@@ -54,8 +54,8 @@ export default function HeroApple() {
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           className="relative"
         >
-          <div className="rounded-[2rem] border border-gray-200 bg-white p-4 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)] dark:border-gray-800 dark:bg-slate-900">
-            <div className="overflow-hidden rounded-[1.5rem] border border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-slate-800">
+          <div className="rounded-[2rem] border border-gray-200 bg-white p-4 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)] dark:border-gray-800 dark:bg-zinc-900">
+            <div className="overflow-hidden rounded-[1.5rem] border border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-zinc-800">
               <img
                 src="/product1.jpg"
                 alt="Equipo destacado NodoX"

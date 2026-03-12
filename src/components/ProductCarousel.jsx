@@ -1,4 +1,4 @@
-// src/components/ProductCarousel.jsx
+﻿// src/components/ProductCarousel.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -72,14 +72,14 @@ export default function ProductCarousel() {
         >
           {products.map((product) => (
             <SwiperSlide key={product.id} className="max-w-xs bg-transparent">
-              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 mx-2 border border-gray-200 dark:border-gray-800">
+              <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 mx-2 border border-gray-200 dark:border-gray-800">
                 <div className="relative h-72 overflow-hidden group">
                   <img
                     src={product.image}
                     alt={product.name}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-400 bg-gray-50 dark:bg-slate-800"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-400 bg-gray-50 dark:bg-zinc-800"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
                       e.currentTarget.src = "/product1.jpg";

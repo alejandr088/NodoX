@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Breadcrumbs from "./Breadcrumbs";
@@ -21,14 +21,14 @@ export default function ProductDetail() {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-28 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
+      <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 pt-28 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
         <p>Cargando producto...</p>
       </div>
     );
 
   if (!product)
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-28 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
+      <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 pt-28 pb-12 px-4 text-center text-gray-900 dark:text-gray-100">
         <p>Producto no encontrado</p>
       </div>
     );
@@ -40,7 +40,7 @@ export default function ProductDetail() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-28 pb-20 px-4">
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 pt-28 pb-20 px-4">
 
       <Helmet>
         <title>{product.name} | NodoX</title>

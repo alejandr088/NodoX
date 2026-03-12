@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+﻿import Navbar from "../components/Navbar";
 import services from "../data/services";
 import { Helmet } from "react-helmet";
 
@@ -122,7 +122,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 font-sans">
+    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-zinc-950 dark:text-gray-100 font-sans">
       <Helmet>
         <title>Servicios | NodoX</title>
         <meta
@@ -143,11 +143,11 @@ export default function ServicesPage() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{ backgroundImage: "url('/services-light.jpg')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-slate-100/70 to-slate-50/85 dark:from-slate-950/80 dark:via-slate-950/70 dark:to-slate-950/88 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-slate-100/70 to-slate-50/85 dark:from-zinc-950/80 dark:via-zinc-950/70 dark:to-zinc-950/88 pointer-events-none" />
 
       <Navbar />
       <main className="site-container relative z-10 pt-24 pb-20 md:pt-28">
-        <section className="mb-12 md:mb-14 rounded-[2rem] border border-white/50 bg-white/82 px-5 sm:px-8 py-8 sm:py-10 backdrop-blur-md shadow-xl dark:border-slate-700/70 dark:bg-slate-900/78">
+        <section className="mb-12 md:mb-14 rounded-[2rem] border border-white/50 bg-white/82 px-5 sm:px-8 py-8 sm:py-10 backdrop-blur-md shadow-xl dark:border-zinc-700/70 dark:bg-zinc-900/78">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600">
             Servicios técnicos
           </p>
@@ -163,7 +163,7 @@ export default function ServicesPage() {
             {serviceCategories.map((category, index) => (
               <div
                 key={index}
-                className="rounded-2xl border border-white/50 bg-white/82 p-5 sm:p-6 backdrop-blur-md shadow-lg transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-700/70 dark:bg-slate-900/78"
+                className="rounded-2xl border border-white/50 bg-white/82 p-5 sm:p-6 backdrop-blur-md shadow-lg transition hover:-translate-y-1 hover:shadow-xl dark:border-zinc-700/70 dark:bg-zinc-900/78"
               >
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20">
                   {category.icon}
@@ -186,7 +186,7 @@ export default function ServicesPage() {
               return (
                 <div
                   key={service.id}
-                  className="rounded-2xl border border-white/50 bg-white/82 p-5 sm:p-6 backdrop-blur-md shadow-lg transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-700/70 dark:bg-slate-900/78"
+                  className="rounded-2xl border border-white/50 bg-white/82 p-5 sm:p-6 backdrop-blur-md shadow-lg transition hover:-translate-y-1 hover:shadow-xl dark:border-zinc-700/70 dark:bg-zinc-900/78"
                 >
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                     {service.title}
@@ -195,7 +195,7 @@ export default function ServicesPage() {
                     {service.description}
                   </p>
 
-                  <div className="rounded-xl border border-gray-200/60 bg-white/72 p-4 dark:border-slate-700/70 dark:bg-slate-800/80">
+                  <div className="rounded-xl border border-gray-200/60 bg-white/72 p-4 dark:border-zinc-700/70 dark:bg-zinc-800/80">
                     <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-2 flex items-center">
                       <svg
                         className="w-5 h-5 text-red-500 mr-2"

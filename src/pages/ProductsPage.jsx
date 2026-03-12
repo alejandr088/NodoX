@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import productsData from "../data/products";
 import { fetchProducts } from "../data/productsClient";
@@ -107,12 +107,12 @@ export default function ProductsPage() {
   }, [products, searchQuery]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
+    <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-zinc-950">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{ backgroundImage: "url('/product2.jpg')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/88 via-slate-100/80 to-slate-50/90 dark:from-slate-950/86 dark:via-slate-950/80 dark:to-slate-950/92 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/88 via-slate-100/80 to-slate-50/90 dark:from-zinc-950/86 dark:via-zinc-950/80 dark:to-zinc-950/92 pointer-events-none" />
 
       <Helmet>
         <title>Productos | NodoX</title>

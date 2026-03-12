@@ -1,8 +1,8 @@
-export default function Footer() {
+﻿export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-50 text-gray-700 py-12 px-6 dark:bg-slate-950 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800">
+    <footer className="bg-gray-50 text-gray-700 py-12 px-6 dark:bg-zinc-950 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800">
       <div className="site-container grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet";
@@ -47,7 +47,7 @@ export default function AboutUsPage() {
   const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 font-sans">
+    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-zinc-950 dark:text-gray-100 font-sans">
       <Helmet>
         <title>Sobre Nosotros | NodoX</title>
         <meta
@@ -68,7 +68,7 @@ export default function AboutUsPage() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{ backgroundImage: "url('/pexels-fauxels-3183197.jpg')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-slate-100/78 to-slate-50/90 dark:from-slate-950/88 dark:via-slate-950/78 dark:to-slate-950/92 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-slate-100/78 to-slate-50/90 dark:from-zinc-950/88 dark:via-zinc-950/78 dark:to-zinc-950/92 pointer-events-none" />
 
       <Navbar />
 

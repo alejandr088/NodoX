@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 const COMPONENTS_DATA = {
   cpu: [
@@ -110,7 +110,7 @@ export default function PCBuilder() {
                   className={`w-full text-left px-4 py-2 rounded-lg border transition ${
                     selected[category]?.id === option.id
                       ? "bg-red-500 text-white border-red-500"
-                      : "bg-gray-100 dark:bg-slate-800 border-transparent hover:border-gray-300 dark:hover:border-gray-600"
+                      : "bg-gray-100 dark:bg-zinc-800 border-transparent hover:border-gray-300 dark:hover:border-gray-600"
                   }`}
                   aria-pressed={selected[category]?.id === option.id}
                 >

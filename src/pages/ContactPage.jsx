@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+﻿import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet";
 
 export default function ContactPage() {
@@ -27,7 +27,7 @@ export default function ContactPage() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{ backgroundImage: "url('/contact.jpg')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/45 dark:from-slate-950/70 dark:via-slate-950/55 dark:to-slate-950/75 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/45 dark:from-zinc-950/70 dark:via-zinc-950/55 dark:to-zinc-950/75 pointer-events-none" />
 
       <Navbar />
 
@@ -46,7 +46,7 @@ export default function ContactPage() {
       <main className="site-container relative z-10 pt-12 pb-20 md:pt-16">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Tarjeta Información de Contacto */}
-          <div className="bg-white/86 dark:bg-slate-900/82 backdrop-blur-md p-5 sm:p-8 rounded-2xl shadow-xl border border-white/45 dark:border-slate-700/70">
+          <div className="bg-white/86 dark:bg-zinc-900/82 backdrop-blur-md p-5 sm:p-8 rounded-2xl shadow-xl border border-white/45 dark:border-zinc-700/70">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
               <svg
                 className="w-6 h-6 text-red-500 mr-2"
@@ -66,7 +66,7 @@ export default function ContactPage() {
             </h2>
             <div className="space-y-4">
               {/* Dirección */}
-              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-white/70 dark:hover:bg-slate-800/70 rounded-xl transition">
+              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-white/70 dark:hover:bg-zinc-800/70 rounded-xl transition">
                 <div className="bg-red-100 dark:bg-red-900/20 p-3 rounded-full">
                   <svg
                     className="w-6 h-6 text-red-500"
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 </div>
               </div>
               {/* Teléfonos */}
-              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-white/70 dark:hover:bg-slate-800/70 rounded-xl transition">
+              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-white/70 dark:hover:bg-zinc-800/70 rounded-xl transition">
                 <div className="bg-red-100 dark:bg-red-900/20 p-3 rounded-full">
                   <svg
                     className="w-6 h-6 text-red-500"
@@ -126,7 +126,7 @@ export default function ContactPage() {
                 </div>
               </div>
               {/* Email */}
-              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-white/70 dark:hover:bg-slate-800/70 rounded-xl transition">
+              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-white/70 dark:hover:bg-zinc-800/70 rounded-xl transition">
                 <div className="bg-red-100 dark:bg-red-900/20 p-3 rounded-full">
                   <svg
                     className="w-6 h-6 text-red-500"
@@ -197,7 +197,7 @@ export default function ContactPage() {
           </div>
 
           {/* Tarjeta Ubicación y Horario */}
-          <div className="bg-white/86 dark:bg-slate-900/82 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden border border-white/45 dark:border-slate-700/70">
+          <div className="bg-white/86 dark:bg-zinc-900/82 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden border border-white/45 dark:border-zinc-700/70">
             <div className="h-60 sm:h-80 w-full">
               <iframe
                 width="100%"
@@ -226,7 +226,7 @@ export default function ContactPage() {
                   <span>Sábados:</span>
                   <span>10:00 - 14:00</span>
                 </li>
-                <li className="flex justify-between bg-white/70 dark:bg-slate-800/70 p-2 rounded-lg">
+                <li className="flex justify-between bg-white/70 dark:bg-zinc-800/70 p-2 rounded-lg">
                   <span>Domingo:</span>
                   <span>Cerrado</span>
                 </li>

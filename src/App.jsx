@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+﻿import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 const ProductDetail = lazy(() => import("./components/ProductDetail"));
@@ -28,7 +28,7 @@ export default function App() {
         Saltar al contenido
       </a>
       <div className="app-background" />
-      <div id="main-content" className="min-h-screen bg-white transition-colors dark:bg-slate-950">
+      <div id="main-content" className="min-h-screen bg-white transition-colors dark:bg-zinc-950">
         <header className="flex justify-end p-4">
           {/* <ThemeToggle /> */}
         </header>
