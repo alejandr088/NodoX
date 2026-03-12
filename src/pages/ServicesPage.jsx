@@ -7,22 +7,8 @@ export default function ServicesPage() {
 
   // Función para generar mensaje de WhatsApp para servicios
   const generateServiceMessage = (service) => {
-    let messageParts = [
-      "¡Hola NodoX! Estoy interesado en el siguiente servicio:",
-      "",
-      `*${service.title}*`,
-      `${service.description}`,
-      "",
-      "Por favor, necesito:",
-      "1. Información sobre disponibilidad",
-      "2. Precio del servicio",
-      "3. Tiempo estimado de realización",
-      "4. Formas de pago aceptadas",
-      "",
-      "¡Gracias!",
-    ];
-
-    return encodeURIComponent(messageParts.join("\n"));
+    const message = `¡Hola NodoX! Estoy interesado en el siguiente servicio: ${service.title} ${service.description}.`;
+    return encodeURIComponent(message);
   };
 
   // Definimos los beneficios para cada tipo de servicio basado en palabras clave
