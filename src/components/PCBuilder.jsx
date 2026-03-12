@@ -2,24 +2,24 @@
 
 const COMPONENTS_DATA = {
   cpu: [
-    { id: 1, name: "Intel Core i5-12400F", price: 180, platform: "intel", watts: 95 },
-    { id: 2, name: "AMD Ryzen 5 5600X", price: 200, platform: "amd", watts: 105 },
+    { id: 1, name: "Intel Core i5-12600K", price: 290, platform: "intel", watts: 95 },
+    { id: 2, name: "AMD Ryzen 7 7800X3D", price: 535, platform: "amd", watts: 105 },
   ],
   gpu: [
-    { id: 1, name: "Nvidia RTX 3060", price: 350, watts: 170 },
-    { id: 2, name: "AMD Radeon RX 6600 XT", price: 300, watts: 160 },
+    { id: 1, name: "Nvidia RTX 3060", price: 470, watts: 170 },
+    { id: 2, name: "AMD Radeon RX 6600 XT", price: 650, watts: 160 },
   ],
   ram: [
-    { id: 1, name: "16GB DDR4 3200MHz", price: 80, watts: 12 },
-    { id: 2, name: "32GB DDR4 3200MHz", price: 150, watts: 18 },
+    { id: 1, name: "16GB DDR4 3200MHz", price: 180, watts: 12 },
+    { id: 2, name: "32GB DDR4 3200MHz", price: 350, watts: 18 },
   ],
   storage: [
-    { id: 1, name: "512GB NVMe SSD", price: 90, watts: 8 },
-    { id: 2, name: "1TB NVMe SSD", price: 150, watts: 10 },
+    { id: 1, name: "512GB NVMe SSD", price: 290, watts: 8 },
+    { id: 2, name: "1TB NVMe SSD", price: 450, watts: 10 },
   ],
   motherboard: [
-    { id: 1, name: "MSI B550 Tomahawk", price: 150, platform: "amd", watts: 45 },
-    { id: 2, name: "ASUS ROG Strix B660-F", price: 180, platform: "intel", watts: 45 },
+    { id: 1, name: "MSI B550 Tomahawk", price: 194, platform: "amd", watts: 45 },
+    { id: 2, name: "ASUS ROG Strix B660-F", price: 400, platform: "intel", watts: 45 },
   ],
 };
 
