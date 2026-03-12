@@ -85,7 +85,7 @@ export default function BusinessSales() {
 
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"
-        style={{ backgroundImage: "url('/pexels-pixabay-257886.jpg')" }}
+        style={{ backgroundImage: "url('/pexels-cookiecutter-1148820.jpg')" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/88 via-slate-100/78 to-slate-50/90 dark:from-zinc-950/88 dark:via-zinc-950/80 dark:to-zinc-950/92 pointer-events-none" />
 
