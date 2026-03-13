@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="12" fill="transparent" />
+
+  <path
+    d="M8 15.4 15.4 8l40.6 40.6L48.6 56 8 15.4Z"
+    fill="#AA0C0C"
+  />
+  <path
+    d="M48.6 8 56 15.4 15.4 56 8 48.6 48.6 8Z"
+    fill="#C01616"
+  />
+
+  <!-- Detail near intersection: white Danish-cross style accent, localized only at center -->
+  <g opacity="0.98">
+    <rect x="28.6" y="23.8" width="6.8" height="16.4" rx="1.7" fill="white" />
+    <rect x="24.4" y="28.6" width="15.2" height="5.2" rx="1.6" fill="white" />
+  </g>
+
+  <!-- Subtle center shading to keep depth and avoid a flat/common X -->
+  <path
+    d="M23.6 20.9 32 29.3l8.4-8.4 2.4 2.4-8.4 8.4 8.4 8.4-2.4 2.4-8.4-8.4-8.4 8.4-2.4-2.4 8.4-8.4-8.4-8.4 2.4-2.4Z"
+    fill="#8F0A0A"
+    opacity="0.32"
+  />
+</svg>
