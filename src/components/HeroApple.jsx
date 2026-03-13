@@ -4,13 +4,25 @@ import { motion } from "framer-motion";
 export default function HeroApple() {
   return (
     <section className="relative overflow-hidden border-b border-gray-200 bg-white pt-28 pb-20 dark:border-gray-800 dark:bg-zinc-950">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.08),_transparent_35%),linear-gradient(180deg,_#ffffff_0%,_#f8fafc_100%)] dark:bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.18),_transparent_35%),linear-gradient(180deg,_#09090b_0%,_#18181b_100%)]" />
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/hero-video.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/88 to-white/90 dark:from-zinc-950/84 dark:via-zinc-950/78 dark:to-zinc-950/88" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.14),_transparent_38%)] dark:bg-[radial-gradient(circle_at_top_left,_rgba(170,12,12,0.24),_transparent_42%)]" />
+
       <div className="site-container relative grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative z-10"
+        className="relative z-10 rounded-3xl bg-white/50 p-4 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.45)] backdrop-blur-[1px] md:p-6 dark:bg-zinc-950/45"
       >
         <span className="mb-5 inline-flex w-fit items-center rounded-full border border-brand-100 bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-700 dark:border-brand-800 dark:bg-brand-900/20 dark:text-brand-300">
           Equipos, repuestos y soporte con criterio técnico
@@ -18,7 +30,7 @@ export default function HeroApple() {
         <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-gray-950 md:text-6xl dark:text-white">
           Tecnología de calidad, variedad y precios claros.
         </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600 md:text-xl dark:text-gray-300">
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-white-600 md:text-xl dark:text-gray-300">
           Descubre nuestra selección de laptops, PCs, componentes y periféricos para gaming, oficina y trabajo técnico.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import Footer from "./components/Footer";
 import WhatsappButton from "./components/WhatsappButton";
+import FloatingNodoxLogo from "./components/FloatingNodoxLogo";
 import "./index.css";
 
 export default function App() {
@@ -52,6 +53,7 @@ export default function App() {
           </Routes>
         </Suspense>
         <Footer />
+        <FloatingNodoxLogo />
         <WhatsappButton />
       </div>
     </>
