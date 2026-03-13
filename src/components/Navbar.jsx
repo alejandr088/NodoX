@@ -123,7 +123,7 @@ export default function Navbar() {
   return (
     <nav role="navigation" aria-label="Barra de navegación principal" className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm dark:border-gray-800 dark:bg-zinc-950">
       <div className="site-container py-3 flex items-center justify-between">
-        <Link to="/" className="text-2xl md:text-2xl font-extrabold text-brand-500 tracking-tight flex items-center">
+        <Link to="/" className="-ml-1 md:-ml-2 text-2xl md:text-2xl font-extrabold text-brand-500 tracking-tight flex items-center">
           <img
             src={theme === "dark" ? "/nodoxwht.png" : "/nodoxred.png"}
             alt="NodoX"
@@ -147,7 +147,7 @@ export default function Navbar() {
         </button>
 
         {/* Desktop Links + Search */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-5 md:ml-4 lg:ml-8 xl:ml-10">
           {navLinks.map((link, i) => {
             if (!link.subMenu) {
               return (
@@ -298,7 +298,7 @@ export default function Navbar() {
           {/* Search box desktop */}
           <form
             onSubmit={handleSearch}
-            className="ml-6 flex items-center w-full max-w-xs"
+            className="ml-4 mr-8 xl:mr-10 flex items-center w-full max-w-xs"
           >
             <input
               type="text"
@@ -317,28 +317,37 @@ export default function Navbar() {
         </div>
 
         {/* Theme + Cart */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 md:ml-8 lg:ml-10">
           <button
             onClick={toggleTheme}
             aria-label="Cambiar tema"
-            className="p-2 rounded-md bg-white hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-brand-600 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:ring-offset-zinc-950"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700 transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-gray-100 dark:hover:bg-zinc-800 dark:ring-offset-zinc-950"
             title="Cambiar tema"
           >
             {theme === "dark" ? (
               <svg
-                className="w-5 h-5 text-yellow-300"
+                className="h-5 w-5 text-amber-300"
                 viewBox="0 0 24 24"
-                fill="currentColor"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.9"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <path d="M6.76 4.84l-1.8-1.79L3 5.01l1.79 1.8 1.97-1.97zM1 13h3v-2H1v2zm10 9h2v-3h-2v3zm8.24-19.16l1.79 1.79-1.97 1.97-1.79-1.79 1.97-1.97zM21 11v2h3v-2h-3zM4.22 19.78l1.79-1.79 1.97 1.97-1.79 1.79-1.97-1.97zM12 6a6 6 0 100 12A6 6 0 0012 6z" />
+                <circle cx="12" cy="12" r="4.2" />
+                <path d="M12 2.4v2.1M12 19.5v2.1M4.4 12h2.1M17.5 12h2.1M6.6 6.6l1.5 1.5M15.9 15.9l1.5 1.5M17.4 6.6l-1.5 1.5M8.1 15.9l-1.5 1.5" />
               </svg>
             ) : (
               <svg
-                className="w-5 h-5 text-gray-700"
+                className="h-5 w-5 text-gray-700 dark:text-gray-100"
                 viewBox="0 0 24 24"
-                fill="currentColor"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.9"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                <path d="M21 12.4A8.7 8.7 0 1111.6 3a7.1 7.1 0 009.4 9.4z" />
               </svg>
             )}
           </button>

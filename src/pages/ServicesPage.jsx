@@ -13,9 +13,12 @@ export default function ServicesPage() {
 
   // Definimos los beneficios para cada tipo de servicio basado en palabras clave
   const getServiceBenefits = (service) => {
+    const title = service.title.toLowerCase();
+    const description = service.description.toLowerCase();
+
     if (
-      service.title.includes("Reparación") ||
-      service.description.includes("hardware")
+      title.includes("reparación") ||
+      description.includes("hardware")
     ) {
       return [
         "Diagnóstico gratuito*",
@@ -24,14 +27,14 @@ export default function ServicesPage() {
       ];
     }
     if (
-      service.title.includes("Recuperación") ||
-      service.description.includes("datos")
+      title.includes("recuperación") ||
+      description.includes("datos")
     ) {
       return ["Confidencialidad garantizada", "Soporte post-recuperación"];
     }
     if (
-      service.title.includes("Soporte técnico") ||
-      service.description.includes("asistencia")
+      title.includes("soporte técnico") ||
+      description.includes("asistencia")
     ) {
       return [
         "Respuesta en menos de 2 horas",
@@ -47,10 +50,48 @@ export default function ServicesPage() {
     ];
   };
 
-  const serviceCategories = [
-    {
-      name: "Reparaciones",
-      icon: (
+  const getServiceDetails = (service) => {
+    const title = service.title.toLowerCase();
+
+    if (title.includes("reparación")) {
+      return [
+        "Mantenimiento preventivo y correctivo",
+        "Cambio de componentes y limpieza interna",
+        "Optimización de rendimiento en Windows",
+        "Formateo profesional con backup previo",
+      ];
+    }
+
+    if (title.includes("recuperación")) {
+      return [
+        "Recuperación desde HDD, SSD y USB",
+        "Respaldo de datos críticos por prioridad",
+        "Análisis de estado del disco",
+        "Entrega organizada por carpetas",
+      ];
+    }
+
+    if (title.includes("soporte técnico")) {
+      return [
+        "Soporte remoto para equipos",
+        "Eliminación de virus y malware",
+        "Configuración de red, impresoras y periféricos",
+        "Asistencia para software de trabajo diario",
+      ];
+    }
+
+    return [
+      "Asistencia personalizada",
+      "Proceso documentado",
+      "Atención por WhatsApp",
+    ];
+  };
+
+  const getServiceIcon = (service) => {
+    const title = service.title.toLowerCase();
+
+    if (title.includes("reparación")) {
+      return (
         <svg
           className="w-8 h-8 text-red-500"
           fill="none"
@@ -62,14 +103,14 @@ export default function ServicesPage() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+            d="M11 5a1 1 0 011 1v4h4a1 1 0 010 2h-4v4a1 1 0 11-2 0v-4H6a1 1 0 010-2h4V6a1 1 0 011-1z"
           />
         </svg>
-      ),
-    },
-    {
-      name: "Software",
-      icon: (
+      );
+    }
+
+    if (title.includes("recuperación")) {
+      return (
         <svg
           className="w-8 h-8 text-red-500"
           fill="none"
@@ -81,31 +122,29 @@ export default function ServicesPage() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+            d="M4 7h16M4 12h16M4 17h10M17 17l3 3m0 0l3-3m-3 3v-6"
           />
         </svg>
-      ),
-    },
-    {
-      name: "Hardware",
-      icon: (
-        <svg
-          className="w-8 h-8 text-red-500"
-          fill="none"
-          stroke="currentColor"
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-          />
-        </svg>
-      ),
-    },
-  ];
+      );
+    }
+
+    return (
+      <svg
+        className="w-8 h-8 text-red-500"
+        fill="none"
+        stroke="currentColor"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M12 3v2m0 14v2m9-9h-2M5 12H3m14.95 6.95l-1.414-1.414M7.464 7.464 6.05 6.05m11.9 0-1.414 1.414M7.464 16.536 6.05 17.95M12 8a4 4 0 100 8 4 4 0 000-8z"
+        />
+      </svg>
+    );
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-zinc-950 dark:text-gray-100 font-sans">
@@ -132,57 +171,50 @@ export default function ServicesPage() {
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-slate-100/70 to-slate-50/85 dark:from-zinc-950/80 dark:via-zinc-950/70 dark:to-zinc-950/88 pointer-events-none" />
 
       <Navbar />
-      <main className="site-container relative z-10 pt-24 pb-20 md:pt-28">
-        <section className="mb-12 md:mb-14 rounded-[2rem] border border-white/50 bg-white/82 px-5 sm:px-8 py-8 sm:py-10 backdrop-blur-md shadow-xl dark:border-zinc-700/70 dark:bg-zinc-900/78">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600">
-            Servicios técnicos
-          </p>
-          <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight text-gray-950 dark:text-white">
-            Resolvemos problemas reales con procesos claros.
+      <main className="site-container relative z-10 pt-22 pb-10 md:pt-24 md:pb-12">
+        <section className="mb-6 md:mb-8">
+          <h1 className="text-base font-semibold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-400">
+            Nuestros servicios
           </h1>
-          <p className="mt-4 max-w-3xl text-base sm:text-lg leading-7 sm:leading-8 text-gray-600 dark:text-gray-300">
-            Reparaciones, mantenimiento, recuperación y soporte con foco en tiempos, trazabilidad y comunicación directa.
-          </p>
         </section>
 
-        <section className="mb-12 grid gap-8 md:grid-cols-3">
-            {serviceCategories.map((category, index) => (
-              <div
-                key={index}
-                className="rounded-2xl border border-white/50 bg-white/82 p-5 sm:p-6 backdrop-blur-md shadow-lg transition hover:-translate-y-1 hover:shadow-xl dark:border-zinc-700/70 dark:bg-zinc-900/78"
-              >
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20">
-                  {category.icon}
-                </div>
-                <h3 className="mb-2 text-center text-xl font-bold text-gray-900 dark:text-white">
-                  {category.name}
-                </h3>
-                <p className="text-gray-700 dark:text-gray-400 text-center">
-                  Servicios especializados en {category.name.toLowerCase()}
-                </p>
-              </div>
-            ))}
-        </section>
-
-        <section className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <section className="grid gap-5 md:grid-cols-3">
             {services.map((service) => {
               const benefits = getServiceBenefits(service);
+              const details = getServiceDetails(service);
+              const serviceIcon = getServiceIcon(service);
               const whatsappUrl = `https://wa.me/${phone.replace(/\D/g, "")}?text=${generateServiceMessage(service)}`;
 
               return (
                 <div
                   key={service.id}
-                  className="rounded-2xl border border-white/50 bg-white/82 p-5 sm:p-6 backdrop-blur-md shadow-lg transition hover:-translate-y-1 hover:shadow-xl dark:border-zinc-700/70 dark:bg-zinc-900/78"
+                  className="flex h-full flex-col rounded-2xl border border-white/50 bg-white/82 p-4 sm:p-5 backdrop-blur-md shadow-lg transition hover:-translate-y-1 hover:shadow-xl dark:border-zinc-700/70 dark:bg-zinc-900/78"
                 >
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20">
+                    {serviceIcon}
+                  </div>
+                  <h3 className="mb-2 min-h-[3.5rem] text-lg font-bold text-gray-900 dark:text-white">
                     {service.title}
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="mb-3 min-h-[4.5rem] text-sm leading-6 text-gray-700 dark:text-gray-300">
                     {service.description}
                   </p>
 
-                  <div className="rounded-xl border border-gray-200/60 bg-white/72 p-4 dark:border-zinc-700/70 dark:bg-zinc-800/80">
-                    <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-2 flex items-center">
+                  <div className="mb-3 rounded-xl border border-gray-200/60 bg-white/72 p-3 dark:border-zinc-700/70 dark:bg-zinc-800/80">
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-2 text-sm">
+                      Incluye
+                    </h4>
+                    <ul className="min-h-[7.5rem] space-y-1.5 text-sm">
+                      {details.map((detail, index) => (
+                        <li key={index} className="text-gray-700 dark:text-gray-300">
+                          - {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="rounded-xl border border-gray-200/60 bg-white/72 p-3 dark:border-zinc-700/70 dark:bg-zinc-800/80">
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-2 flex items-center text-sm">
                       <svg
                         className="w-5 h-5 text-red-500 mr-2"
                         fill="none"
@@ -199,7 +231,7 @@ export default function ServicesPage() {
                       </svg>
                       Beneficios
                     </h4>
-                    <ul className="space-y-2 text-sm">
+                    <ul className="min-h-[5.5rem] space-y-2 text-sm">
                       {benefits.map((benefit, index) => (
                         <li
                           key={index}
@@ -229,7 +261,7 @@ export default function ServicesPage() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-md bg-emerald-600 px-4 py-3 font-medium text-white transition-colors hover:bg-emerald-700"
+                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-md bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
                   >
                     <svg
                       className="w-5 h-5"
