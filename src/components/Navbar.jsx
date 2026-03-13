@@ -76,6 +76,25 @@ export default function Navbar() {
     }
   };
 
+  const goEnglish = () => {
+    if (typeof window === "undefined") return;
+    const currentUrl = window.location.href;
+    window.location.href = `https://translate.google.com/translate?sl=es&tl=en&u=${encodeURIComponent(currentUrl)}`;
+  };
+
+  const goSpanish = () => {
+    if (typeof window === "undefined") return;
+    const currentUrl = new URL(window.location.href);
+    const originalUrl = currentUrl.searchParams.get("u");
+
+    if (originalUrl) {
+      window.location.href = decodeURIComponent(originalUrl);
+      return;
+    }
+
+    window.location.href = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
+  };
+
   // Función para manejar el cierre con retraso
   const handleTopMenuLeave = (i) => {
     if (hoverTop === i) {
@@ -123,12 +142,12 @@ export default function Navbar() {
   return (
     <nav role="navigation" aria-label="Barra de navegación principal" className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm dark:border-gray-800 dark:bg-zinc-950">
       <div className="site-container py-3 flex items-center justify-between">
-        <Link to="/" className="-ml-1 md:-ml-2 text-2xl md:text-2xl font-extrabold text-brand-500 tracking-tight flex items-center">
+        <Link to="/" className="-ml-1 md:-ml-2 shrink-0 text-2xl md:text-2xl font-extrabold text-brand-500 tracking-tight flex items-center">
           <img
             src={theme === "dark" ? "/nodoxwht.png" : "/nodoxred.png"}
             alt="NodoX"
             loading="lazy"
-            className="h-8 w-auto"
+            className="h-8 w-auto max-w-none shrink-0 object-contain"
           />
         </Link>
 
@@ -376,6 +395,26 @@ export default function Navbar() {
               </span>
             )}
           </Link>
+
+          <div className="hidden md:flex shrink-0 items-center gap-1 text-xs font-semibold text-gray-500 dark:text-gray-300">
+            <button
+              type="button"
+              onClick={goSpanish}
+              className="transition hover:text-brand-600 dark:hover:text-brand-400"
+              aria-label="Ver sitio en español"
+            >
+              ES
+            </button>
+            <span>/</span>
+            <button
+              type="button"
+              onClick={goEnglish}
+              className="transition hover:text-brand-600 dark:hover:text-brand-400"
+              aria-label="Translate site to English"
+            >
+              EN
+            </button>
+          </div>
         </div>
       </div>
 
@@ -404,6 +443,25 @@ export default function Navbar() {
               Buscar
             </button>
           </form>
+
+          <div className="mb-4 inline-flex items-center rounded-lg border border-gray-200 bg-white p-1 text-xs font-semibold dark:border-zinc-700 dark:bg-zinc-900">
+            <button
+              type="button"
+              onClick={goSpanish}
+              className="rounded-md px-3 py-1.5 text-gray-700 transition hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-zinc-800"
+              aria-label="Ver sitio en español"
+            >
+              ES
+            </button>
+            <button
+              type="button"
+              onClick={goEnglish}
+              className="rounded-md px-3 py-1.5 text-gray-700 transition hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-zinc-800"
+              aria-label="Translate site to English"
+            >
+              EN
+            </button>
+          </div>
 
           {/* Mobile links */}
           {navLinks.map((link, i) => (
