@@ -71,7 +71,7 @@ export default function HeroApple() {
               <img
                 src="/pexels-gibson-chan-1622383532-34301929.jpg"
                 alt="Equipo destacado NodoX"
-                className="h-[420px] w-full object-contain p-8 md:h-[520px]"
+                className="h-[420px] w-full object-cover md:h-[520px]"
                 loading="eager"
               />
             </div>

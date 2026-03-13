@@ -1,7 +1,14 @@
-﻿import { useState, useRef } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import { useTheme } from "../contexts/ThemeContext";
+
+function getGoogleTranslateCookie() {
+  if (typeof document === "undefined") return "/es/es";
+
+  const match = document.cookie.match(/(?:^|; )googtrans=([^;]+)/);
+  return match ? decodeURIComponent(match[1]) : "/es/es";
+}
 
 export default function Navbar() {
   const location = useLocation();
@@ -13,6 +20,96 @@ export default function Navbar() {
   const [hoverSub, setHoverSub] = useState(null);
   const [openMobile, setOpenMobile] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentLanguage, setCurrentLanguage] = useState("es");
+
+  const syncCurrentLanguage = () => {
+    const cookieValue = getGoogleTranslateCookie();
+    setCurrentLanguage(cookieValue.endsWith("/en") ? "en" : "es");
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const initializeTranslate = () => {
+      const translateRoot = document.getElementById("google_translate_element");
+
+      if (!translateRoot || !window.google?.translate?.TranslateElement) {
+        return;
+      }
+
+      if (!translateRoot.childElementCount) {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: "es",
+            includedLanguages: "es,en",
+            autoDisplay: false,
+          },
+          "google_translate_element",
+        );
+      }
+    };
+
+    syncCurrentLanguage();
+
+    window.googleTranslateElementInit = initializeTranslate;
+
+    if (window.google?.translate?.TranslateElement) {
+      initializeTranslate();
+      return undefined;
+    }
+
+    const existingScript = document.querySelector(
+      'script[src*="translate.google.com/translate_a/element.js"]',
+    );
+
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    return () => {
+      window.googleTranslateElementInit = undefined;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof document === "undefined") {
+      return undefined;
+    }
+
+    const cleanupTranslateArtifacts = () => {
+      document.body.style.top = "0px";
+      document.documentElement.style.top = "0px";
+
+      document
+        .querySelectorAll(
+          ".goog-te-banner-frame, iframe.goog-te-banner-frame, .goog-te-balloon-frame, #goog-gt-tt, .VIpgJd-ZVi9od-aZ2wEe, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf",
+        )
+        .forEach((element) => {
+          element.remove();
+        });
+    };
+
+    cleanupTranslateArtifacts();
+
+    const observer = new MutationObserver(() => {
+      cleanupTranslateArtifacts();
+      syncCurrentLanguage();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["style", "class"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   // Referencias para los timeouts
   const topMenuTimeoutRef = useRef(null);
@@ -76,23 +173,64 @@ export default function Navbar() {
     }
   };
 
-  const goEnglish = () => {
-    if (typeof window === "undefined") return;
-    const currentUrl = window.location.href;
-    window.location.href = `https://translate.google.com/translate?sl=es&tl=en&u=${encodeURIComponent(currentUrl)}`;
-  };
-
-  const goSpanish = () => {
-    if (typeof window === "undefined") return;
-    const currentUrl = new URL(window.location.href);
-    const originalUrl = currentUrl.searchParams.get("u");
-
-    if (originalUrl) {
-      window.location.href = decodeURIComponent(originalUrl);
+  const setGoogleTranslateCookie = (value) => {
+    if (typeof document === "undefined" || typeof window === "undefined") {
       return;
     }
 
-    window.location.href = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
+    document.cookie = `googtrans=${value}; path=/`;
+    document.cookie = `googtrans=${value}; path=/; domain=${window.location.hostname}`;
+  };
+
+  const applyLanguage = (language) => {
+    if (typeof document === "undefined") return false;
+
+    const select = document.querySelector(".goog-te-combo");
+
+    if (!select) {
+      return false;
+    }
+
+    select.value = language;
+    select.dispatchEvent(new Event("change"));
+    setCurrentLanguage(language);
+    return true;
+  };
+
+  useEffect(() => {
+    if (currentLanguage !== "en") {
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      applyLanguage("en");
+    }, 120);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [currentLanguage, isMenuOpen, openMobile, location.pathname]);
+
+  const goEnglish = () => {
+    setGoogleTranslateCookie("/es/en");
+    setCurrentLanguage("en");
+
+    if (applyLanguage("en")) {
+      return;
+    }
+
+    window.location.reload();
+  };
+
+  const goSpanish = () => {
+    setGoogleTranslateCookie("/es/es");
+    setCurrentLanguage("es");
+
+    if (applyLanguage("es")) {
+      return;
+    }
+
+    window.location.reload();
   };
 
   // Función para manejar el cierre con retraso
@@ -141,6 +279,7 @@ export default function Navbar() {
 
   return (
     <nav role="navigation" aria-label="Barra de navegación principal" className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm dark:border-gray-800 dark:bg-zinc-950">
+      <div id="google_translate_element" className="sr-only" />
       <div className="site-container py-3 flex items-center justify-between">
         <Link to="/" className="-ml-1 md:-ml-2 shrink-0 text-2xl md:text-2xl font-extrabold text-brand-500 tracking-tight flex items-center">
           <img
@@ -226,90 +365,96 @@ export default function Navbar() {
                   </svg>
                 </Link>
 
-                {hoverTop === i && (
-                  <div
-                    className="absolute top-full left-0 mt-2 bg-white dark:bg-zinc-900 shadow-xl rounded-xl py-2 w-64 z-50 border border-gray-200 dark:border-gray-800"
-                    onMouseEnter={cancelTopMenuClose}
-                    onMouseLeave={() => handleTopMenuLeave(i)}
-                  >
-                    {link.subMenu.map((sub, j) => {
-                      const hasChildren = Array.isArray(sub.subMenu);
-                      const key = `${i}-${j}`;
-                      return (
+                <div
+                  className={`absolute top-full left-0 mt-2 w-64 rounded-xl border border-gray-200 bg-white py-2 shadow-xl transition-all dark:border-gray-800 dark:bg-zinc-900 ${
+                    hoverTop === i
+                      ? "visible z-50 opacity-100 translate-y-0"
+                      : "invisible -z-10 opacity-0 -translate-y-1 pointer-events-none"
+                  }`}
+                  onMouseEnter={cancelTopMenuClose}
+                  onMouseLeave={() => handleTopMenuLeave(i)}
+                >
+                  {link.subMenu.map((sub, j) => {
+                    const hasChildren = Array.isArray(sub.subMenu);
+                    const key = `${i}-${j}`;
+                    return (
+                      <div
+                        key={key}
+                        className="relative"
+                        onMouseEnter={() => {
+                          cancelSubMenuClose();
+                          setHoverSub(key);
+                        }}
+                        onMouseLeave={() => handleSubMenuLeave(key)}
+                      >
                         <div
-                          key={key}
-                          className="relative"
-                          onMouseEnter={() => {
-                            cancelSubMenuClose();
-                            setHoverSub(key);
-                          }}
-                          onMouseLeave={() => handleSubMenuLeave(key)}
+                          className={`px-4 py-2 text-sm font-semibold cursor-${hasChildren ? "default" : "pointer"} 
+                            text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 flex items-center justify-between`}
                         >
-                          <div
-                            className={`px-4 py-2 text-sm font-semibold cursor-${hasChildren ? "default" : "pointer"} 
-                              text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 flex items-center justify-between`}
-                          >
-                            {hasChildren ? (
-                              <>
-                                <span>{sub.name}</span>
-                                <svg
-                                  className="w-4 h-4 opacity-70"
-                                  viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                >
-                                  <path d="M9 6l6 6-6 6" />
-                                </svg>
-                              </>
-                            ) : (
-                                <button
-                                  onClick={() => {
-                                    if (sub.path) {
-                                      navigate(sub.path);
-                                    } else {
-                                      navigate(
-                                        `/products?search=${encodeURIComponent(sub.name)}`,
-                                      );
-                                    }
-                                    setHoverTop(null);
-                                    setHoverSub(null);
-                                  }}
-                                  className="w-full text-left"
-                                  aria-label={sub.path ? `Ir a ${sub.name}` : `Buscar ${sub.name}`}
-                                >
-                                  {sub.name}
-                                </button>
-                            )}
-                          </div>
-
-                          {hasChildren && hoverSub === key && (
-                            <div
-                              className="absolute top-0 left-full ml-2 bg-white dark:bg-zinc-900 shadow-xl rounded-xl py-2 w-56 z-50 border border-gray-200 dark:border-gray-800"
-                              onMouseEnter={cancelSubMenuClose}
-                              onMouseLeave={() => handleSubMenuLeave(key)}
-                            >
-                              {sub.subMenu.map((deep, k) => (
-                                <button
-                                  key={`${key}-${k}`}
-                                  onClick={() => {
+                          {hasChildren ? (
+                            <>
+                              <span>{sub.name}</span>
+                              <svg
+                                className="w-4 h-4 opacity-70"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                              >
+                                <path d="M9 6l6 6-6 6" />
+                              </svg>
+                            </>
+                          ) : (
+                              <button
+                                onClick={() => {
+                                  if (sub.path) {
+                                    navigate(sub.path);
+                                  } else {
                                     navigate(
-                                      `/products?search=${encodeURIComponent(deep.name)}`,
+                                      `/products?search=${encodeURIComponent(sub.name)}`,
                                     );
-                                    setHoverTop(null);
-                                    setHoverSub(null);
-                                  }}
-                                  className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 w-full text-left focus:outline-none focus:ring-2 focus:ring-red-500"
-                                  aria-label={`Buscar ${deep.name}`}
-                                >
-                                  {deep.name}
-                                </button>
-                              ))}
-                            </div>
+                                  }
+                                  setHoverTop(null);
+                                  setHoverSub(null);
+                                }}
+                                className="w-full text-left"
+                                aria-label={sub.path ? `Ir a ${sub.name}` : `Buscar ${sub.name}`}
+                              >
+                                {sub.name}
+                              </button>
                           )}
                         </div>
-                      );
-                    })}
-                  </div>
-                )}
+
+                        {hasChildren && (
+                          <div
+                            className={`absolute top-0 left-full ml-2 w-56 rounded-xl border border-gray-200 bg-white py-2 shadow-xl transition-all dark:border-gray-800 dark:bg-zinc-900 ${
+                              hoverSub === key
+                                ? "visible z-50 opacity-100 translate-x-0"
+                                : "invisible -z-10 opacity-0 translate-x-1 pointer-events-none"
+                            }`}
+                            onMouseEnter={cancelSubMenuClose}
+                            onMouseLeave={() => handleSubMenuLeave(key)}
+                          >
+                            {sub.subMenu.map((deep, k) => (
+                              <button
+                                key={`${key}-${k}`}
+                                onClick={() => {
+                                  navigate(
+                                    `/products?search=${encodeURIComponent(deep.name)}`,
+                                  );
+                                  setHoverTop(null);
+                                  setHoverSub(null);
+                                }}
+                                className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 dark:text-gray-200 dark:hover:bg-zinc-800"
+                                aria-label={`Buscar ${deep.name}`}
+                              >
+                                {deep.name}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             );
           })}
@@ -396,11 +541,15 @@ export default function Navbar() {
             )}
           </Link>
 
-          <div className="hidden md:flex shrink-0 items-center gap-1 text-xs font-semibold text-gray-500 dark:text-gray-300">
+          <div className="hidden md:flex shrink-0 items-center gap-1 text-xs font-semibold text-gray-500 dark:text-gray-300 notranslate" translate="no">
             <button
               type="button"
               onClick={goSpanish}
-              className="transition hover:text-brand-600 dark:hover:text-brand-400"
+              className={`rounded px-1 transition ${
+                currentLanguage === "es"
+                  ? "text-brand-600 dark:text-brand-400"
+                  : "hover:text-brand-600 dark:hover:text-brand-400"
+              }`}
               aria-label="Ver sitio en español"
             >
               ES
@@ -409,7 +558,11 @@ export default function Navbar() {
             <button
               type="button"
               onClick={goEnglish}
-              className="transition hover:text-brand-600 dark:hover:text-brand-400"
+              className={`rounded px-1 transition ${
+                currentLanguage === "en"
+                  ? "text-brand-600 dark:text-brand-400"
+                  : "hover:text-brand-600 dark:hover:text-brand-400"
+              }`}
               aria-label="Translate site to English"
             >
               EN
@@ -444,11 +597,15 @@ export default function Navbar() {
             </button>
           </form>
 
-          <div className="mb-4 inline-flex items-center rounded-lg border border-gray-200 bg-white p-1 text-xs font-semibold dark:border-zinc-700 dark:bg-zinc-900">
+          <div className="mb-4 inline-flex items-center rounded-lg border border-gray-200 bg-white p-1 text-xs font-semibold dark:border-zinc-700 dark:bg-zinc-900 notranslate" translate="no">
             <button
               type="button"
               onClick={goSpanish}
-              className="rounded-md px-3 py-1.5 text-gray-700 transition hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-zinc-800"
+              className={`rounded-md px-3 py-1.5 transition ${
+                currentLanguage === "es"
+                  ? "bg-gray-100 text-brand-600 dark:bg-zinc-800 dark:text-brand-400"
+                  : "text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-zinc-800"
+              }`}
               aria-label="Ver sitio en español"
             >
               ES
@@ -456,7 +613,11 @@ export default function Navbar() {
             <button
               type="button"
               onClick={goEnglish}
-              className="rounded-md px-3 py-1.5 text-gray-700 transition hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-zinc-800"
+              className={`rounded-md px-3 py-1.5 transition ${
+                currentLanguage === "en"
+                  ? "bg-gray-100 text-brand-600 dark:bg-zinc-800 dark:text-brand-400"
+                  : "text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-zinc-800"
+              }`}
               aria-label="Translate site to English"
             >
               EN

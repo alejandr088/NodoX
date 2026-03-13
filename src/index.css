@@ -78,6 +78,54 @@
   .app-background {
     display: none;
   }
+
+  .goog-te-banner-frame,
+  .goog-te-banner-frame.skiptranslate,
+  iframe.goog-te-banner-frame,
+  .goog-te-balloon-frame,
+  #goog-gt-tt,
+  .goog-tooltip,
+  .goog-tooltip:hover,
+  .goog-text-highlight,
+  .goog-te-gadget-icon,
+  .goog-logo-link,
+  .goog-te-gadget span,
+  .skiptranslate > iframe,
+  .VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+  .VIpgJd-ZVi9od-l4eHX-hSRGPd,
+  .VIpgJd-ZVi9od-ORHb,
+  .VIpgJd-ZVi9od-xl07Ob-lTBxed,
+  .VIpgJd-ZVi9od-aZ2wEe-OiiCO,
+  .VIpgJd-ZVi9od-aZ2wEe {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+  }
+
+  html,
+  body {
+    top: 0 !important;
+    position: static !important;
+    min-height: 100%;
+  }
+
+  body.translated-ltr,
+  body.translated-rtl {
+    top: 0 !important;
+    position: static !important;
+  }
+
+  .goog-te-gadget {
+    color: transparent !important;
+    font-size: 0 !important;
+  }
+
+  .skiptranslate {
+    display: inline !important;
+  }
 }
 
 @layer components {
