@@ -147,4 +147,32 @@
   .nav-hamburger.open span:nth-child(3) {
     transform: translateY(-0.45rem) rotate(-45deg);
   }
+
+  @keyframes logoSyncedRedGlow {
+    0%,
+    100% {
+      box-shadow:
+        0 12px 24px -14px rgba(220, 38, 38, 0.55),
+        0 0 0 rgba(248, 113, 113, 0);
+      filter: brightness(1);
+    }
+    50% {
+      box-shadow:
+        0 18px 36px -14px rgba(220, 38, 38, 0.9),
+        0 0 28px rgba(248, 113, 113, 0.5);
+      filter: brightness(1.08);
+    }
+  }
+
+  .logo-sync-red-glow {
+    animation: logoSyncedRedGlow 7s ease-in-out infinite;
+    will-change: box-shadow, filter;
+  }
+
+  @media (max-width: 767px) {
+    .logo-sync-red-glow {
+      animation: none;
+      filter: none;
+    }
+  }
 }

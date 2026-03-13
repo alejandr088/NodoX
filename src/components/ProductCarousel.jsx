@@ -7,6 +7,7 @@ import {
   Pagination,
   Autoplay,
   EffectCoverflow,
+  Keyboard,
 } from "swiper/modules";
 import productsData from "../data/products";
 import { fetchProducts } from "../data/productsClient";
@@ -30,9 +31,11 @@ export default function ProductCarousel() {
   }, []);
 
   return (
-    <section id="products" className="relative py-16">
+    <section id="products" className="relative overflow-hidden py-20">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top,_rgba(170,12,12,0.08),_transparent_40%)] dark:bg-[radial-gradient(circle_at_top,_rgba(248,113,113,0.12),_transparent_42%)]" />
+
       <div className="site-container relative z-10">
-        <div className="text-center mb-12">
+        <div className="mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Nuestros <span className="text-brand-500">Productos</span>
           </h2>
@@ -42,21 +45,24 @@ export default function ProductCarousel() {
         </div>
 
         <Swiper
-          modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
+          modules={[Navigation, Pagination, Autoplay, EffectCoverflow, Keyboard]}
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={"auto"}
+          slidesPerView={1.06}
+          spaceBetween={20}
+          keyboard={{ enabled: true }}
           coverflowEffect={{
-            rotate: 20,
+            rotate: 6,
             stretch: 0,
-            depth: 120,
-            modifier: 1,
-            slideShadows: true,
+            depth: 160,
+            modifier: 1.6,
+            slideShadows: false,
           }}
           autoplay={{
-            delay: 3000,
+            delay: 3400,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           pagination={{
             clickable: true,
@@ -67,46 +73,59 @@ export default function ProductCarousel() {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           }}
+          breakpoints={{
+            640: { slidesPerView: 1.18, spaceBetween: 22 },
+            768: { slidesPerView: 1.45, spaceBetween: 24 },
+            1024: { slidesPerView: 1.9, spaceBetween: 30 },
+            1280: { slidesPerView: 2.25, spaceBetween: 34 },
+          }}
           loop={true}
-          className="mySwiper pb-12"
+          className="mySwiper pb-14"
         >
           {products.map((product) => (
-            <SwiperSlide key={product.id} className="max-w-xs bg-transparent">
-              <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 mx-2 border border-gray-200 dark:border-gray-800">
-                <div className="relative h-72 overflow-hidden group">
+            <SwiperSlide key={product.id} className="bg-transparent py-2">
+              <article className="group mx-auto max-w-sm overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_22px_65px_-32px_rgba(15,23,42,0.55)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_75px_-28px_rgba(15,23,42,0.65)] dark:border-zinc-700/70 dark:bg-zinc-900/75 dark:shadow-[0_26px_75px_-35px_rgba(0,0,0,0.75)]">
+                <div className="relative h-72 overflow-hidden bg-gradient-to-b from-gray-100 to-white dark:from-zinc-800 dark:to-zinc-900">
+                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-80" />
                   <img
                     src={product.image}
                     alt={product.name}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-400 bg-gray-50 dark:bg-zinc-800"
+                    className="h-full w-full object-contain bg-gray-50/90 p-6 transition-transform duration-500 group-hover:scale-110 dark:bg-zinc-800/80"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
                       e.currentTarget.src = "/product1.jpg";
                     }}
                   />
-                  <div className="absolute inset-0 flex items-end p-4">
+                  <div className="absolute inset-x-0 bottom-0 z-20 p-4">
                     <Link
                       to={`/product/${product.id}`}
                       aria-label={`Ver detalles de ${product.name}`}
-                      className="w-full text-center btn-primary"
+                      className="logo-sync-red-glow inline-flex w-full items-center justify-center rounded-xl border border-red-500/70 bg-gradient-to-r from-red-500 to-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_14px_28px_-14px_rgba(220,38,38,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:from-red-600 hover:to-brand-600 hover:shadow-[0_18px_34px_-14px_rgba(185,28,28,0.95)]"
                     >
                       Ver Detalles
                     </Link>
                   </div>
                 </div>
+
                 <div className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-1">
                     {product.name}
                   </h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg font-bold text-gray-900 dark:text-white">
-                      {getCurrencySymbol(product.currency)}
-                      {product.price}
-                    </span>
+
+                  <div className="mb-4 flex items-end justify-between gap-3">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.22em] text-gray-500 dark:text-gray-400">Precio</p>
+                      <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {getCurrencySymbol(product.currency)}
+                        {product.price}
+                      </span>
+                    </div>
+
                     <button
                       onClick={() => addToCart(product)}
-                      className="btn-primary p-2 rounded-md"
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-500 text-white shadow-lg shadow-brand-500/30 transition hover:scale-105 hover:bg-brand-600"
                       aria-label={`Agregar ${product.name} al carrito`}
                       title={`Agregar ${product.name}`}
                     >
@@ -125,20 +144,39 @@ export default function ProductCarousel() {
                       </svg>
                     </button>
                   </div>
+
+                  <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-zinc-800">
+                    <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-brand-500 to-red-400" />
+                  </div>
                 </div>
-              </div>
+              </article>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Navegación personalizada para mejor contraste */}
-        <div className="swiper-button-next text-gray-900 dark:text-gray-100 after:text-2xl"></div>
-        <div className="swiper-button-prev text-gray-900 dark:text-gray-100 after:text-2xl"></div>
+        <button
+          type="button"
+          aria-label="Anterior"
+          className="swiper-button-prev !left-2 !top-[44%] !h-12 !w-12 rounded-full border border-white/80 !bg-white/90 !text-gray-900 shadow-xl backdrop-blur transition hover:!scale-105 hover:!bg-white dark:border-zinc-600 dark:!bg-zinc-900/90 dark:!text-white dark:hover:!bg-zinc-800 md:!left-4"
+        >
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+            <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          aria-label="Siguiente"
+          className="swiper-button-next !right-2 !top-[44%] !h-12 !w-12 rounded-full border border-white/80 !bg-white/90 !text-gray-900 shadow-xl backdrop-blur transition hover:!scale-105 hover:!bg-white dark:border-zinc-600 dark:!bg-zinc-900/90 dark:!text-white dark:hover:!bg-zinc-800 md:!right-4"
+        >
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+            <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
 
         <div className="text-center mt-8">
           <Link
             to="/products"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-500 hover:bg-red-600 transition-colors"
+            className="logo-sync-red-glow inline-flex items-center rounded-xl border border-transparent bg-red-500 px-6 py-3 text-base font-medium text-white shadow-[0_15px_30px_-16px_rgba(220,38,38,0.75)] transition hover:-translate-y-0.5 hover:bg-red-600"
           >
             Ver todos los productos
             <svg
@@ -160,40 +198,46 @@ export default function ProductCarousel() {
 
       {/* Estilos para el efecto parallax */}
       <style>{`
-        .parallax-bg {
-          background-attachment: fixed;
-          background-size: cover;
-          background-position: center;
-          will-change: transform;
-          transform: translateZ(0);
-          backface-visibility: hidden;
-          min-height: 100vh;
-          z-index: -1;
+        .mySwiper .swiper-slide {
+          opacity: 0.68;
+          transform: scale(0.94);
+          transition: opacity 0.35s ease, transform 0.35s ease;
         }
-        
+        .mySwiper .swiper-slide-active {
+          opacity: 1;
+          transform: scale(1);
+        }
+
         .swiper-pagination-bullet {
+          width: 9px;
+          height: 9px;
           background: #cbd5e1;
-          opacity: 0.8;
+          opacity: 0.7;
+          transition: all 0.25s ease;
         }
         .swiper-pagination-bullet-active {
           opacity: 1;
           background: #aa0c0c;
+          transform: scale(1.2);
         }
+
         .swiper-button-next,
         .swiper-button-prev {
-          color: #111827;
+          margin-top: 0;
         }
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-          color: #aa0c0c;
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+          display: none;
         }
+
         @media (max-width: 768px) {
           .swiper-button-next,
           .swiper-button-prev {
             display: none;
           }
-          .parallax-bg {
-            background-attachment: scroll;
+          .mySwiper .swiper-slide {
+            opacity: 1;
+            transform: scale(1);
           }
         }
       `}</style>
