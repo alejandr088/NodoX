@@ -69,7 +69,7 @@ export default function HeroApple() {
           <div className="rounded-[2rem] border border-gray-200 bg-white p-4 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)] dark:border-gray-800 dark:bg-zinc-900">
             <div className="overflow-hidden rounded-[1.5rem] border border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-zinc-800">
               <img
-                src="/product1.jpg"
+                src="/pexels-gibson-chan-1622383532-34301929.jpg"
                 alt="Equipo destacado NodoX"
                 className="h-[420px] w-full object-contain p-8 md:h-[520px]"
                 loading="eager"
