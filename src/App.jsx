@@ -14,6 +14,7 @@ import PCBuilderPage from "./pages/PCBuilderPage";
 import BusinessSales from "./pages/BusinessSales";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import ServiceLandingPage from "./pages/ServiceLandingPage";
 import Footer from "./components/Footer";
 import WhatsappButton from "./components/WhatsappButton";
 import FloatingNodoxLogo from "./components/FloatingNodoxLogo";
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:slug" element={<ServiceLandingPage />} />
             <Route path="/pc-builder" element={<PCBuilderPage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/contact" element={<ContactPage />} />

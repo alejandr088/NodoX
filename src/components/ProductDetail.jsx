@@ -1,9 +1,10 @@
 ﻿import React from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import Breadcrumbs from "./Breadcrumbs";
 import { fetchProductById } from "../data/productsClient";
 import { getCurrencySymbol } from "../components/currencyFormatter";
+import SEO from "./SEO";
+import { absoluteUrl } from "../config/seo";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -39,19 +40,32 @@ export default function ProductDetail() {
     { name: product.name },
   ];
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: [product.image],
+    offers: {
+      "@type": "Offer",
+      priceCurrency: product.currency || "USD",
+      price: String(product.price),
+      availability: "https://schema.org/InStock",
+      url: absoluteUrl(`/product/${product.id}`),
+    },
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 pt-28 pb-20 px-4">
 
-      <Helmet>
-        <title>{product.name} | NodoX</title>
-        <meta name="description" content={product.description} />
-        <meta property="og:title" content={`${product.name} | NodoX`} />
-        <meta property="og:description" content={product.description} />
-        <meta property="og:type" content="product" />
-        <meta property="og:image" content={product.image} />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title={product.name}
+        description={product.description}
+        path={`/product/${product.id}`}
+        image={product.image}
+        type="product"
+        structuredData={productSchema}
+      />
 
       <div className="site-container max-w-6xl">
         <Breadcrumbs paths={breadcrumbs} />

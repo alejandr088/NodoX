@@ -1,24 +1,15 @@
 import Navbar from "../components/Navbar";
-import { Helmet } from "react-helmet";
+import SEO from "../components/SEO";
 
 export default function TermsAndConditions() {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 font-sans relative">
-      <Helmet>
-        <title>Términos y Condiciones | NodoX</title>
-        <meta
-          name="description"
-          content="Términos y Condiciones de los servicios técnicos, venta y soporte en NodoX."
-        />
-        <meta property="og:title" content="Términos y Condiciones | NodoX" />
-        <meta
-          property="og:description"
-          content="Términos y Condiciones de los servicios técnicos, venta y soporte en NodoX."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title="Terminos y Condiciones"
+        description="Terminos y condiciones de servicios tecnicos, ventas y soporte en NodoX."
+        path="/terms-conditions"
+        noindex
+      />
 
       <Navbar />
 

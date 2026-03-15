@@ -1,7 +1,7 @@
 ﻿import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { Helmet } from "react-helmet";
+import SEO from "../components/SEO";
 
 const teamAreas = [
   {
@@ -48,21 +48,11 @@ export default function AboutUsPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-zinc-950 dark:text-gray-100 font-sans">
-      <Helmet>
-        <title>Sobre Nosotros | NodoX</title>
-        <meta
-          name="description"
-          content="Conoce la visión, valores y forma de trabajo de NodoX para soporte, armado y soluciones tecnológicas."
-        />
-        <meta property="og:title" content="Sobre Nosotros | NodoX" />
-        <meta
-          property="og:description"
-          content="Conoce la visión, valores y forma de trabajo de NodoX para soporte, armado y soluciones tecnológicas."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title="Sobre NodoX y Nuestro Equipo"
+        description="Conoce al equipo de NodoX, nuestra metodologia de soporte tecnico y enfoque en resultados para empresas y usuarios finales."
+        path="/about"
+      />
 
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"

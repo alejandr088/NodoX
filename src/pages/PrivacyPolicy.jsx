@@ -1,24 +1,15 @@
 import Navbar from "../components/Navbar";
-import { Helmet } from "react-helmet";
+import SEO from "../components/SEO";
 
 export default function PrivacyPolicy() {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 font-sans relative">
-      <Helmet>
-        <title>Política de Privacidad | NodoX</title>
-        <meta
-          name="description"
-          content="Política de Privacidad de NodoX, protección de datos y compromiso con la privacidad de nuestros clientes."
-        />
-        <meta property="og:title" content="Política de Privacidad | NodoX" />
-        <meta
-          property="og:description"
-          content="Política de Privacidad de NodoX, protección de datos y compromiso con la privacidad de nuestros clientes."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title="Politica de Privacidad"
+        description="Politica de privacidad y proteccion de datos personales de NodoX."
+        path="/privacy-policy"
+        noindex
+      />
 
       <Navbar />
 

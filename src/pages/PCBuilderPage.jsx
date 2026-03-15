@@ -1,25 +1,15 @@
 ﻿import PCBuilder from "../components/PCBuilder";
 import Navbar from "../components/Navbar";
-import { Helmet } from "react-helmet";
+import SEO from "../components/SEO";
 
 export default function PCBuilderPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-zinc-950 dark:text-gray-100 font-sans">
-      <Helmet>
-        <title>Armador de PC | NodoX</title>
-        <meta
-          name="description"
-          content="Personaliza y arma tu PC con componentes seleccionados en NodoX."
-        />
-        <meta property="og:title" content="Armador de PC | NodoX" />
-        <meta
-          property="og:description"
-          content="Personaliza y arma tu PC con componentes seleccionados en NodoX."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title="Armador de PC Personalizada"
+        description="Arma tu PC a medida con configuraciones equilibradas y cotizacion asistida por especialistas de NodoX."
+        path="/pc-builder"
+      />
 
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"

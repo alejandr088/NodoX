@@ -1,6 +1,6 @@
 ﻿import { useMemo, useState } from "react";
 import Navbar from "../components/Navbar";
-import { Helmet } from "react-helmet";
+import SEO from "../components/SEO";
 
 const COMPANY_SIZE = {
   micro: { label: "1-10 colaboradores", discount: 5 },
@@ -67,21 +67,11 @@ export default function BusinessSales() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-zinc-950 dark:text-gray-100 font-sans">
-      <Helmet>
-        <title>Ventas para Empresas | NodoX</title>
-        <meta
-          name="description"
-          content="Solicita propuestas B2B en NodoX: compra por volumen, soporte y renovación tecnológica para empresas."
-        />
-        <meta property="og:title" content="Ventas para Empresas | NodoX" />
-        <meta
-          property="og:description"
-          content="Solicita propuestas B2B en NodoX: compra por volumen, soporte y renovación tecnológica para empresas."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title="Soporte IT y Ventas para Empresas"
+        description="Propuestas B2B de tecnologia: renovacion de equipos, soporte mensual e infraestructura IT para empresas en Uruguay."
+        path="/business-sales"
+      />
 
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"

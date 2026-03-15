@@ -1,27 +1,16 @@
 ﻿import Navbar from "../components/Navbar";
-import { Helmet } from "react-helmet";
+import SEO from "../components/SEO";
+import { localBusinessSchema } from "../seo/structuredData";
 
 export default function ContactPage() {
   return (
     <div className="relative min-h-screen overflow-hidden font-sans text-gray-900 dark:text-gray-100">
-      <Helmet>
-        <title>Contacto | NodoX</title>
-        <meta
-          name="description"
-          content="Contacta con NodoX para asesoramiento personalizado y soporte técnico en Montevideo."
-        />
-        <meta property="og:title" content="Contacto | NodoX" />
-        <meta
-          property="og:description"
-          content="Contacta con NodoX para asesoramiento personalizado y soporte técnico en Montevideo."
-        />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={typeof window !== "undefined" ? window.location.href : ""}
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title="Contacto y Soporte Tecnico en Montevideo"
+        description="Contacta a NodoX para soporte tecnico, reparacion de computadoras y asesoramiento IT para empresas y particulares en Montevideo."
+        path="/contact"
+        structuredData={localBusinessSchema()}
+      />
 
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"

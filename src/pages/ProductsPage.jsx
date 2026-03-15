@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import { useCart } from "../contexts/CartContext";
 import { useMemo } from "react";
 import { getCurrencySymbol } from "../components/currencyFormatter";
-import { Helmet } from "react-helmet";
+import SEO from "../components/SEO";
 
 export default function ProductsPage() {
   const { addToCart } = useCart();
@@ -114,21 +114,11 @@ export default function ProductsPage() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/88 via-slate-100/80 to-slate-50/90 dark:from-zinc-950/86 dark:via-zinc-950/80 dark:to-zinc-950/92 pointer-events-none" />
 
-      <Helmet>
-        <title>Productos | NodoX</title>
-        <meta
-          name="description"
-          content="Explora nuestro catálogo completo de productos tecnológicos. Encuentra laptops, PCs, componentes y más en NodoX."
-        />
-        <meta property="og:title" content="Productos | NodoX" />
-        <meta
-          property="og:description"
-          content="Explora nuestro catálogo completo de productos tecnológicos en NodoX."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title="Catalogo de Productos de Tecnologia"
+        description="Compra laptops, componentes, perifericos y hardware en NodoX con asesoramiento tecnico y stock actualizado."
+        path="/products"
+      />
 
       <Navbar />
 

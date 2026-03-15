@@ -1,9 +1,16 @@
 ﻿import Navbar from "../components/Navbar";
 import services from "../data/services";
-import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { serviceSchema } from "../seo/structuredData";
 
 export default function ServicesPage() {
   const phone = "+59891741147";
+  const serviceSlugs = {
+    "reparación de pc": "computer-repair",
+    "recuperación de datos": "data-recovery",
+    "soporte técnico": "it-support",
+  };
 
   // Función para generar mensaje de WhatsApp para servicios
   const generateServiceMessage = (service) => {
@@ -148,21 +155,17 @@ export default function ServicesPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50 text-gray-900 dark:bg-zinc-950 dark:text-gray-100 font-sans">
-      <Helmet>
-        <title>Servicios | NodoX</title>
-        <meta
-          name="description"
-          content="Servicios técnicos profesionales en reparaciones, software y hardware en NodoX."
-        />
-        <meta property="og:title" content="Servicios | NodoX" />
-        <meta
-          property="og:description"
-          content="Servicios técnicos profesionales en reparaciones, software y hardware en NodoX."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      <SEO
+        title="Servicios IT, Redes y Reparacion de PC"
+        description="Servicios de soporte tecnico, reparacion de computadoras, recuperacion de datos e infraestructura de red para empresas y particulares en Montevideo."
+        path="/services"
+        structuredData={serviceSchema({
+          name: "Servicios IT y soporte tecnico",
+          description:
+            "Servicios de reparacion de PC, soporte tecnico, recuperacion de datos y redes para empresas y usuarios finales.",
+          path: "/services",
+        })}
+      />
 
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed"
@@ -184,6 +187,7 @@ export default function ServicesPage() {
               const details = getServiceDetails(service);
               const serviceIcon = getServiceIcon(service);
               const whatsappUrl = `https://wa.me/${phone.replace(/\D/g, "")}?text=${generateServiceMessage(service)}`;
+              const serviceSlug = serviceSlugs[service.title.toLowerCase()];
 
               return (
                 <div
@@ -272,6 +276,14 @@ export default function ServicesPage() {
                     </svg>
                     Solicitar servicio
                   </a>
+                  {serviceSlug && (
+                    <Link
+                      to={`/services/${serviceSlug}`}
+                      className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-gray-300 px-4 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-white dark:border-zinc-600 dark:text-gray-200 dark:hover:bg-zinc-800"
+                    >
+                      Ver detalles del servicio
+                    </Link>
+                  )}
                 </div>
               );
             })}
