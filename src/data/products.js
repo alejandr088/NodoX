@@ -624,5 +624,117 @@ export default [
       "15 pulgadas",
       "Color violeta"
     ],
+  },
+    {
+    id: 41,
+    name: "Adaptador de audio 7.1 Virtual Spica hembra - USB-A macho",
+    description: "Adaptador de sonido USB 7.1 virtual",
+    price: 8,
+    currency: "USD",
+    stock: 1,
+    category: "Audio/Adaptadores",
+    image: "/Adaptador de audio 7.1 Virtual Spica hembra - USB-A macho.png",
+    specs: [
+      "USB-A",
+      "Salida SPICA 3.5mm",
+      "Sonido virtual 7.1"
+    ],
+  },
+
+  {
+    id: 42,
+    name: "Adaptador USB-C a Spica 3.5mm hembra",
+    description: "Adaptador USB Tipo C a audio 3.5mm",
+    price: 7,
+    currency: "USD",
+    stock: 2,
+    category: "Adaptadores",
+    image: "/Adaptador USB-C a Spica 3.5mm hembra (1).png",
+    specs: [
+      "USB Tipo C",
+      "Jack 3.5mm",
+      "Compatible con smartphones"
+    ],
+  },
+
+  {
+    id: 43,
+    name: "Antena Wifi Cudy AC1300",
+    description: "Adaptador WiFi USB AC1300",
+    price: 18,
+    currency: "USD",
+    stock: 0,
+    category: "Conectividad",
+    image: "/Antena Wifi Cudy AC1300.jpg",
+    specs: [
+      "WiFi AC1300",
+      "Dual Band",
+      "USB 3.0"
+    ],
+  },
+
+  {
+    id: 44,
+    name: "Cable azul RJ45 Cat6e 5M",
+    description: "Cable de red Cat6e de 5 metros",
+    price: 8,
+    currency: "USD",
+    stock: 0,
+    category: "Redes",
+    image: "/Cable azul RJ45 Cat6e 5M.jpeg",
+    specs: [
+      "Cat6e",
+      "5 metros",
+      "RJ45"
+    ],
+  },
+
+  {
+    id: 45,
+    name: "Kit Perseo 3 FAN RGB+HUB+Control HELEO",
+    description: "Kit de 3 ventiladores RGB con HUB y control remoto",
+    price: 28,
+    currency: "USD",
+    stock: 0,
+    category: "Refrigeración RGB",
+    image: "/Kit Perseo 3 FAN RGB+HUB+Control HELEO (1).png",
+    specs: [
+      "3 ventiladores RGB",
+      "HUB incluido",
+      "Control remoto",
+      "Iluminación ARGB"
+    ],
+  },
+
+  {
+    id: 46,
+    name: "Kit Teclado + Mouse Lizzard XZZ-CO-01",
+    description: "Kit Lizzard con teclado y mouse USB",
+    price: 18,
+    currency: "USD",
+    stock: 0,
+    category: "Teclado/Mouse",
+    image: "/Kit Teclado + Mouse Lizzard XZZ-CO-01.png",
+    specs: [
+      "USB",
+      "Teclado",
+      "Mouse"
+    ],
+  },
+
+  {
+    id: 47,
+    name: "SSD 2.5 Lexar NQ100 256GB",
+    description: "Unidad SSD SATA Lexar NQ100 de 256GB",
+    price: 0,
+    currency: "USD",
+    stock: 1,
+    category: "Almacenamiento/SSD",
+    image: "/SSD 2.5 Lexar NQ100 256GB.png",
+    specs: [
+      "256GB",
+      "SATA III",
+      "2.5 pulgadas"
+    ],
   }
 ];
