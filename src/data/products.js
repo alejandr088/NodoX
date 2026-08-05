@@ -165,7 +165,7 @@ export default [
     currency: "USD",
     stock: 2,
     category: "Accesorios/Cables",
-    image: "/Cable DisplayPort a DisplayPort 1.8m.jpeg",
+    image: "/Cable DisplayPort a DisplayPort 1.8m.png",
     specs: [
       "DisplayPort",
       "1.8 metros",
@@ -312,7 +312,7 @@ export default [
     currency: "USD",
     stock: 1,
     category: "Motherboard",
-    image: "/asrock870icafe.png",
+    image: "/870iCafe.png",
     specs: [
       "Socket AM3",
       "DDR3",
