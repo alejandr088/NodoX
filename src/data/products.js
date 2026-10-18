@@ -2,13 +2,13 @@ export default [
   {
     id: 1,
     name: '*USADA* MacBook Air M1',
-    description: 'Apple M1, 8GB RAM, 256GB SSD, Pantalla Retina 13.3, macOS Sequoia',
+    description: 'Apple M1, 8GB RAM, 256GB SSD, Pantalla Retina 13.3, macOS Golden Gate, 95% Vida de Bateria ',
     price: 790,
     currency: 'USD',
     stock: 1,
     category: 'Notebook',
     image: '/macbookm1.jpg',
-    specs: ['Apple M1', '8GB RAM', '256GB SSD', 'Retina 13.3', 'macOS Sequoia'],
+    specs: ['Apple M1', '8GB RAM', '256GB SSD', 'Retina 13.3', 'macOS Golden Gate'],
   },
 
   {
@@ -468,6 +468,36 @@ export default [
   },
   {
     id: 35,
+    name: "Router HUAWEI WiFi AX3 Dual Core",
+    description: "Router Doble Banda HUAWEI",
+    price: 59,
+    currency: "USD",
+    stock: 2,
+    category: "Networking",
+    image: "/HUAWEI.png",
+    specs: [
+      "Dual Core",
+      "Doble Banda",
+      "Modelo WS7100",
+    ],
+  },
+  {
+    id: 36,
+    name: "PAD Fantech FireFly XL RGB",
+    description: "Pad Extra Grande con RGB",
+    price: 23,
+    currency: "USD",
+    stock: 1,
+    category: "Accesorios",
+    image: "/PAD.png",
+    specs: [
+      "RGB",
+      "USB",
+      "Modelo MPR800s FireFly",
+    ],
+  },
+  {
+    id: 37,
     name: "Cable Carga Micro USB a USBA 1M",
     description: "Cable Micro USB de 1 metro",
     price: 3,
@@ -482,7 +512,7 @@ export default [
     ],
   },
   {
-    id: 36,
+    id: 38,
     name: "SSD Netac SA500 2.5 128GB",
     description: "Unidad SSD SATA III",
     price: 46,
@@ -497,7 +527,7 @@ export default [
     ],
   },
     {
-    id: 37,
+    id: 39,
     name: "FAN 80mm Deepcool XFAN 80 BLK",
     description: "Ventilador Deepcool XFAN 80 BLK",
     price: 6,
@@ -512,7 +542,7 @@ export default [
     ],
   },
   {
-    id: 38,
+    id: 40,
     name: "Cable VGA 1.5m",
     description: "Cable VGA macho a macho",
     price: 5,
@@ -526,7 +556,7 @@ export default [
     ],
   },
   {
-    id: 39,
+    id: 41,
     name: "Cables power PC a Schuko 1.5m",
     description: "Cable de alimentación para PC con ficha Schuko",
     price: 5,
@@ -540,7 +570,7 @@ export default [
     ],
   },
   {
-    id: 40,
+    id: 42,
     name: "Cables power PC a Schuko 3m",
     description: "Cable de alimentación para PC con ficha Schuko",
     price: 7,
@@ -554,7 +584,7 @@ export default [
     ],
   },
   {
-    id: 41,
+    id: 43,
     name: "Cables PWR PC a 3 en linea 1.5m",
     description: "Cable de alimentación para PC de 3 en línea",
     price: 5,
@@ -568,7 +598,7 @@ export default [
     ],
   },
   {
-    id: 42,
+    id: 44,
     name: "Adaptador USB-C hembra - USB-A macho",
     description: "Adaptador USB Tipo C hembra a USB Tipo A macho",
     price: 6,
@@ -583,7 +613,7 @@ export default [
     ],
   },
   {
-    id: 43,
+    id: 45,
     name: "Sobre Bluecase Laptop 13 color azul",
     description: "Funda Bluecase para notebook de 13 pulgadas",
     price: 10,
@@ -597,7 +627,7 @@ export default [
     ],
   },
   {
-    id: 44,
+    id: 46,
     name: "Sobre Bluecase Laptop 15 color violeta",
     description: "Funda Bluecase para notebook de 15 pulgadas",
     price: 11,
