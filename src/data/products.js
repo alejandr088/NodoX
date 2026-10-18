@@ -437,11 +437,27 @@ export default [
   },
   {
     id: 33,
+    name: "RAM Hiksemi DDR3 4GB 1600 SODIMM",
+    description: "Memoria DDR3 para notebook",
+    price: 25,
+    currency: "USD",
+    stock: 10,
+    category: "Memorias",
+    image: "/RAM Hiksemi DDR3 4GB 1600 SODIMM.jpeg",
+    specs: [
+      "4GB",
+      "1600MHz",
+      "DDR3",
+      "SODIMM",
+    ],
+  },
+  {
+    id: 34,
     name: "RAM Hiksemi DDR3 8GB 1600 SODIMM",
     description: "Memoria DDR3 para notebook",
     price: 33,
     currency: "USD",
-    stock: 1,
+    stock: 2,
     category: "Memorias",
     image: "/RAM Hiksemi DDR3 8GB 1600 SODIMM.jpeg",
     specs: [
@@ -452,7 +468,7 @@ export default [
     ],
   },
   {
-    id: 34,
+    id: 35,
     name: "RAM Mushkin DDR3 4GB UDIMM",
     description: "Memoria DDR3 para PC",
     price: 15,
@@ -467,7 +483,7 @@ export default [
     ],
   },
   {
-    id: 35,
+    id: 36,
     name: "Router HUAWEI WiFi AX3 Dual Core",
     description: "Router Doble Banda HUAWEI",
     price: 59,
@@ -482,7 +498,7 @@ export default [
     ],
   },
   {
-    id: 36,
+    id: 37,
     name: "PAD Fantech FireFly XL RGB",
     description: "Pad Extra Grande con RGB",
     price: 23,
@@ -497,7 +513,7 @@ export default [
     ],
   },
   {
-    id: 37,
+    id: 38,
     name: "Cable Carga Micro USB a USBA 1M",
     description: "Cable Micro USB de 1 metro",
     price: 3,
@@ -512,7 +528,7 @@ export default [
     ],
   },
   {
-    id: 38,
+    id: 39,
     name: "SSD Netac SA500 2.5 128GB",
     description: "Unidad SSD SATA III",
     price: 46,
@@ -527,7 +543,7 @@ export default [
     ],
   },
     {
-    id: 39,
+    id: 40,
     name: "FAN 80mm Deepcool XFAN 80 BLK",
     description: "Ventilador Deepcool XFAN 80 BLK",
     price: 6,
@@ -542,7 +558,7 @@ export default [
     ],
   },
   {
-    id: 40,
+    id: 41,
     name: "Cable VGA 1.5m",
     description: "Cable VGA macho a macho",
     price: 5,
@@ -556,7 +572,7 @@ export default [
     ],
   },
   {
-    id: 41,
+    id: 42,
     name: "Cables power PC a Schuko 1.5m",
     description: "Cable de alimentación para PC con ficha Schuko",
     price: 5,
@@ -570,7 +586,7 @@ export default [
     ],
   },
   {
-    id: 42,
+    id: 43,
     name: "Cables power PC a Schuko 3m",
     description: "Cable de alimentación para PC con ficha Schuko",
     price: 7,
@@ -584,7 +600,7 @@ export default [
     ],
   },
   {
-    id: 43,
+    id: 44,
     name: "Cables PWR PC a 3 en linea 1.5m",
     description: "Cable de alimentación para PC de 3 en línea",
     price: 5,
@@ -598,7 +614,7 @@ export default [
     ],
   },
   {
-    id: 44,
+    id: 45,
     name: "Adaptador USB-C hembra - USB-A macho",
     description: "Adaptador USB Tipo C hembra a USB Tipo A macho",
     price: 6,
@@ -613,7 +629,7 @@ export default [
     ],
   },
   {
-    id: 45,
+    id: 46,
     name: "Sobre Bluecase Laptop 13 color azul",
     description: "Funda Bluecase para notebook de 13 pulgadas",
     price: 10,
@@ -627,7 +643,7 @@ export default [
     ],
   },
   {
-    id: 46,
+    id: 47,
     name: "Sobre Bluecase Laptop 15 color violeta",
     description: "Funda Bluecase para notebook de 15 pulgadas",
     price: 11,
